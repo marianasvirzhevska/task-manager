@@ -1,9 +1,9 @@
 import React from 'react';
-import './styles.css';
+import styles from './Loader.module.sass';
 
 const Loader = () => {
     return (
-        <div className="loader">
+        <div className={styles.loader}>
             <div/>
             <div/>
             <div/>

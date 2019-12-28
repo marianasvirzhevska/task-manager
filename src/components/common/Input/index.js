@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.sass'
+import styles from './Input.module.sass'
 
 const CustomInput = ({type, label, name, placeholder, value, onChange}) => {
 	return (
-		<div className="custom-input">
+		<div className={styles.root}>
 			<label>
 				<p>{label}</p>
-				<div className="input-cover">
+				<div className={styles.cover}>
 					<input
 						name={name}
 						type={type}

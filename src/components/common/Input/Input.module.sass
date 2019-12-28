@@ -1,33 +1,31 @@
 @import '../../../styles/variables'
 @import '../../../styles/mixins'
 
-.custom-input
+.root
   width: 100%
 
-.custom-input p
+.root p
   font-size: $smallFont
   font-weight: 500
   color: $greyFont
   margin: 0
 
-.input-cover
+.cover
   position: relative
   width: 100%
 
-.custom-input input
-  width: 100%  
+.root input
+  width: 100%
   font-size: $mainFont
   margin: 8px 0
-  height: 44px  
-  padding: 0 20px  
-  box-sizing: border-box  
+  height: 44px
+  padding: 0 20px
+  box-sizing: border-box
   @include border-radius(3px)
   border: solid 1px $borderColor
   background-color: $white
 
-.custom-input input:focus
+.root input:focus
   outline: none
   @include border-radius(3px)
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
-
-

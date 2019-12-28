@@ -1,0 +1,68 @@
+@import "../../../../styles/variables"
+
+.sideMenu
+  background: $blueBg
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  .menu
+    padding: 20px
+    .menuList
+      margin: 0
+      padding: 20px 0
+      list-style: none
+
+.terms
+  width: 180px
+  color: #b3dee5
+  font-size: $tableFont
+  padding: 11px 10px
+  line-height: 1.3
+  margin-top: 20px
+  a
+    color: #b3dee5
+  p
+    margin: 0
+
+.logoutBtn, .hideBtn
+  width: 100%
+  button
+    width: 100%
+    text-align: left
+    border-radius: 0
+    background: transparent
+    display: inline-flex
+    align-items: center
+    justify-content: flex-start
+    span
+      color: $lightBlueFont
+      font-weight: normal
+      font-size: $menuFont
+      span
+        margin-left: 18px
+
+.logoutBtn
+  padding: 19px 0
+  border-top: 1px solid
+  border-bottom: 1px solid
+  border-color: rgba(255, 255, 255, 0.2)
+  button
+    border: none
+    padding: 11px 10px
+    -webkit-border-radius: 10px
+    -moz-border-radius: 10px
+    border-radius: 10px
+    &:hover
+      border: none
+      background-color: rgba(0, 0, 0, 0.12)
+  &.small
+    border-bottom: none
+    button
+      height: 48px
+      min-width: unset
+
+.hidebtn button
+  padding:  19px 34px  15px
+  background-color: rgba(0, 0, 0, 0.08)
+  &:hover
+    background-color: rgba(0, 0, 0, 0.12)

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.sass'
+import styles from './Checkbox.module.sass'
 
 const CustomCheckbox = ({label, name, value, onChange}) => {
 	return (
-		<div className="custom-checkbox">
+		<div className={styles.root}>
 			<label>
 				<p>{label}</p>
 				<input
@@ -13,7 +13,7 @@ const CustomCheckbox = ({label, name, value, onChange}) => {
 					value={value}
 					onChange={onChange}
 				/>
-				<span className="checkmark"/>
+				<span className={styles.checkMark}/>
 			</label>
 		</div>
 	)
