@@ -1,10 +1,9 @@
-@import "../../../../../../styles/variables"
+@import '../../../../../../styles/variables'
+@import '../../../../../../styles/mixins'
 
 .menuItem
   margin-bottom: 8px
-  -webkit-border-radius: 10px
-  -moz-border-radius: 10px
-  border-radius: 10px
+  @include border-radius(5px)
   a
     width: 100%
     padding: 11px 10px
@@ -12,16 +11,23 @@
     align-items: center
     text-decoration: none
     white-space: nowrap
+    color: $lightBlueFont
+    @include border-box
     span
       color: $lightBlueFont
       font-size: $menuFont
-      padding-left: 19px
+      padding-left: 12px
   &:hover
     background-color: rgba(255, 255, 255, 0.1)
   &.active
     background-color: rgba(255, 255, 255, 0.3)
-    a span
+    a
       color: $white
+      span
+        color: $white
     &:hover
      background-color: rgba(255, 255, 255, 0.25)
+  &.small
+    a
+      padding: 11px 8px
 

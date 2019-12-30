@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import styles from './MenuItem.module.sass'
 
 export const MenuItem = (props) => {
-	const { path, active, menuIcon, label, open } = props;
+	const { path, active, icon, label, open } = props;
 	const match = useRouteMatch({ path, exact: true });
 
 	return (
-		<li className={`${styles.menuItem} ${(match || active) ? styles.active : ''}`} title={label}>
+		<li className={`${styles.menuItem} ${(match || active) ? styles.active : ''} ${!open ? styles.small : ''}`} title={label}>
 			<Link to={path}>
-				{/*<img src={menuIcon} alt="menuIcon"/>*/}
+				{icon}
 				{open && <span>{label}</span>}
 			</Link>
 		</li>
@@ -19,7 +19,7 @@ export const MenuItem = (props) => {
 
 MenuItem.propTypes = {
 	path: PropTypes.string.isRequired,
-	menuIcon: PropTypes.any,
+	icon: PropTypes.any.isRequired,
 	label: PropTypes.string.isRequired,
 	open: PropTypes.bool.isRequired,
 	active: PropTypes.func

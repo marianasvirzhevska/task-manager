@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from '../../../common/Button'
+import Button from '@material-ui/core/Button'
+import logoutIcon from '../../../../assets/icons/ico-logout.svg'
 import { getMenuLinks } from './menuLinks'
 import styles from './SideMenu.module.sass'
-// import { UserMenu } from './components/UserMenu/UserMenu'
+import { UserMenu } from './components/UserMenu' // access to user profile view and edit
 import MenuItem from './components/MenuItem'
 
-
-export const SideMenu = () => {
-	let open = true;
+export const SideMenu = (props) => {
+	const { open } = props;
 	let user = {
 		admin: true,
-		user_name: 'Oliver Brown',
-		company_Name: 'Silver Post',
+		firstName: 'Oliver',
+		lastName: 'Brown',
+		companyName: 'Silver Post',
 		email: 'admin.admin@mail.com'
 	};
 	let menuLinks = getMenuLinks(user);
@@ -20,7 +21,7 @@ export const SideMenu = () => {
 	return (
 		<div className={styles.sideMenu}>
 			<div className={styles.menu}>
-				{/*<UserMenu open={open} user={user}/>*/}
+				<UserMenu open={open} user={user}/>
 				<ul className={styles.menuList}>
 					{
 						menuLinks.map((item, key) => {
@@ -29,7 +30,7 @@ export const SideMenu = () => {
 									key={key}
 									path={item.path}
 									label={item.label}
-									menuIcon={item.icon}
+									icon={item.icon}
 									open={open}
 								/>
 							)
@@ -38,8 +39,8 @@ export const SideMenu = () => {
 				</ul>
 
 				<div className={`${styles.logoutBtn} ${!open ? styles.small : ''}`}>
-					<Button variant="outlined" color="primary" handler={() => {}}>
-						{/*<img src={logoutIcon} alt="logout"/>*/}
+					<Button  variant="outlined" color="primary" onClick={() => {}}>
+						<img src={logoutIcon} alt="logout"/>
 						{open && <span>Logout</span>}
 					</Button>
 				</div>

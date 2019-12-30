@@ -1,8 +1,9 @@
-@import "../../../../styles/variables"
+@import '../../../../styles/variables'
+@import '../../../../styles/mixins'
 
 .sideMenu
   background: $blueBg
-  display: flex
+  @include flex
   flex-direction: column
   justify-content: space-between
   .menu
@@ -29,7 +30,7 @@
   button
     width: 100%
     text-align: left
-    border-radius: 0
+    @include border-radius(0)
     background: transparent
     display: inline-flex
     align-items: center
@@ -49,12 +50,11 @@
   button
     border: none
     padding: 11px 10px
-    -webkit-border-radius: 10px
-    -moz-border-radius: 10px
-    border-radius: 10px
+    @include border-radius(5px)
+    background: transparent !important
     &:hover
       border: none
-      background-color: rgba(0, 0, 0, 0.12)
+      background-color: rgba(0, 0, 0, 0.12)  !important
   &.small
     border-bottom: none
     button

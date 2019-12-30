@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import ThemeProvider from '@material-ui/styles/ThemeProvider'
+import theme from './muiTheme'
 import store from './store/store'
 import getUser from './utils/getUser'
 import Register from './components/Register'
@@ -33,9 +35,11 @@ const App = () => {
 };
 
 const AppProvider = () => (
-	<Provider store={store}>
-		<App />
-	</Provider>
+	<ThemeProvider theme={theme}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</ThemeProvider>
 );
 
 export default AppProvider;
