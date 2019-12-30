@@ -13,7 +13,7 @@ const Login = () => {
 				</div>
 				<div className="bottom-row">
 					<p>Copyright © 2020 Task Manage Software Tools</p>
-					<Link to='/'>Terms and conditions</Link>
+					<Link to='/'>Terms and <br/>conditions</Link>
 				</div>
 			</div>
 			<div className="form-cover loginForm">

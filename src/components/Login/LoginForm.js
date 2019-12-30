@@ -26,12 +26,14 @@ const LoginForm = () => {
 					onChange={handleInput}
 					label='Enter your password'
 				/>
+				<div className="form-btn">
+					<Button
+						type="submit" variant="contained" color='secondary'
+						onClick={handleSubmit}>
+						Sign me in
+					</Button>
+				</div>
 			</form>
-			<Button
-				type="submit" variant="contained" color='secondary'
-				onClick={handleSubmit}>
-				Sign me in
-			</Button>
 		</div>
 
 	)

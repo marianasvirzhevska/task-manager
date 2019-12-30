@@ -54,7 +54,7 @@ const theme = createMuiTheme({
 			primary: colors.black,
 			secondary: colors.label,
 			disabled: colors.label,
-			hint: '#a4a6aa'
+			hint: colors.lightGreyFont
 		},
 		divider: '#e3e4e8',
 		action: {

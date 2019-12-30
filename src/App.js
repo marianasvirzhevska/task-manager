@@ -13,7 +13,7 @@ import NotFound from './components/NotFound'
 const App = () => {
 	const auth = true; // temp var
 	// const isAuthenticated = getUser();
-	console.log(Boolean(auth));
+
 	return (
 	  <Router>
 		  <Switch>
