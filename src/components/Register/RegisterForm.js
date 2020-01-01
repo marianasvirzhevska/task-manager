@@ -1,84 +1,109 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {Field, reduxForm} from 'redux-form'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
-import { onRegister } from '../../store/actions'
+// import { onRegister } from '../../store/actions'
 // import setUser from '../../utils/setUser'
-import CustomInput from '../common/Input'
+import Input from '../common/Input'
 import CustomCheckbox from '../common/Checkbox'
 
-const RegisterForm = () => {
-
-	const handleInput = (e) => {
-	};
-
-	const handleSubmit = (e) => {
+let RegisterForm = () => {
+	const handleSubmit = (values) => {
 	};
 
 	return (
 		<div className="form-control">
-			<form className="auth-form register">
-				<CustomInput
-					type='text'
-					name='companyName'
-					onChange={handleInput}
-					label='Company name'
+			<form className="auth-form register" onSubmit={handleSubmit}>
+				<Field component={Input} name="companyName" fullWidth
+					   type="text"
+					   placeholder='Company name'
 				/>
-				<CustomInput
-					type='text'
-					name='email'
-					onChange={handleInput}
-					label='Email'
+				<Field component={Input} name="email" fullWidth
+					   type="email"
+					   placeholder='Email'
 				/>
 				<div className="form-row">
-					<CustomInput
-						type='text'
-						name='firstName'
-						onChange={handleInput}
-						label='First name'
+					<Field component={Input} name="firstName" fullWidth
+						   type="text"
+						   placeholder='First name'
 					/>
-					<CustomInput
-						type='text'
-						name='lastName'
-						onChange={handleInput}
-						label='Last name'
+					<Field component={Input} name="lastName" fullWidth
+						   type="text"
+						   placeholder='Last name'
 					/>
 				</div>
 				<div className="form-row">
-					<CustomInput
-						type='password'
-						name='password'
-						onChange={handleInput}
-						label='Password'
+					<Field component={Input} name="password" fullWidth
+						   type="password"
+						   placeholder='Password'
 					/>
-					<CustomInput
-						type='password'
-						name='repeatPass'
-						onChange={handleInput}
-						label='Repeat password'
+					<Field component={Input} name="passwordConfirm" fullWidth
+						   type='password'
+						   placeholder='Repeat password'
 					/>
 				</div>
+
 				<CustomCheckbox
 					label={<span>I agree to the <Link to='/terms'>Terms and Conditions</Link></span>}
 					/>
 				<div className="form-btn">
 					<Button
-						type="submit" variant="contained" color='secondary'
-						onClick={handleSubmit}>
+						type="submit" variant="contained" color='secondary'>
 						Register
 					</Button>
 				</div>
 			</form>
 		</div>
-
 	)
 };
 
+const validate = (values) => {
+	// const values = _values.trim();
+	const errors = {};
 
-const mapDispatchToProps = ( dispatch ) => ({
-	registerAmd: ( user ) => {
-		dispatch( onRegister(user) );
+	if (!values.companyName) {
+		errors.companyName = 'Company name field cannot be blank'
 	}
-});
 
-export default connect(null, mapDispatchToProps)(RegisterForm);
+	if (!values.firstName) {
+		errors.firstName = 'First Name field cannot be blank'
+	}
+
+	if (!values.lastName) {
+		errors.lastName = 'Last Name field cannot be blank'
+	}
+	if (!values.email) {
+		errors.email = 'E-mail field cannot be blank'
+	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+		errors.email = 'E-mail is incorrect'
+	}
+
+	if (!values.terms) {
+		errors.terms = true
+	}
+
+	if (!values.password) {
+		errors.password = 'Password field cannot be blank'
+	} else if (values.password.length < 6) {
+		errors.password = 'Password should contain at least 6 characters'
+	}
+
+	if (!values.passwordConfirm) {
+		errors.passwordConfirm = 'Confirm your password correctly'
+	} else if (values.passwordConfirm.length < 6) {
+		errors.passwordConfirm = 'Confirm your password correctly'
+	}
+
+	if (values.passwordConfirm && values.password && values.passwordConfirm !== values.password) {
+		errors.passwordConfirm = 'Confirm your password correctly'
+	}
+	return errors
+};
+
+RegisterForm = reduxForm({
+	// a unique name for the form
+	form: 'register',
+	validate
+})(RegisterForm);
+
+export default RegisterForm;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { match, Redirect, Route, Switch, useRouteMatch } from 'react-router'
+import { Route, Switch, useRouteMatch } from 'react-router'
 import Projects from './components/Projects'
 import Tasks from './components/Tasks'
 import Users from './components/Users'
@@ -12,10 +12,10 @@ const Dashboard = () => {
 		<div className="dashboard-page">
 			<MenuDrawer />
 			<Switch>
-				<Route exact to={`${path}/projects`} component={Projects}/>
-				<Route exact to={`${path}/tasks`} component={Tasks}/>
-				<Route exact to={`${path}/users`} component={Users}/>
-				<Route exact to={`${path}/edit`} component={EditProfile}/>
+				<Route exact path={`${path}/projects`} component={Projects}/>
+				<Route exact path={`${path}/tasks`} component={Tasks}/>
+				<Route exact path={`${path}/users`} component={Users}/>
+				<Route exact path={`${path}/edit`} component={EditProfile}/>
 			</Switch>
 		</div>
 	)

@@ -2,32 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Input.module.sass'
 
-const CustomInput = ({type, label, name, placeholder, value, onChange}) => {
+const Input = ({input, label, type, placeholder, meta: { touched, error }}) => {
 	return (
 		<div className={styles.root}>
 			<label>
 				<p>{label}</p>
 				<div className={styles.cover}>
 					<input
-						name={name}
-						type={type}
-						placeholder={placeholder}
-						value={value}
-						onChange={onChange}
+						{...input} placeholder={placeholder} type={type}
 					/>
 				</div>
+				{touched && ((error && <div className={styles.error}>{error}</div>))}
 			</label>
 		</div>
 	)
 }
 
-CustomInput.propTypes = {
+Input.propTypes = {
 	label: PropTypes.string,
-	name: PropTypes.string,
 	type: PropTypes.oneOf(['text', 'password', 'email', 'number', 'file', 'date']).isRequired,
-	placeholder: PropTypes.string,
-	value: PropTypes.any,
-	onChange: PropTypes.func
+	placeholder: PropTypes.string
 };
 
-export default CustomInput;
+export default Input;
