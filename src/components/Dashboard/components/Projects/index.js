@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import {
 	AppBar,
@@ -6,10 +6,13 @@ import {
 	AppBarAfter,
 	SearchField
 } from '../AppBar'
+import AddProjectDialog from './components/AddProjectDialog'
 
 const Projects = () => {
-	const handleCreate = () => {
+	const [createCred, setCreate] = useState(false);
 
+	const handleCreate = () => {
+		setCreate(!createCred);
 	};
 
 	return(
@@ -27,6 +30,11 @@ const Projects = () => {
 					</Button>
 				</AppBarAfter>
 			</AppBar>
+			<AddProjectDialog
+				open={createCred}
+				handleClose={handleCreate}
+				handleCreate={handleCreate}
+			/>
 		</div>
 	)
 };

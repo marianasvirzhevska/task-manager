@@ -1,6 +1,9 @@
 import {
-	REGISTER_ADMIN
+	REGISTER_ADMIN,
+	LOGIN_USER,
+	LOGOUT
 } from '../constants'
+
 
 const AuthState = {
 	user: {},
@@ -15,6 +18,21 @@ const authReducer = ( state = AuthState, action) => {
 				...state,
 				auth: true,
 				user: action.payload,
+				error: null
+			};
+
+		case LOGIN_USER:
+			return {
+				...state,
+				auth: true,
+				user: action.payload,
+				error: null
+			};
+		case LOGOUT:
+			return {
+				...state,
+				auth: false,
+				user: {},
 				error: null
 			};
 

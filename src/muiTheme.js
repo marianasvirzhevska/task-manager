@@ -85,10 +85,19 @@ const theme = createMuiTheme({
 			root: {
 				fontSize: fontSizes.button,
 				textTransform: 'none',
-				padding: '12px 30px'
+				padding: '12px 30px',
+				'&$disabled': {
+					backgroundColor: '#00c853',
+					color: '#fff',
+					opacity: 0.8
+				}
 			},
 			contained: {
-				boxShadow: 'none !important'
+				boxShadow: 'none !important',
+				'&$disabled': {
+					backgroundColor: '#00c853',
+					color: '#fff'
+				}
 			},
 			sizeSmall:{
 				fontSize: fontSizes.table,

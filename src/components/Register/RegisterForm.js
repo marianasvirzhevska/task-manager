@@ -1,15 +1,21 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+// import { useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
-// import { onRegister } from '../../store/actions'
-// import setUser from '../../utils/setUser'
+import setUser from '../../utils/setUser'
+import useRegisterForm from './useRegister'
 import Input from '../common/Input'
 import CustomCheckbox from '../common/Checkbox'
 
-let RegisterForm = () => {
-	const handleSubmit = (values) => {
+let RegisterForm = (props) => {
+	const { invalid, submitting, pristine } = props;
+	const register = () => {
+		setUser(inputs);
 	};
+
+	const { inputs, handleInput, handleSubmit } = useRegisterForm(register);
+
 
 	return (
 		<div className="form-control">
@@ -17,37 +23,43 @@ let RegisterForm = () => {
 				<Field component={Input} name="companyName" fullWidth
 					   type="text"
 					   placeholder='Company name'
+					   onChange={handleInput} value={inputs.companyName}
 				/>
 				<Field component={Input} name="email" fullWidth
 					   type="email"
 					   placeholder='Email'
+					   onChange={handleInput} value={inputs.email}
 				/>
 				<div className="form-row">
 					<Field component={Input} name="firstName" fullWidth
 						   type="text"
 						   placeholder='First name'
+						   onChange={handleInput} value={inputs.firstName}
 					/>
 					<Field component={Input} name="lastName" fullWidth
 						   type="text"
 						   placeholder='Last name'
+						   onChange={handleInput} value={inputs.lastName}
 					/>
 				</div>
 				<div className="form-row">
 					<Field component={Input} name="password" fullWidth
 						   type="password"
 						   placeholder='Password'
+						   onChange={handleInput} value={inputs.password}
 					/>
 					<Field component={Input} name="passwordConfirm" fullWidth
 						   type='password'
 						   placeholder='Repeat password'
+						   onChange={handleInput} value={inputs.passwordConfirm}
 					/>
 				</div>
-
-				<CustomCheckbox
-					label={<span>I agree to the <Link to='/terms'>Terms and Conditions</Link></span>}
-					/>
+				<Field component={CustomCheckbox} name="terms"
+					   label={<span>I agree to the <Link to='/terms'>Terms and Conditions</Link></span>}
+				/>
 				<div className="form-btn">
 					<Button
+						disabled={invalid|| submitting || pristine}
 						type="submit" variant="contained" color='secondary'>
 						Register
 					</Button>
@@ -79,7 +91,7 @@ const validate = (values) => {
 	}
 
 	if (!values.terms) {
-		errors.terms = true
+		errors.terms = 'Accept the Terms and Conditions'
 	}
 
 	if (!values.password) {
@@ -105,5 +117,6 @@ RegisterForm = reduxForm({
 	form: 'register',
 	validate
 })(RegisterForm);
+
 
 export default RegisterForm;
