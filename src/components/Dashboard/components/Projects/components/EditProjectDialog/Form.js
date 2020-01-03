@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
 import {Field, reduxForm} from 'redux-form'
 import Input from '../../../../../common/Input'
 
 let Form = (props) => {
-
-	const {setFormData, formData} = props;
-
 	const handleChange = (e) => {
 	};
 
 	return (
 		<div className="dialog-form">
 			<div className="flexed-row title-row">
-				<Avatar className="avatar-center">AA</Avatar>
+				<Avatar className="avatar-center">{}</Avatar>
 			</div>
 			<div className="flexed-row">
 				<Field component={Input}
@@ -44,11 +42,24 @@ let Form = (props) => {
 					onChange={handleChange}
 				/>
 			</div>
+			<div className='dialog-action'>
+				<Button
+					color='secondary'
+					variant='contained'
+					onClick={() => {}}
+				>Save</Button>
+			</div>
 		</div>
 	)
 };
 
 function validate(values) {
+	// const {
+	// 	projectTitle,
+	// 	projectLink,
+	// 	projectAv
+	// } = values;
+
 	const errors = {};
 
 	if(!values.projectTitle){
@@ -79,7 +90,8 @@ Form.propsTypes = {
 };
 
 Form = reduxForm({
-	form: 'addProject',
+	form: 'editProject',
+	enableReinitialize: true,
 	validate
 })(Form);
 

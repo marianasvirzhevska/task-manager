@@ -12,12 +12,12 @@ input:-webkit-autofill
   width: 100%
   height: 100vh
   overflow: hidden
-  display: flex
+  @include flex
 
 .dashboard-content
   width: 100%
   height: 100%
-  display: flex
+  @include flex
   flex-direction: column
   background: $greyBg
   padding-bottom: 30px
@@ -30,7 +30,143 @@ input:-webkit-autofill
 
 .dialog-action // dialog bottom actions styles
   width: 100%
-  display: flex
+  @include flex
   align-items: center
   justify-content: center
   margin: 30px 0
+
+.flexed-row
+  @include flex
+  align-items: flex-end
+  margin-bottom: 16px
+  &.title-row
+    justify-content: center
+    margin-top: 20px
+  .half-column
+    flex: 0 0.5 50%
+    &:first-child
+      padding-right: 14px
+    &:last-child
+      padding-left: 14px
+  .one-column
+    flex: 0 0.5 48%
+    padding-right: 14px
+  .third-column
+    flex: 0 0.33 33%
+    &:first-child
+      padding-right: 14px
+    &:nth-child(2)
+      padding: 0 14px
+    &:last-child
+      padding-left: 14px
+  .fourth-column
+    flex: 0 0.25 25%
+  .one-fourth-column
+    flex: 0 0.22 22%
+    padding-left: 14px
+    position: relative
+
+  .one-third-column
+    flex: 0 0.30 30%
+    padding-right: 14px
+  .one-fifth-column
+    flex: 0 0.18 18%
+    padding-top: 14px
+    padding-right: 14px
+  //.avatar-center
+
+.paper-wrap
+  padding: 20px 20px 0
+
+.table-cover
+  padding: 10px 30px 0 30px
+  table
+    th
+      border-bottom: 1px solid #e3e4e8
+      &:last-child
+        text-align: right
+    th, td
+      padding-left: 0
+    tr:last-child td
+      border-bottom: none
+
+.table-project-title // project title cell styles
+  @include flex
+  align-items: center
+  p
+    margin: 0
+    padding-left: 16px
+
+.actions // table action column styles
+  @include flex
+  align-items: center
+  justify-content: flex-end
+
+
+// Delete dialog styles
+.delete-container
+  padding: 30px 20px
+  min-width: 400px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  .delete-title
+    font-size: $subTitle
+    font-weight: 500
+    margin: 24px 0 26px
+  .delete-button
+    color: $white
+    background: $error
+    padding: 8px 30px
+    font-size: $mainFont
+    &:hover
+      background: $error
+  .cancel-button
+    margin-top: 14px
+    font-size: $mainFont
+    text-decoration: underline
+    &:hover
+      background: none
+  .agency-info
+    padding: 20px 0
+    min-width: 280px
+    margin: 0 auto 30px
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+  .agency-details
+    margin: 0
+    color: $black
+    font-weight: 600
+    text-align: center
+    p
+      margin: 0
+      color: #666666
+      font-weight: 400
+      padding-top: 6px
+
+.user-info
+  min-width: 280px
+  margin: 0 auto 30px
+  display: flex
+  align-items: center
+  white-space: nowrap
+  padding: 20px 0
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  border-top: 1px solid rgba(0, 0, 0, 0.1)
+  .user-img
+    width: 44px
+    min-width: 44px
+    height: 44px
+    border-radius: 50%
+    overflow: hidden
+    background: $white
+  .user-details
+    margin: 0
+    padding-left: 8px
+    color: $black
+    font-weight: 600
+    font-size: $tableFont
+    span
+      color: #666666
+      font-weight: 400

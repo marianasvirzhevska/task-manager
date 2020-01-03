@@ -20,7 +20,7 @@ const Input = ({input, label, type, placeholder, meta: { touched, error }}) => {
 
 Input.propTypes = {
 	label: PropTypes.string,
-	type: PropTypes.oneOf(['text', 'password', 'email', 'number', 'file', 'date']).isRequired,
+	type: PropTypes.oneOf(['text', 'password', 'email', 'number', 'file', 'date', 'url']).isRequired,
 	placeholder: PropTypes.string
 };
 

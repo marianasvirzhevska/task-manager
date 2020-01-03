@@ -7,10 +7,9 @@ import Form from './Form'
 const AddProjectDialog = (props) => {
 	const {open, handleClose, handleCreate} = props;
 	const [formData, setFormData] = useState({
-		agencyName: '',
-		firstName: '',
-		lastName: '',
-		email: ''
+		projectTitle: '',
+		projectAv: '',
+		projectLink: ''
 	});
 
 	return (

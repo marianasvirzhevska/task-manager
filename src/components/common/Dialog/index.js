@@ -94,7 +94,7 @@ export const AppDialog = (props) => {
 		<Dialog
 			open={open}
 			onClose={handleClose}
-			disableBackdropClick={true}
+			disableBackdropClick={false}
 			PaperProps={{
 				elevation: 2
 			}}

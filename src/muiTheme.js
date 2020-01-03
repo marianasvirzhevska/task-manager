@@ -203,6 +203,12 @@ const theme = createMuiTheme({
 				marginRight: 12,
 				//color: colors.lightGreyFont //TODO styled adornment color
 			}
+		},
+		MuiAvatar: {
+			colorDefault: {
+				color: colors.white,
+				backgroundColor: colors.blueBg
+			}
 		}
 	}
 });
