@@ -30,6 +30,21 @@
   @include border-radius(3px)
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
 
+.root textarea
+  width: 100%
+  font-size: $mainFont
+  margin: 8px 0
+  padding: 14px 20px
+  box-sizing: border-box
+  @include border-radius(3px)
+  border: solid 1px $borderColor
+  background-color: $white
+
+.root textarea:focus
+  outline: none
+  @include border-radius(3px)
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
+
 .error
   color: $red
   font-size: $tableFont

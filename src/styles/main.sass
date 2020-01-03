@@ -26,7 +26,9 @@ input:-webkit-autofill
   a
     text-decoration: none
 
-
+.dialog-form //styles for form on dialog component
+  margin: 30px auto 0
+  width: 100%
 
 .dialog-action // dialog bottom actions styles
   width: 100%
@@ -37,7 +39,7 @@ input:-webkit-autofill
 
 .flexed-row
   @include flex
-  align-items: flex-end
+  align-items: flex-start
   margin-bottom: 16px
   &.title-row
     justify-content: center
@@ -170,3 +172,11 @@ input:-webkit-autofill
     span
       color: #666666
       font-weight: 400
+  .task-details
+    margin: 0
+    padding-left: 8px
+    color: $black
+    font-weight: 400
+    font-size: $tableFont
+    p
+      white-space: normal

@@ -10,7 +10,8 @@ export const colors = {
 	blueBg: '#0092a8',
 	lightGreyBg: '#f7f8fa',
 	lightGreyFont: '#a4a6aa',
-	greyBg: '#f3f4f7'
+	greyBg: '#f3f4f7',
+	red: '#ff7272',
 };
 
 export const fontSizes = {
