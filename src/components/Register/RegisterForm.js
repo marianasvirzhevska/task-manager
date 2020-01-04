@@ -112,6 +112,15 @@ const validate = (values) => {
 	return errors
 };
 
+let users;
+
+const isUniqueEmail = (input) => {
+	if (users && users.find( user => user.email === input)) {
+		return (true);
+	}
+	return (false);
+};
+
 RegisterForm = reduxForm({
 	// a unique name for the form
 	form: 'register',
