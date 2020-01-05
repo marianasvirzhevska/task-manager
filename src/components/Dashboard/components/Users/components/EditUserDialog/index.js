@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { AppDialog, AppDialogTitle, AppDialogContent } from '../../../../../common/Dialog'
 import Form from './Form'
@@ -28,7 +28,7 @@ const EditUserDialog = (props) => {
 };
 
 EditUserDialog.propTypes = {
-	user: PropTypes.object.isRequired,
+	user: PropTypes.object,
 	open: PropTypes.bool.isRequired,
 	handleClose: PropTypes.func.isRequired
 };

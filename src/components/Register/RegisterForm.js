@@ -1,17 +1,24 @@
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
-// import { useDispatch, useSelector } from "react-redux"
+import { Field, reduxForm } from 'redux-form'
+import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+
 import setUser from '../../utils/setUser'
+import trim from '../../utils/trim'
 import useRegisterForm from './useRegister'
 import Input from '../common/Input'
 import CustomCheckbox from '../common/Checkbox'
+import { registerUser } from "../../store/actions";
 
 let RegisterForm = (props) => {
 	const { invalid, submitting, pristine } = props;
-	const register = () => {
-		setUser(inputs);
+	const dispatch = useDispatch();
+
+	const register = (formData) => {
+		setUser(formData);
+		dispatch(registerUser(formData));
+
 	};
 
 	const { inputs, handleInput, handleSubmit } = useRegisterForm(register);
@@ -69,8 +76,8 @@ let RegisterForm = (props) => {
 	)
 };
 
-const validate = (values) => {
-	// const values = _values.trim();
+const validate = (_values) => {
+	const values = trim(_values);
 	const errors = {};
 
 	if (!values.companyName) {
@@ -112,17 +119,16 @@ const validate = (values) => {
 	return errors
 };
 
-let users;
-
-const isUniqueEmail = (input) => {
-	if (users && users.find( user => user.email === input)) {
-		return (true);
-	}
-	return (false);
-};
+// let users;
+//
+// const isUniqueEmail = (input) => {
+// 	if (users && users.find( user => user.email === input)) {
+// 		return (true);
+// 	}
+// 	return (false);
+// };
 
 RegisterForm = reduxForm({
-	// a unique name for the form
 	form: 'register',
 	validate
 })(RegisterForm);

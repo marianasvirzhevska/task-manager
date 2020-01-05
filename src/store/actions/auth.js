@@ -5,20 +5,14 @@ import {
 } from '../constants'
 
 
-function registerUser(user){
+export function registerUser(user){
 	return {
 		type: REGISTER_ADMIN,
 		payload: user
 	}
 }
 
-export const onRegister = () => ( user ) => {
-	return function(dispatch) {
-		dispatch(registerUser(user));
-	}
-};
-
-export const onLogin = ( user ) => {
+export const login = (user) => {
 	return {
 		type: LOGIN_USER,
 		payload: user

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
-import Avatar from '@material-ui/core/Avatar'
 import { AppDialog } from '../../../../../common/Dialog'
 import deleteIcon from '../../../../../../assets/icons/ico-trash.svg'
 

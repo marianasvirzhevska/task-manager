@@ -5,7 +5,7 @@ const useRegisterForm = ( callback ) => {
 	const handleSubmit = (e) => {
 		if (e) {
 			e.preventDefault();
-			callback()
+			callback(inputs);
 		}
 	};
 

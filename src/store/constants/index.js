@@ -1,3 +1,6 @@
 export const REGISTER_ADMIN = 'REGISTER_ADMIN';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT = 'LOGOUT';
+export const INITIAL_USERS = 'INITIAL_USERS';
+export const INITIAL_PROJECTS = 'INITIAL_PROJECTS';
+export const INITIAL_TASKS = 'INITIAL_TASKS';
