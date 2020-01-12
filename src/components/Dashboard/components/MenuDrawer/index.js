@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles/index'
 import Drawer from '@material-ui/core/Drawer'
@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
 
 const MenuDrawer = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerToggle = () => {
     setOpen(!open);

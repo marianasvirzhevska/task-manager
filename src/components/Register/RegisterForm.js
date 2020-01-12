@@ -15,15 +15,34 @@ let RegisterForm = (props) => {
 	const { invalid, submitting, pristine } = props;
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const users = props.users.users;
+
+	const getUniqueID = (users) => {
+		const getRandom = (min, max) =>{
+			return Math.ceil(Math.random() * (max - min) + min);
+		};
+
+		function generateId(){
+			let id = getRandom(0, users.length + 1);
+			if (users && users.find( user => user.id === id)){
+				id = generateId();
+			} else return id;
+		}
+
+		let id = generateId();
+		return (id);
+	};
 
 	const register = (formData) => {
-		setUser(formData);
-		dispatch(registerUser(formData));
+		let user = { ...formData };
+		user.id = getUniqueID(users);
+
+		setUser(user);
+		dispatch(registerUser(user));
 		history.push("/dashboard");
 	};
 
 	const { inputs, handleInput, handleSubmit } = useRegisterForm(register);
-
 
 	return (
 		<div className="form-control">
@@ -77,7 +96,8 @@ let RegisterForm = (props) => {
 	)
 };
 
-const validate = (_values) => {
+const validate = (_values, props) => {
+	const users = props.users;
 	const values = trim(_values);
 	const errors = {};
 
@@ -96,6 +116,8 @@ const validate = (_values) => {
 		errors.email = 'E-mail field cannot be blank'
 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
 		errors.email = 'E-mail is incorrect'
+	} else if(isUniqueEmail(values.email, users.users)) {
+		errors.email='Email is already taken';
 	}
 
 	if (!values.terms) {
@@ -117,17 +139,16 @@ const validate = (_values) => {
 	if (values.passwordConfirm && values.password && values.passwordConfirm !== values.password) {
 		errors.passwordConfirm = 'Confirm your password correctly'
 	}
+
 	return errors
 };
 
-// let users;
-//
-// const isUniqueEmail = (input) => {
-// 	if (users && users.find( user => user.email === input)) {
-// 		return (true);
-// 	}
-// 	return (false);
-// };
+const isUniqueEmail = (input, users) => {
+	if (users && users.find( user => user.email === input)) {
+		return (true);
+	}
+	return (false);
+};
 
 RegisterForm = reduxForm({
 	form: 'register',

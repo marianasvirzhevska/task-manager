@@ -12,12 +12,12 @@ export function registerUser(user){
 	}
 }
 
-export const login = (user) => {
+export function login(user){
 	return {
 		type: LOGIN_USER,
 		payload: user
 	}
-};
+}
 
 export const logout = () => {
 	return {

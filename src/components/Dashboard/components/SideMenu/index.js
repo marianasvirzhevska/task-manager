@@ -1,6 +1,7 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 import logoutIcon from '../../../../assets/icons/ico-logout.svg'
@@ -12,32 +13,19 @@ import { LOGOUT } from "../../../../store/constants"
 
 export const SideMenu = (props) => {
 	const { open } = props;
-	const user = useSelector(state => state.user);
-
-	console.log('user', user);
-
+	const user = useSelector(state => state.auth.user);
 	const dispatch = useDispatch();
-	const handleLogout = () => {
-		dispatch(
-			{
-				type: LOGOUT
-			}
-		);
-	};
+	const history = useHistory();
 
-	let _user = {
-		admin: true,
-		firstName: 'Oliver',
-		lastName: 'Brown',
-		companyName: 'Silver Post',
-		email: 'admin.admin@mail.com'
+	const handleLogout = () => {
+		dispatch({type: LOGOUT});
+		history.push("/login");
 	};
-	// let menuLinks = getMenuLinks(user);
 
 	return (
 		<div className={styles.sideMenu}>
 			<div className={styles.menu}>
-				{/*<UserMenu open={open} user={user}/>*/}
+				<UserMenu open={open} user={user}/>
 				<ul className={styles.menuList}>
 					{
 						getMenuLinks(user).map((item, key) => {

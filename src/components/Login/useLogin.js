@@ -5,7 +5,7 @@ const useLoginForm = ( callback ) => {
 	const handleSubmit = (e) => {
 		if (e) {
 			e.preventDefault();
-			callback()
+			callback(inputs)
 		}
 	};
 

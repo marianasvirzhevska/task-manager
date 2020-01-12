@@ -21,7 +21,9 @@ export const UserMenu = (props) => {
             {user.firstName} {user.lastName}
           </div>
         ) : (
-          <div>{user.companyName}</div>
+          <div>
+			  {/*{user.companyName}*/}
+          </div>
         )}
 
         {user && user.admin ? (

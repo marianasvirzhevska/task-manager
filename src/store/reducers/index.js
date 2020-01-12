@@ -8,7 +8,7 @@ import projectsReducer from './projects';
 import tasksReducer from './tasks';
 
 const reducer = combineReducers({
-	authModule: auth,
+	auth: auth,
 	form: formReducer,
 	users: usersReducer,
 	projects: projectsReducer,

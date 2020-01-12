@@ -1,11 +1,12 @@
 export const users = [
-	{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com', password: 'password', admin: false, companyName: 'Dionis', tasks: [{id:1}, {id:2}, {id:5}]},
+	{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com', password: '111111', admin: false, companyName: 'Dionis', tasks: [{id:1}, {id:2}, {id:5}]},
 	{id: 2, firstName: 'Adam', lastName: 'Tailor', email: 'adam.tailor@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:4}, {id:8}]},
 	{id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:3}]},
 	{id: 4, firstName: 'Oliver', lastName: 'Green', email: 'oliver.green@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis',},
 	{id: 5, firstName: 'Kate', lastName: 'Adams', email: 'kate.adams@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:6}, {id:7}, {id:9}, {id:10}]},
 	{id: 6, firstName: 'Robin', lastName: 'Willson', email: 'robin.wilson@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:12}, {id:11}]},
-	{id: 7, firstName: 'Timoti', lastName: 'Brown', email: 'timoti.brown@mail.com', password: 'qwerty', admin: true, companyName: 'Dionis', tasks: [{id:13}]}
+	{id: 7, firstName: 'Timoti', lastName: 'Brown', email: 'timoti.brown@mail.com', password: 'qwerty', admin: true, companyName: 'Dionis', tasks: [{id:13}]},
+	{id: 8, firstName: 'Jerom', lastName: 'Brown', email: 'admin@mail.com', password: 'admin1', admin: true, companyName: 'Dionis', tasks: [{id:13}]}
 ];
 
 export const tasks = [

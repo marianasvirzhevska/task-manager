@@ -1,19 +1,34 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-// import { useDispatch, useSelector } from "react-redux"
-import {Field, reduxForm} from 'redux-form'
-// import { onLogin } from '../../store/actions'
+import { useDispatch } from "react-redux"
+import { Field, reduxForm } from 'redux-form'
+import { useHistory } from 'react-router-dom'
+
+import { login } from '../../store/actions'
+import trim from '../../utils/trim'
 import setUser from '../../utils/setUser'
 import Input from '../common/Input'
 import useLoginForm from "./useLogin"
 
 let LoginForm = (props) => {
 	const { invalid, submitting, pristine } = props;
-	const login = () => {
-		setUser(inputs);
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const users = props.users.users;
+
+	const getAuthUser = (users, email) => {
+		return users && users.find( user => user.email === email);
 	};
 
-	const { inputs, handleInput, handleSubmit } = useLoginForm(login);
+	const loginUser = (formData) => {
+		const user = getAuthUser(users, formData.email);
+
+		setUser(user);
+		dispatch(login(user));
+		history.push("/dashboard");
+	};
+
+	const { inputs, handleInput, handleSubmit } = useLoginForm(loginUser);
 
 	return (
 		<div className="form-control">
@@ -41,23 +56,47 @@ let LoginForm = (props) => {
 	)
 };
 
-const validate = values => {
+const validate = (_values, props) => {
+	const users = props.users.users;
+	const values = trim(_values);
 	const errors = {};
+
 	if (!values.email) {
 		errors.email = 'E-mail field cannot be blank'
 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
 		errors.email = 'E-mail is incorrect'
+	} else if(!isEmailExist(values.email, users)) {
+		errors.email='Email doesn\'t exist';
 	}
+
 	if (!values.password) {
 		errors.password = 'Password field cannot be blank'
 	} else if (values.password.length < 6) {
 		errors.password = 'Password should contain at least 6 characters'
+	} else if(!checkPwd(values.password, values.email, users)) {
+		errors.password='Incorrect password';
 	}
+
 	return errors
 };
 
+const isEmailExist = (input, users) => {
+	if (users && users.find( user => user.email === input)) {
+		return (true);
+	}
+	return (false);
+};
+
+const checkPwd = (pass, email, users) => {
+	const user = users.find( user => user.email === email);
+	if (user && pass === user.password){
+		return (true);
+	}
+	return (false);
+};
+
+
 LoginForm = reduxForm({
-	// a unique name for the form
 	form: 'login',
 	validate
 })(LoginForm);

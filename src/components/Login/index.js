@@ -1,10 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
 import LoginForm from './LoginForm'
 
 
 const Login = () => {
+	const users = useSelector(state => state.users);
+
 	return (
 		<div className="auth-root">
 			<div className="auth-image loginImg">
@@ -18,7 +21,7 @@ const Login = () => {
 			</div>
 			<div className="form-cover loginForm">
 				<h1 className="form-title">Sign In</h1>
-				<LoginForm />
+				<LoginForm users={users}/>
 				<p className="reset-link">Don't have an account?
 					<Link to='/register'>Register</Link>
 				</p>
