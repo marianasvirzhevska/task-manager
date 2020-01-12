@@ -16,7 +16,7 @@ export const UserMenu = (props) => {
       </div>
       {open &&
       <Link to="/dashboard/settings" className={styles.title}>
-        {user.admin ? (
+        {user && user.admin ? (
           <div>
             {user.firstName} {user.lastName}
           </div>
@@ -24,7 +24,7 @@ export const UserMenu = (props) => {
           <div>{user.companyName}</div>
         )}
 
-        {user.admin ? (
+        {user && user.admin ? (
           <div>Admin</div>
         ) : (
           <div>

@@ -18,7 +18,7 @@ export const getMenuLinks = (user) => {
 		icon: <ListAltIcon />
 	});
 
-	if (user.admin){
+	if (user && user.admin){
 		menuLinks.push({
 			path: '/dashboard/users',
 			label: 'Users',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { useDispatch } from "react-redux"
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 import setUser from '../../utils/setUser'
@@ -14,11 +14,12 @@ import { registerUser } from "../../store/actions";
 let RegisterForm = (props) => {
 	const { invalid, submitting, pristine } = props;
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const register = (formData) => {
 		setUser(formData);
 		dispatch(registerUser(formData));
-
+		history.push("/dashboard");
 	};
 
 	const { inputs, handleInput, handleSubmit } = useRegisterForm(register);

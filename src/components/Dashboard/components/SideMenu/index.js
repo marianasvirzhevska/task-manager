@@ -1,30 +1,46 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+
 import logoutIcon from '../../../../assets/icons/ico-logout.svg'
 import { getMenuLinks } from './menuLinks'
 import styles from './SideMenu.module.sass'
 import { UserMenu } from './components/UserMenu' // access to user profile view and edit
 import MenuItem from './components/MenuItem'
+import { LOGOUT } from "../../../../store/constants"
 
 export const SideMenu = (props) => {
 	const { open } = props;
-	let user = {
+	const user = useSelector(state => state.user);
+
+	console.log('user', user);
+
+	const dispatch = useDispatch();
+	const handleLogout = () => {
+		dispatch(
+			{
+				type: LOGOUT
+			}
+		);
+	};
+
+	let _user = {
 		admin: true,
 		firstName: 'Oliver',
 		lastName: 'Brown',
 		companyName: 'Silver Post',
 		email: 'admin.admin@mail.com'
 	};
-	let menuLinks = getMenuLinks(user);
+	// let menuLinks = getMenuLinks(user);
 
 	return (
 		<div className={styles.sideMenu}>
 			<div className={styles.menu}>
-				<UserMenu open={open} user={user}/>
+				{/*<UserMenu open={open} user={user}/>*/}
 				<ul className={styles.menuList}>
 					{
-						menuLinks.map((item, key) => {
+						getMenuLinks(user).map((item, key) => {
 							return (
 								<MenuItem
 									key={key}
@@ -39,7 +55,7 @@ export const SideMenu = (props) => {
 				</ul>
 
 				<div className={`${styles.logoutBtn} ${!open ? styles.small : ''}`}>
-					<Button  variant="outlined" color="primary" onClick={() => {}}>
+					<Button  variant="outlined" color="primary" onClick={handleLogout}>
 						<img src={logoutIcon} alt="logout"/>
 						{open && <span>Logout</span>}
 					</Button>

@@ -1,14 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { useSelector, useDispatch } from 'react-redux'
+import { Provider, useSelector, useDispatch } from 'react-redux'
 import ThemeProvider from '@material-ui/styles/ThemeProvider'
 
 import theme from './muiTheme'
 import store from './store/store'
 import { users, projects, tasks } from './utils/getStore'
+import { INITIAL_TASKS, INITIAL_USER, DELETE_PROJECT } from './store/constants'
 
-import AuthRoute from './components/common/AuthRoute'
 import Register from './components/Register'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
@@ -18,32 +17,35 @@ const App = () => {
 	const auth = useSelector(state => state.auth);
 	const dispatch = useDispatch();
 
-	const register = (formData) => {
-		dispatch()
+	const init = () => {
+		dispatch(
+			{
+				type: INITIAL_USER,
+				payload: users
+			}
+		);
+		dispatch(
+			{
+				type: DELETE_PROJECT,
+				payload: projects
+			}
+		);
+		dispatch(
+			{
+				type: INITIAL_TASKS,
+				payload: tasks
+			}
+		);
 	};
+	init();
 
 	return (
 	  <Router>
 		  <Switch>
-			  {/*<Route path='/dashboard' render = {() => {*/}
-			  	{/*if(auth){*/}
-			  		{/*return <Dashboard />;*/}
-				{/*} else {*/}
-			  		{/*return (*/}
-			  			{/*<Redirect to="/login"/>*/}
-					{/*)*/}
-				{/*}*/}
-			  {/*}}/>*/}
-			  <AuthRoute path='/dashboard' component={Dashboard} redirect="/login"/>
 			  <Route path='/login' component={Login}/>
 			  <Route path='/register' component={Register}/>
-			  {/*<Route path='/login' component={Login}/>*/}
-
-			  {/*<AuthRoute path='/login' component={Login} noAuth redirect="/dashboard"/>*/}
-			  {/*<AuthRoute path='/register' component={Register} noAuth redirect="/dashboard"/>*/}
-			  {/*<Route exact path='/register' component={Register} />*/}
+			  <Route path='/dashboard' component={Dashboard}/>
 			  <Redirect exact path="/*" to={auth ? '/dashboard' : '/login'}/>
-
 			  <Route component={NotFound}/>
 		  </Switch>
 	  </Router>
