@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
 import styles from './UserMenu.module.sass'
-import img from '../../../../../../assets/images/bg.jpg' //temp var to display user img
+import img from '../../../../../../assets/images/bg.jpg'
 
 export const UserMenu = (props) => {
   const { open, user } = props;
@@ -11,7 +11,6 @@ export const UserMenu = (props) => {
   return (
     <div className={styles.userMenu}>
       <div className={styles.userAvatar}>
-        {/* Avatar image should be replaced with actual logo or user image */}
         <Avatar src={img} alt="image"/>
       </div>
       {open &&
@@ -22,7 +21,7 @@ export const UserMenu = (props) => {
           </div>
         ) : (
           <div>
-			  {/*{user.companyName}*/}
+			  {user.companyName}
           </div>
         )}
 

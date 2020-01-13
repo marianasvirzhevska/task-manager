@@ -30,7 +30,7 @@ export const tasks = [
 		title: 'Add Filters to main dashboard',
 		description: 'Add required and optional fields',
 		status: 'Done',
-		project: {id: 1},
+		project: {id: 3},
 		user: {id: 2}
 	},
 	{
@@ -38,7 +38,7 @@ export const tasks = [
 		title: 'Create layout',
 		description: 'Develop markup according to the customer design',
 		status: 'Pending',
-		project: {id: 1},
+		project: {id: 2},
 		user: {id: 3}
 	},
 ];

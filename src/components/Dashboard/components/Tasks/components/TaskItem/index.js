@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
@@ -12,14 +12,16 @@ import StatusLabel from '../../../../../common/StatusLabel'
 
 
 const TaskItem = (props) => {
-	const { task, handleEdit, handleDelete } = props;
-	const { title, status, user, project, id } = task;
+	const { task, handleEdit, handleDelete, project, user } = props;
+	const { title, status, id } = task;
 
 	return(
 		<TableRow>
 			<TableCell>{id}</TableCell>
 			<TableCell>
-				<Avatar>{project.projectAv}</Avatar>
+				<Link to={``}>
+					<Avatar>{project.projectAv}</Avatar>
+				</Link>
 			</TableCell>
 			<TableCell>{title}</TableCell>
 			<TableCell>{user ? user.firstName && user.lastName : '-'}</TableCell>
@@ -47,7 +49,10 @@ const TaskItem = (props) => {
 TaskItem.propTypes = {
 	task: PropTypes.object.isRequired,
 	handleEdit: PropTypes.func.isRequired,
-	handleDelete: PropTypes.func.isRequired
+	handleDelete: PropTypes.func.isRequired,
+	project: PropTypes.object.isRequired,
+	user: PropTypes.object,
+
 };
 
 export default TaskItem;

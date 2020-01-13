@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useSelector } from 'react-redux'
 import ProjectItem from './components/ProjectsItem'
 import {
 	AppBar,
@@ -22,6 +23,7 @@ const Projects = () => {
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [projectId, setProjectId] = useState(0);
+	const projects = useSelector(state => state.projects.projects);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -35,37 +37,6 @@ const Projects = () => {
 		setProjectId(id);
 		setEdit(!editDialog)
 	};
-
-	const projects = [
-		 {
-			id: 1,
-		 	projectTitle: 'Travel Team',
-		    projectAv: 'TT',
-		 	projectLink: 'https://material-ui.com',
-			tasks: 12,
-			},
-		 {
-			id: 2,
-		 	projectTitle: 'Ori Game',
-		 	projectAv: 'OG',
-		 	projectLink: 'https://material-ui.com',
-			tasks: 9,
-		},
-		{
-			id: 3,
-		 	projectTitle: 'Info Viewer',
-		 	projectAv: 'IW',
-			projectLink: 'https://material-ui.com',
-			tasks: 32,
-		},
-		{
-			id: 4,
-		 	projectTitle: 'Random Name',
-		 	projectAv: 'RN',
-			projectLink: 'https://react-redux.js.org/next/api/hooks',
-			tasks: 32,
-		}
-	];
 
 	return(
 		<div className='dashboard-content'>

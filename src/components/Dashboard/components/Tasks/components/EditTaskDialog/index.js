@@ -12,8 +12,6 @@ const EditTaskDialog = (props) => {
 		description: task && task.description
 	};
 
-	console.log(initialValues.user);
-
 	return (
 		<AppDialog
 			open={open}

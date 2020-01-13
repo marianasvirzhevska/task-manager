@@ -6,12 +6,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useSelector } from 'react-redux'
+
 import {
 	AppBar,
 	AppBarBefore,
 	AppBarAfter,
 	SearchField
 } from '../AppBar'
+
 import UserItem from './components/UserItem'
 import AddUserDialog from './components/AddUserDialog'
 import EditUserDialog   from './components/EditUserDialog'
@@ -22,6 +25,7 @@ const Users = () => {
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [userId, setUserId] = useState(0);
+	const users = useSelector(state => state.users.users);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -36,16 +40,6 @@ const Users = () => {
 		setEdit(!editDialog)
 	};
 
-	const users = [
-		{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com', tasks: [{id:1}, {id:2}, {id:5}]},
-		{id: 2, firstName: 'Adam', lastName: 'Tailor', email: 'adam.tailor@mail.com', tasks: [{id:4}, {id:8}]},
-		{id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com', tasks: [{id:3}]},
-		{id: 4, firstName: 'Oliver', lastName: 'Green', email: 'oliver.green@mail.com'},
-		{id: 5, firstName: 'Kate', lastName: 'Adams', email: 'kate.adams@mail.com', tasks: [{id:6}, {id:7}, {id:9}, {id:10}]},
-		{id: 6, firstName: 'Robin', lastName: 'Willson', email: 'robin.wilson@mail.com',  tasks: [{id:12}, {id:11}]},
-		{id: 7, firstName: 'Timoti', lastName: 'Brown', email: 'timoti.brown@mail.com', tasks: [{id:13}]}
-	];
-
 	return(
 		<div className='dashboard-content'>
 			<AppBar title="Users">
@@ -57,7 +51,7 @@ const Users = () => {
 							variant='contained'
 							color='secondary'
 							onClick={handleCreate}>
-						Create Task
+						Add User
 					</Button>
 				</AppBarAfter>
 			</AppBar>

@@ -1,30 +1,60 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import { Field, reduxForm } from 'redux-form'
+import { useDispatch } from "react-redux"
+
+import trim from "../../../../../../utils/trim"
+import { addUser } from "../../../../../../store/actions";
 import Input from '../../../../../common/Input'
 import CustomCheckbox from "../../../../../common/Checkbox"
 
-const users = [
-	{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com'},
-	{id: 2, firstName: 'Adan', lastName: 'Tailor', email: 'adam.tailor@mail.com'},
-	{id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com'},
-	{id: 4, firstName: 'Linda', lastName: 'Wilson', email: 'linda.vilson@mail.com'},
-];
-
 let Form = (props) => {
-	const { invalid, submitting, pristine } = props;
-	const handleChange = () => {};
+	const { invalid, submitting, pristine, formData, setFormData, handleClose, users } = props;
+	const { firstName, lastName, email, admin } = formData;
+	const dispatch = useDispatch();
 
-	const handleCreate = () => {};
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+	};
+
+	const getUniqueID = (users) => {
+		const getRandom = (min, max) =>{
+			return Math.ceil(Math.random() * (max - min) + min);
+		};
+
+		function generateId(){
+			let id = getRandom(0, users.length + 1);
+			if (users && users.find( user => user.id === id)){
+				id = generateId();
+			} else
+				return id;
+		}
+
+		return generateId();
+	};
+
+	const handleCreate = (e) => {
+		e.preventDefault();
+		let user = { ...formData };
+		user.id = users.length + 2; // TODO add id generator
+
+		dispatch(addUser(user));
+		handleClose();
+	};
 
 	return (
-		<div className="dialog-form">
+		<form className="dialog-form" onSubmit={handleCreate}>
 			<div className="flexed-row">
 				<Field component={Input}
 					type="text"
 				   	name="firstName"
 					label="User Name"
 					placeholder="Please enter"
+				   	value={firstName}
 					onChange={handleChange}
 				/>
 			</div>
@@ -35,6 +65,7 @@ let Form = (props) => {
 						name="lastName"
 						label="User Surname"
 					    placeholder="Please enter"
+					    value={lastName}
 					    onChange={handleChange}
 					/>
 				</div>
@@ -44,12 +75,14 @@ let Form = (props) => {
 						type="email"
 						label="User Email"
 						placeholder="Please enter"
+					    value={email}
 						onChange={handleChange}
 					/>
 				</div>
 			</div>
 			<div className="flexed-row">
 				<Field component={CustomCheckbox} name="admin"
+					   value={admin}
 					   label='Administrator rights'
 				/>
 			</div>
@@ -59,14 +92,15 @@ let Form = (props) => {
 					variant='contained'
 					type="submit"
 					disabled={invalid|| submitting || pristine}
-					onClick={() => handleCreate()}
 				>Save</Button>
 			</div>
-		</div>
+		</form>
 	)
 };
 
-function validate(values) {
+const validate = (_values, props) => {
+	const users = props.users;
+	const values = trim(_values);
 	const errors = {};
 
 	if(!values.firstName){
@@ -80,13 +114,14 @@ function validate(values) {
 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
 		errors.email = 'E-mail is incorrect'
 	}
-	else if (isUniqueEmail(values.email)) {
-		errors.email = 'This E-mail is already taken'
+	else if (isUniqueEmail(values.email, users)) {
+		errors.email = 'Email already taken'
 	}
+
 	return errors;
 }
 
-const isUniqueEmail = (input) => {
+const isUniqueEmail = (input, users) => {
 	if (users && users.find( user => user.email === input)) {
 			return (true);
 		}

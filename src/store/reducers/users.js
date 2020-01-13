@@ -7,7 +7,7 @@ import {
 
 
 const UsersState = {
-	users: {},
+	users: [],
 	error: null
 };
 
@@ -23,7 +23,7 @@ const usersReducer = ( state = UsersState, action) => {
 		case ADD_USER:
 			return {
 				...state,
-				users: action.payload,
+				users: [...state.users, action.payload],
 				error: null
 			};
 		case EDIT_USER:

@@ -6,6 +6,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button'
+import { useSelector } from 'react-redux'
+
 import {
 	AppBar,
 	AppBarBefore,
@@ -23,6 +25,9 @@ const Tasks = () => {
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [taskId, setTaskId] = useState(0);
+	const tasks = useSelector(state => state.tasks.tasks);
+	const users = useSelector(state => state.users.users);
+	const projects = useSelector(state => state.projects.projects);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -36,40 +41,6 @@ const Tasks = () => {
 		setTaskId(id);
 		setEdit(!editDialog)
 	};
-
-	const tasks = [
-		{
-			id: 1,
-			title: 'Create layout',
-			description: 'Develop markup according to the customer design',
-			status: 'Pending',
-			project: {id: 1, projectTitle: 'Travel Team', projectAv: 'TT'},
-			user: {id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com'}
-		},
-		{
-			id: 2,
-			title: 'Add Form validation',
-			description: 'Add required and optional fields',
-			status: 'InProgress',
-			project: {id: 1, projectTitle: 'Travel Team', projectAv: 'TT'}
-		},
-		{
-			id: 3,
-			title: 'Add Filters to main dashboard',
-			description: 'Add required and optional fields',
-			status: 'Done',
-			project: {id: 1, projectTitle: 'Travel Team', projectAv: 'TT'},
-			user: {id: 2, firstName: 'Adan', lastName: 'Tailor', email: 'adam.tailor@mail.com'}
-		},
-		{
-			id: 4,
-			title: 'Create layout',
-			description: 'Develop markup according to the customer design',
-			status: 'Pending',
-			project: {id: 1, projectTitle: 'Travel Team', projectAv: 'TT'},
-			user: {id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com'}
-		},
-	];
 
 	return(
 		<div className='dashboard-content'>
@@ -106,6 +77,8 @@ const Tasks = () => {
 									return <TaskItem
 										key={task.id}
 										task={task}
+										project={projects && projects.find(item => item.id === task.project.id)}
+										user={users && users.find(item => item.id === (task.user ? task.user.id : 0))}
 										handleDelete={() => handleDelete(task.id)}
 										handleEdit={() => handleEdit(task.id)}
 									/>
