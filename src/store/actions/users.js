@@ -13,23 +13,23 @@ export function setInitialUsers(users){
 	}
 }
 
-export const addUser = (users) => {
+export const addUser = (user) => {
 	return {
 		type: ADD_USER,
-		payload: users
+		payload: user
 	}
 };
 
-export const editUser = (users) => {
+export const editUser = (user) => {
 	return {
 		type: EDIT_USER,
-		payload: users
+		payload: user
 	}
 };
 
-export const deleteUser = (users) => {
+export const deleteUser = (user) => {
 	return {
 		type: DELETE_USER,
-		payload: users
+		payload: user
 	}
 };

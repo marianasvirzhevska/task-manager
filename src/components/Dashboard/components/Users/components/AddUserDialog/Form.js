@@ -119,7 +119,7 @@ const validate = (_values, props) => {
 	}
 
 	return errors;
-}
+};
 
 const isUniqueEmail = (input, users) => {
 	if (users && users.find( user => user.email === input)) {

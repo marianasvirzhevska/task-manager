@@ -27,16 +27,33 @@ const usersReducer = ( state = UsersState, action) => {
 				error: null
 			};
 		case EDIT_USER:
+			const user = action.payload;
+			const editedUsers = state.users.map((item) => {
+				if(item.id !== user.id){
+					return item;
+				}
+
+				return {
+					...item,
+					...user
+				}
+			});
 			return {
 				...state,
-				users: action.payload,
-				error: null
+				users: editedUsers,
+				errors: null
 			};
 
 		case DELETE_USER:
+			const _user = action.payload;
+			const userIndex = state.users.findIndex((item) => item.id === _user.id);
+
+			const newUsers = [...state.users];
+			newUsers.splice(userIndex, 1);
+
 			return {
 				...state,
-				users: action.payload,
+				users: newUsers,
 				error: null
 			};
 

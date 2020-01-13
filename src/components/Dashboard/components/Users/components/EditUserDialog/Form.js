@@ -1,23 +1,36 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import { Field, reduxForm } from 'redux-form'
+import { useDispatch } from "react-redux"
 import Input from '../../../../../common/Input'
 import CustomCheckbox from "../../../../../common/Checkbox"
-
-const users = [
-	{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com'},
-	{id: 2, firstName: 'Adan', lastName: 'Tailor', email: 'adam.tailor@mail.com'},
-	{id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com'},
-	{id: 4, firstName: 'Linda', lastName: 'Wilson', email: 'linda.vilson@mail.com'},
-];
+import trim from "../../../../../../utils/trim";
+import {editUser} from '../../../../../../store/actions'
 
 let Form = (props) => {
-	const handleChange = () => {};
+	const { invalid, submitting, formData, setFormData, handleClose, user } = props;
+	const { firstName, lastName, email, admin } = formData;
+	const dispatch = useDispatch();
 
-	const handleCreate = () => {};
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+	};
+
+	const handleCreate = (e) => {
+		e.preventDefault();
+		const _user = { ...user,  ...formData};
+
+		dispatch(editUser(_user));
+		handleClose();
+	};
 
 	return (
-		<div className="dialog-form">
+		<form className="dialog-form" onSubmit={handleCreate}>
 			<div className="flexed-row">
 				<Field component={Input}
 					type="text"
@@ -25,6 +38,7 @@ let Form = (props) => {
 					label="User Name"
 					placeholder="Please enter"
 					onChange={handleChange}
+				    value={firstName}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -35,6 +49,7 @@ let Form = (props) => {
 						label="User Surname"
 					    placeholder="Please enter"
 					    onChange={handleChange}
+					    value={lastName}
 					/>
 				</div>
 				<div className="half-column">
@@ -44,11 +59,13 @@ let Form = (props) => {
 						label="User Email"
 						placeholder="Please enter"
 						onChange={handleChange}
+					    value={email}
 					/>
 				</div>
 			</div>
 			<div className="flexed-row">
 				<Field component={CustomCheckbox} name="admin"
+					   value={admin}
 					   label='Administrator rights'
 				/>
 			</div>
@@ -56,14 +73,16 @@ let Form = (props) => {
 				<Button
 					color='secondary'
 					variant='contained'
-					onClick={() => handleCreate()}
+					type="submit"
+					disabled={invalid|| submitting}
 				>Save</Button>
 			</div>
-		</div>
+		</form>
 	)
 };
 
-function validate(values) {
+function validate(_values) {
+	const values = trim(_values);
 	const errors = {};
 
 	if(!values.firstName){
@@ -77,18 +96,8 @@ function validate(values) {
 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
 		errors.email = 'E-mail is incorrect'
 	}
-	else if (isUniqueEmail(values.email)) {
-		errors.email = 'This E-mail is already taken'
-	}
 	return errors;
 }
-
-const isUniqueEmail = (input) => {
-	if (users && users.find( user => user.email === input)) {
-			return (true);
-		}
-	return (false);
-};
 
 Form = reduxForm({
 	form: 'editUser',

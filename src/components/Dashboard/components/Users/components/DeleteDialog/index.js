@@ -1,12 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
+import { useDispatch } from "react-redux"
+
+import { deleteUser } from "../../../../../../store/actions";
 import { AppDialog } from '../../../../../common/Dialog'
 import deleteIcon from '../../../../../../assets/icons/ico-trash.svg'
 
 const DeleteDialog = (props) => {
 	const { open, handleClose, user } = props;
-	const handleDelete = () => {};
+	const dispatch = useDispatch();
+
+	const handleDelete = () => {
+		dispatch(deleteUser(user));
+		handleClose();
+	};
 
 	return(
 		<AppDialog
