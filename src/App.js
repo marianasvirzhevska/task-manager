@@ -12,6 +12,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import NotFound from './components/NotFound'
+import Terms from './components/Terms'
 
 const App = () => {
 	const auth = useSelector(state => state.auth);
@@ -45,6 +46,7 @@ const App = () => {
 			  <Route path='/login' component={Login}/>
 			  <Route path='/register' component={Register}/>
 			  <Route path='/dashboard' component={Dashboard}/>
+			  <Route path='/terms' component={Terms}/>
 			  <Redirect exact path="/*" to={auth ? '/dashboard' : '/login'}/>
 			  <Route component={NotFound}/>
 		  </Switch>

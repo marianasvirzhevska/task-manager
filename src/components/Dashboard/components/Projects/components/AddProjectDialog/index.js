@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 
@@ -8,11 +8,6 @@ import Form from './Form'
 const AddProjectDialog = (props) => {
 	const {open, handleClose} = props;
 	const projects = useSelector(state => state.projects.projects);
-	const [formData, setFormData] = useState({
-		projectTitle: '',
-		projectAv: '',
-		projectLink: ''
-	});
 
 	return (
 		<AppDialog
@@ -23,9 +18,7 @@ const AddProjectDialog = (props) => {
 				handleClose={handleClose}
 				title='Create new project'/>
 			<AppDialogContent>
-				<Form formData={formData}
-					  projects={projects}
-					  setFormData={setFormData}
+				<Form projects={projects}
 					  handleClose={handleClose}/>
 			</AppDialogContent>
 		</AppDialog>

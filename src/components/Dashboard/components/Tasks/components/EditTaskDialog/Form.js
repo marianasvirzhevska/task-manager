@@ -1,35 +1,50 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { connect, useSelector, useDispatch } from 'react-redux'
+
 import Input from '../../../../../common/Input'
 import SelectField from '../../../../../common/SelectField'
+import { editTask } from "../../../../../../store/actions";
 
-let Form = (props) => {
-	const handleChange = (e) => {
+let Form = ({invalid, submitting, handleClose, task}) => {
+	const dispatch = useDispatch();
+	const formValues = useSelector(state => getFormValues('editTask')(state));
+	const users = useSelector(state => state.users.users);
+	const projects = useSelector(state => state.projects.projects);
+
+	const handleEdit = (e) => {
+		e.preventDefault();
+		const _task = { ...task, ...formValues};
+		_task.user = _task.user ? {id: _task.user} : null;
+		_task.project = {id: _task.project};
+
+		dispatch(editTask(_task));
+		handleClose();
 	};
 
-	const handleCreate = () => {
-	};
+	const usersOptions = users.map(user => {
+		return {
+			valueId: user.id,
+			valueLabel: `${user.firstName} ${user.lastName}`
+		}
+	});
 
-	const projects = ['Travel Team', "Ori Game", "Info Viewer", "Random Name"];
-	const users = [
-		{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com'},
-		{id: 2, firstName: 'Adan', lastName: 'Tailor', email: 'adam.tailor@mail.com'},
-		{id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com'},
-		{id: 4, firstName: 'Linda', lastName: 'Wilson', email: 'linda.vilson@mail.com'},
-	];
-
-	let usersOptions = users.map(user => `${user.firstName} ${user.lastName}`);
+	const projectsOptions = projects.map(project => {
+		return {
+			valueId: project.id,
+			valueLabel: project.projectTitle
+		}
+	});
 
 	return (
-		<div className="dialog-form">
+		<form className="dialog-form" onSubmit={handleEdit}>
 			<div className="flexed-row">
 				<Field component={Input}
 					   type="text"
 					   name="title"
 					   label="Enter Task title"
 					   placeholder="Please enter"
-					   onChange={handleChange}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -39,7 +54,7 @@ let Form = (props) => {
 						component={SelectField}
 						fullWidth
 						label="Select project"
-						items={projects}
+						items={projectsOptions}
 					/>
 				</div>
 				<div className="half-column">
@@ -59,17 +74,17 @@ let Form = (props) => {
 					   name="description"
 					   label="Enter Task description"
 					   placeholder="Please enter"
-					   onChange={handleChange}
 				/>
 			</div>
 			<div className='dialog-action'>
 				<Button
 					color='secondary'
 					variant='contained'
-					onClick={() => handleCreate()}
+					type="submit"
+					disabled={invalid|| submitting}
 				>Save</Button>
 			</div>
-		</div>
+		</form>
 	)
 };
 
@@ -93,6 +108,8 @@ Form = reduxForm({
 	validate
 })(Form);
 
-export default Form;
+export default connect(state => ({
+	values: getFormValues("editTask")(state)
+}))(Form);
 
 

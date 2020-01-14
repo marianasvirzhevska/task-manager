@@ -25,7 +25,6 @@ const Projects = () => {
 	const [projectId, setProjectId] = useState(0);
 	const projects = useSelector(state => state.projects.projects);
 
-	console.log(projects);
 	const handleCreate = () => {
 		setCreate(!createDialog);
 	};

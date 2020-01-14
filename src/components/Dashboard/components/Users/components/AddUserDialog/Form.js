@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { Field, reduxForm } from 'redux-form'
-import { useDispatch } from "react-redux"
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { useDispatch, connect, useSelector } from "react-redux"
 
 import trim from "../../../../../../utils/trim"
 import { addUser } from "../../../../../../store/actions";
@@ -9,17 +9,9 @@ import Input from '../../../../../common/Input'
 import CustomCheckbox from "../../../../../common/Checkbox"
 
 let Form = (props) => {
-	const { invalid, submitting, pristine, formData, setFormData, handleClose, users } = props;
-	const { firstName, lastName, email, admin } = formData;
+	const { invalid, submitting, pristine, handleClose, users } = props;
+	const formValues = useSelector(state => getFormValues('addUser')(state));
 	const dispatch = useDispatch();
-
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
 
 	const getUniqueID = (users) => {
 		const getRandom = (min, max) =>{
@@ -39,7 +31,7 @@ let Form = (props) => {
 
 	const handleCreate = (e) => {
 		e.preventDefault();
-		let user = { ...formData };
+		let user = { ...formValues };
 		user.id = users.length + 2; // TODO add id generator
 
 		dispatch(addUser(user));
@@ -54,8 +46,6 @@ let Form = (props) => {
 				   	name="firstName"
 					label="User Name"
 					placeholder="Please enter"
-				   	value={firstName}
-					onChange={handleChange}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -65,8 +55,6 @@ let Form = (props) => {
 						name="lastName"
 						label="User Surname"
 					    placeholder="Please enter"
-					    value={lastName}
-					    onChange={handleChange}
 					/>
 				</div>
 				<div className="half-column">
@@ -75,14 +63,11 @@ let Form = (props) => {
 						type="email"
 						label="User Email"
 						placeholder="Please enter"
-					    value={email}
-						onChange={handleChange}
 					/>
 				</div>
 			</div>
 			<div className="flexed-row">
 				<Field component={CustomCheckbox} name="admin"
-					   value={admin}
 					   label='Administrator rights'
 				/>
 			</div>
@@ -133,6 +118,8 @@ Form = reduxForm({
 	validate
 })(Form);
 
-export default Form;
+export default connect(state => ({
+	values: getFormValues("addUser")(state)
+}))(Form);
 
 

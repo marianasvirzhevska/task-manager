@@ -97,17 +97,16 @@ const SelectField = (props) => {
 				}
 			>
 				{items && items.map((item, key) => {
-					const val = typeof item === 'object' ? item.value : item;
 					return (
 						<MenuItem
-							value={val}
+							value={item.valueId}
 							key={key}
 							classes={{
 								root: classes.itemRoot,
 								selected: classes.itemSelected
 							}}
 						>
-							{val}
+							{item.valueLabel}
 						</MenuItem>
 					)
 				})}

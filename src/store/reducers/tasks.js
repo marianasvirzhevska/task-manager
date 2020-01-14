@@ -7,7 +7,7 @@ import {
 
 
 const TasksState = {
-	users: [],
+	tasks: [],
 	error: null
 };
 
@@ -23,20 +23,37 @@ const tasksReducer = ( state = TasksState, action) => {
 		case ADD_TASK:
 			return {
 				...state,
-				tasks: action.payload,
+				tasks: [...state.tasks, action.payload],
 				error: null
 			};
 		case EDIT_TASK:
+			const task = action.payload;
+			const editedTasks = state.tasks.map((item) => {
+				if(item.id !== task.id){
+					return item;
+				}
+
+				return {
+					...item,
+					...task
+				}
+			});
 			return {
 				...state,
-				tasks: action.payload,
-				error: null
+				tasks: editedTasks,
+				errors: null
 			};
 
 		case DELETE_TASK:
+			const _task = action.payload;
+			const taskIndex = state.tasks.findIndex((item) => item.id === _task.id);
+
+			const newTasks = [...state.tasks];
+			newTasks.splice(taskIndex, 1);
+
 			return {
 				...state,
-				tasks: action.payload,
+				tasks: newTasks,
 				error: null
 			};
 

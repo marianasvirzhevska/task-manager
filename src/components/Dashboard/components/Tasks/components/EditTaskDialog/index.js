@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { AppDialog, AppDialogTitle, AppDialogContent } from '../../../../../common/Dialog'
 import Form from './Form'
 
 const EditTaskDialog = (props) => {
 	const {open, handleClose, task} = props;
+
 	const initialValues = {
 		title: task && task.title,
-		project: task && task.project.projectTitle,
-		// user: task && (firstName + ' ' + lastName),
+		project: task && task.project.id,
+		user:  task && task.user && task.user.id,
 		description: task && task.description
 	};
 

@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { AppDialog, AppDialogTitle, AppDialogContent } from '../../../../../common/Dialog'
 import Form from './Form'
 
 const EditUserDialog = (props) => {
 	const { open, handleClose, user } = props;
-	const [formData, setFormData] = useState({});
 
 	const initialValues = {
 		firstName: user && user.firstName,
@@ -24,8 +23,6 @@ const EditUserDialog = (props) => {
 				title='Edit User'/>
 			<AppDialogContent>
 				<Form user={user}
-					  formData={formData}
-					  setFormData={setFormData}
 					  initialValues={initialValues}
 					  handleClose={handleClose}
 				/>

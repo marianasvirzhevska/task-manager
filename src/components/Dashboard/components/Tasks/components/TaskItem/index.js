@@ -20,11 +20,11 @@ const TaskItem = (props) => {
 			<TableCell>{id}</TableCell>
 			<TableCell>
 				<Link to={``}>
-					<Avatar>{project.projectAv}</Avatar>
+					<Avatar>{project && project.projectAv}</Avatar>
 				</Link>
 			</TableCell>
 			<TableCell>{title}</TableCell>
-			<TableCell>{user ? user.firstName && user.lastName : '-'}</TableCell>
+			<TableCell>{user ? user.firstName + ' ' + user.lastName : '-'}</TableCell>
 			<TableCell><StatusLabel status={status} /></TableCell>
 			<TableCell className="actions">
 				<div className="actions">

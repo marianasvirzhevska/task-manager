@@ -1,29 +1,20 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { Field, reduxForm } from 'redux-form'
-import { useDispatch } from "react-redux"
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { connect, useSelector, useDispatch } from 'react-redux'
+
 import Input from '../../../../../common/Input'
 import CustomCheckbox from "../../../../../common/Checkbox"
 import trim from "../../../../../../utils/trim";
 import {editUser} from '../../../../../../store/actions'
 
-let Form = (props) => {
-	const { invalid, submitting, formData, setFormData, handleClose, user } = props;
-	const { firstName, lastName, email, admin } = formData;
+let Form = ({ invalid, submitting, handleClose, user }) => {
 	const dispatch = useDispatch();
-
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
+	const formValues = useSelector(state => getFormValues('editUser')(state));
 
 	const handleCreate = (e) => {
 		e.preventDefault();
-		const _user = { ...user,  ...formData};
+		const _user = { ...user,  ...formValues};
 
 		dispatch(editUser(_user));
 		handleClose();
@@ -37,8 +28,6 @@ let Form = (props) => {
 				   	name="firstName"
 					label="User Name"
 					placeholder="Please enter"
-					onChange={handleChange}
-				    value={firstName}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -48,8 +37,6 @@ let Form = (props) => {
 						name="lastName"
 						label="User Surname"
 					    placeholder="Please enter"
-					    onChange={handleChange}
-					    value={lastName}
 					/>
 				</div>
 				<div className="half-column">
@@ -58,14 +45,11 @@ let Form = (props) => {
 						type="email"
 						label="User Email"
 						placeholder="Please enter"
-						onChange={handleChange}
-					    value={email}
 					/>
 				</div>
 			</div>
 			<div className="flexed-row">
 				<Field component={CustomCheckbox} name="admin"
-					   value={admin}
 					   label='Administrator rights'
 				/>
 			</div>
@@ -104,6 +88,9 @@ Form = reduxForm({
 	validate
 })(Form);
 
-export default Form;
+
+export default connect(state => ({
+	values: getFormValues("editUser")(state)
+}))(Form);
 
 

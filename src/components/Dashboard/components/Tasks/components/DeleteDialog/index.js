@@ -1,13 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
+import Avatar from '@material-ui/core/Avatar'
+import { useDispatch, useSelector } from "react-redux"
+
 import { AppDialog } from '../../../../../common/Dialog'
 import deleteIcon from '../../../../../../assets/icons/ico-trash.svg'
+import { deleteTask } from "../../../../../../store/actions";
 
 const DeleteDialog = (props) => {
 	const { open, handleClose, task } = props;
-	const handleDelete = () => {
+	const dispatch = useDispatch();
+	const projects = useSelector(state => state.projects.projects);
+	const project = task && projects.find( el => el.id === task.project.id);
 
+	const handleDelete = () => {
+		dispatch(deleteTask(task));
+		handleClose();
 	};
 
 	return(
@@ -20,7 +29,7 @@ const DeleteDialog = (props) => {
 				<h3 className='delete-title'>Delete Task</h3>
 				<div className='user-info'>
 					<div className='user-img'>
-						{/*<Avatar>{project && project.projectAv}</Avatar>*/}
+						<Avatar>{project && project.projectAv}</Avatar>
 					</div>
 					<div className='task-details'>
 						<h4>{task && task.title}</h4>

@@ -52,7 +52,7 @@ export const SideMenu = (props) => {
 					open &&
 					<div className={styles.terms}>
 						<p>Copyright © 2020 Task Manage Software Tools</p>
-						<Link to='/'>Terms and conditions</Link>
+						<Link to='/terms'>Terms and conditions</Link>
 					</div>
 				}
 			</div>

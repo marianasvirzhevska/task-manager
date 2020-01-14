@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { AppDialog, AppDialogTitle, AppDialogContent } from '../../../../../common/Dialog'
@@ -7,13 +7,6 @@ import Form from './Form'
 const AddUserDialog = (props) => {
 	const { open, handleClose } = props;
 	const users = useSelector(state => state.users.users);
-	const [formData, setFormData] = useState({
-		firstName: '',
-		lastName: '',
-		email: '',
-		admin: false,
-		id: ''
-	});
 
 	return (
 		<AppDialog
@@ -26,8 +19,6 @@ const AddUserDialog = (props) => {
 			<AppDialogContent>
 				<Form
 					users={users}
-					formData={formData}
-					setFormData={setFormData}
 					handleClose={handleClose}
 				/>
 			</AppDialogContent>

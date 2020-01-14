@@ -13,23 +13,23 @@ export function setInitialTasks(tasks){
 	}
 }
 
-export const addTask = (tasks) => {
+export const addTask = (task) => {
 	return {
 		type: ADD_TASK,
-		payload: tasks
+		payload: task
 	}
 };
 
-export const editTask = (tasks) => {
+export const editTask = (task) => {
 	return {
 		type: EDIT_TASK,
-		payload: tasks
+		payload: task
 	}
 };
 
-export const deleteTask = (tasks) => {
+export const deleteTask = (task) => {
 	return {
 		type: DELETE_TASK,
-		payload: tasks
+		payload: task
 	}
 };

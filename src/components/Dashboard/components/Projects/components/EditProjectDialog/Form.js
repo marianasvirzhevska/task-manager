@@ -2,27 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
-import {Field, reduxForm} from 'redux-form'
-import { useDispatch } from "react-redux"
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { connect, useSelector, useDispatch } from 'react-redux'
 
 import Input from '../../../../../common/Input'
 import { editProject } from "../../../../../../store/actions";
 
-let Form = ({ invalid, submitting, formData, setFormData, handleClose, project }) => {
-	const { projectTitle, projectLink, projectAv} = formData;
+let Form = ({ invalid, submitting, handleClose, project }) => {
 	const dispatch = useDispatch();
-
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
+	const formValues = useSelector(state => getFormValues('editProject')(state));
 
 	const handleEdit = (e) => {
 		e.preventDefault();
-		const _project = { ...project,  ...formData};
+		const _project = { ...project,  ...formValues};
 
 		dispatch(editProject(_project));
 		handleClose();
@@ -30,14 +22,16 @@ let Form = ({ invalid, submitting, formData, setFormData, handleClose, project }
 
 	return (
 		<form className="dialog-form" onSubmit={handleEdit}>
+			<div className="flexed-row title-row project-title">
+				<Avatar className="avatar-center">{formValues.projectAv ? formValues.projectAv : null}</Avatar>
+				<span>Short view of Project title</span>
+			</div>
 			<div className="flexed-row">
 				<Field component={Input}
 					type="text"
 				   	name="projectTitle"
 					label="Enter Project title"
 					placeholder="Please enter"
-					onChange={handleChange}
-				    value={projectTitle}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -47,8 +41,6 @@ let Form = ({ invalid, submitting, formData, setFormData, handleClose, project }
 				   label="Enter Project short form
 					(1-2 letters)"
 				   placeholder="Please enter"
-				   onChange={handleChange}
-				   value={projectAv}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -57,8 +49,6 @@ let Form = ({ invalid, submitting, formData, setFormData, handleClose, project }
 				    name='projectLink'
 					label="Enter Project link"
 					placeholder="Please enter"
-					onChange={handleChange}
-				    value={projectLink}
 				/>
 			</div>
 			<div className='dialog-action'>
@@ -100,8 +90,6 @@ const isUrlValid = (userInput) => {
 };
 
 Form.propsTypes = {
-	formData: PropTypes.object.isRequired,
-	setFormData: PropTypes.func.isRequired,
 	project: PropTypes.object.isRequired,
 	handleClose: PropTypes.func
 };
@@ -111,6 +99,8 @@ Form = reduxForm({
 	validate
 })(Form);
 
-export default Form;
+export default connect(state => ({
+	values: getFormValues("editProject")(state)
+}))(Form);
 
 

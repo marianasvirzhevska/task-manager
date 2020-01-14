@@ -36,6 +36,7 @@ let RegisterForm = (props) => {
 	const register = (formData) => {
 		let user = { ...formData };
 		user.id = getUniqueID(users);
+		user.admin = true;
 
 		setUser(user);
 		dispatch(registerUser(user));
