@@ -13,23 +13,23 @@ export function setInitialProjects(projects){
 	}
 }
 
-export const addProject = (projects) => {
+export const addProject = (project) => {
 	return {
 		type: ADD_PROJECT,
-		payload: projects
+		payload: project
 	}
 };
 
-export const editProject = (projects) => {
+export const editProject = (project) => {
 	return {
 		type: EDIT_PROJECT,
-		payload: projects
+		payload: project
 	}
 };
 
-export const deleteProject = (projects) => {
+export const deleteProject = (project) => {
 	return {
 		type: DELETE_PROJECT,
-		payload: projects
+		payload: project
 	}
 };

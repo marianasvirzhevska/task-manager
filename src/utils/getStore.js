@@ -49,28 +49,28 @@ export const projects = [
 		projectTitle: 'Travel Team',
 		projectAv: 'TT',
 		projectLink: 'https://material-ui.com',
-		tasks: 12,
+		tasks: [{id:1}, {id:2}, {id:5}]
 	},
 	{
 		id: 2,
 		projectTitle: 'Ori Game',
 		projectAv: 'OG',
 		projectLink: 'https://material-ui.com',
-		tasks: 9,
+		tasks: [{id:6}, {id:7}, {id:9}, {id:10}]
 	},
 	{
 		id: 3,
 		projectTitle: 'Info Viewer',
 		projectAv: 'IW',
 		projectLink: 'https://material-ui.com',
-		tasks: 32,
+		tasks: [{id:13}]
 	},
 	{
 		id: 4,
 		projectTitle: 'Random Name',
 		projectAv: 'RN',
 		projectLink: 'https://react-redux.js.org/next/api/hooks',
-		tasks: 32,
+		tasks: [{id:6}, {id:7}, {id:9}, {id:10}]
 	}
 ];
 

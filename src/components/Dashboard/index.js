@@ -17,7 +17,7 @@ const Dashboard = () => {
 				<Route exact path={`${path}/tasks`} component={Tasks}/>
 				<Route exact path={`${path}/users`} component={Users}/>
 				<Route exact path={`${path}/profile`} component={EditProfile}/>
-				<Redirect exact path={`${path}`} to={`${path}/profile`}/>
+				<Redirect exact path={`${path}`} to={`${path}/tasks`}/>
 			</Switch>
 		</div>
 	)

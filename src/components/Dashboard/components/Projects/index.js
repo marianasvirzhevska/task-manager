@@ -25,6 +25,7 @@ const Projects = () => {
 	const [projectId, setProjectId] = useState(0);
 	const projects = useSelector(state => state.projects.projects);
 
+	console.log(projects);
 	const handleCreate = () => {
 		setCreate(!createDialog);
 	};
@@ -71,15 +72,11 @@ const Projects = () => {
 							<TableBody>
 								{projects && projects.map( project => {
 									return <ProjectItem
-										key={project.id}
-										id={project.id}
-										title={project.projectTitle}
-									 	projectAv={project.projectAv}
-										link={project.projectLink}
-										tasks={project.tasks}
-										handleDelete={() => handleDelete(project.id)}
-										handleEdit={() => handleEdit(project.id)}
-									/>
+												key={project.id}
+												project={project}
+												handleDelete={() => handleDelete(project.id)}
+												handleEdit={() => handleEdit(project.id)}
+											/>
 								})}
 							</TableBody>
 						</Table>

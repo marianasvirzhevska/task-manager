@@ -3,17 +3,33 @@ import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import {Field, reduxForm} from 'redux-form'
-import Input from '../../../../../common/Input'
+import { useDispatch } from "react-redux"
 
-let Form = (props) => {
+import Input from '../../../../../common/Input'
+import { editProject } from "../../../../../../store/actions";
+
+let Form = ({ invalid, submitting, formData, setFormData, handleClose, project }) => {
+	const { projectTitle, projectLink, projectAv} = formData;
+	const dispatch = useDispatch();
+
 	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+	};
+
+	const handleEdit = (e) => {
+		e.preventDefault();
+		const _project = { ...project,  ...formData};
+
+		dispatch(editProject(_project));
+		handleClose();
 	};
 
 	return (
-		<div className="dialog-form">
-			<div className="flexed-row title-row">
-				<Avatar className="avatar-center">{}</Avatar>
-			</div>
+		<form className="dialog-form" onSubmit={handleEdit}>
 			<div className="flexed-row">
 				<Field component={Input}
 					type="text"
@@ -21,16 +37,18 @@ let Form = (props) => {
 					label="Enter Project title"
 					placeholder="Please enter"
 					onChange={handleChange}
+				    value={projectTitle}
 				/>
 			</div>
 			<div className="flexed-row">
 				<Field component={Input}
-					   type="text"
-					   name="projectAv"
-					   label="Enter Project short form
-					    (1-2 letters)"
-					   placeholder="Please enter"
-					   onChange={handleChange}
+				   type="text"
+				   name="projectAv"
+				   label="Enter Project short form
+					(1-2 letters)"
+				   placeholder="Please enter"
+				   onChange={handleChange}
+				   value={projectAv}
 				/>
 			</div>
 			<div className="flexed-row">
@@ -40,26 +58,22 @@ let Form = (props) => {
 					label="Enter Project link"
 					placeholder="Please enter"
 					onChange={handleChange}
+				    value={projectLink}
 				/>
 			</div>
 			<div className='dialog-action'>
 				<Button
 					color='secondary'
 					variant='contained'
-					onClick={() => {}}
+					type="submit"
+					disabled={invalid || submitting}
 				>Save</Button>
 			</div>
-		</div>
+		</form>
 	)
 };
 
 function validate(values) {
-	// const {
-	// 	projectTitle,
-	// 	projectLink,
-	// 	projectAv
-	// } = values;
-
 	const errors = {};
 
 	if(!values.projectTitle){
@@ -86,12 +100,14 @@ const isUrlValid = (userInput) => {
 };
 
 Form.propsTypes = {
-	setFormData: PropTypes.func.isRequired
+	formData: PropTypes.object.isRequired,
+	setFormData: PropTypes.func.isRequired,
+	project: PropTypes.object.isRequired,
+	handleClose: PropTypes.func
 };
 
 Form = reduxForm({
 	form: 'editProject',
-	enableReinitialize: true,
 	validate
 })(Form);
 

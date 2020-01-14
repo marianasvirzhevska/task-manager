@@ -6,7 +6,7 @@ import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import theme from './muiTheme'
 import store from './store/store'
 import { users, projects, tasks } from './utils/getStore'
-import { INITIAL_TASKS, INITIAL_USER, DELETE_PROJECT } from './store/constants'
+import { INITIAL_TASKS, INITIAL_USER, INITIAL_PROJECT } from './store/constants'
 
 import Register from './components/Register'
 import Login from './components/Login'
@@ -26,7 +26,7 @@ const App = () => {
 		);
 		dispatch(
 			{
-				type: DELETE_PROJECT,
+				type: INITIAL_PROJECT,
 				payload: projects
 			}
 		);

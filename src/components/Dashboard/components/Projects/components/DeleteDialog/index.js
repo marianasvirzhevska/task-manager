@@ -2,14 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
+import { useDispatch } from "react-redux"
+
+import { deleteProject } from "../../../../../../store/actions"
 import { AppDialog } from '../../../../../common/Dialog'
 import deleteIcon from '../../../../../../assets/icons/ico-trash.svg'
 
 const DeleteDialog = (props) => {
 	const {open, handleClose, project} = props;
+	const dispatch = useDispatch();
 
 	const handleDelete = () => {
-
+		dispatch(deleteProject(project));
+		handleClose();
 	};
 
 	return(
@@ -46,7 +51,7 @@ const DeleteDialog = (props) => {
 DeleteDialog.propTypes = {
 	open: PropTypes.bool.isRequired,
 	handleClose: PropTypes.func.isRequired,
-	project: PropTypes.object
+	project: PropTypes.object,
 };
 
 export default DeleteDialog;

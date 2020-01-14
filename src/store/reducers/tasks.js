@@ -7,7 +7,7 @@ import {
 
 
 const TasksState = {
-	users: {},
+	users: [],
 	error: null
 };
 

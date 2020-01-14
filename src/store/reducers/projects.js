@@ -7,7 +7,7 @@ import {
 
 
 const ProjectsState = {
-	projects: {},
+	projects: [],
 	error: null
 };
 
@@ -23,20 +23,37 @@ const projectsReducer = ( state = ProjectsState, action) => {
 		case ADD_PROJECT:
 			return {
 				...state,
-				projects: action.payload,
+				projects: [ ...state.projects, action.payload],
 				error: null
 			};
 		case EDIT_PROJECT:
+			const project = action.payload;
+			const editedProjects = state.projects.map((item) => {
+				if(item.id !== project.id){
+					return item;
+				}
+
+				return {
+					...item,
+					...project
+				}
+			});
 			return {
 				...state,
-				projects: action.payload,
-				error: null
+				projects: editedProjects,
+				errors: null
 			};
 
 		case DELETE_PROJECT:
+			const _project = action.payload;
+			const projectIndex = state.projects.findIndex((item) => item.id === _project.id);
+
+			const newProjects = [...state.projects];
+			newProjects.splice(projectIndex, 1);
+
 			return {
 				...state,
-				projects: action.payload,
+				projects: newProjects,
 				error: null
 			};
 

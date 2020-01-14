@@ -10,19 +10,20 @@ import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 
 const ProjectItem = (props) => {
-	const { title, projectAv, link, tasks, id, handleEdit, handleDelete } = props;
+	const { project, handleEdit, handleDelete } = props;
+	const { projectTitle, projectAv, projectLink, tasks, id } = project;
 
 	return(
 		<TableRow>
 			<TableCell>
 				<div className="table-project-title">
 					<Avatar>{projectAv}</Avatar>
-					<p>{title}</p>
+					<p>{projectTitle}</p>
 				</div>
 			</TableCell>
-			<TableCell>{link}</TableCell>
+			<TableCell>{projectLink}</TableCell>
 			<TableCell>
-				<Link to={`/dashboard/tasks:${id}`}>{tasks}</Link>
+				<Link to={`/dashboard/tasks:${id}`}>{tasks.length}</Link>
 			</TableCell>
 			<TableCell className="actions">
 				<div className="actions">
@@ -41,11 +42,7 @@ const ProjectItem = (props) => {
 };
 
 ProjectItem.propTypes = {
-	title: PropTypes.string.isRequired,
-	projectAv: PropTypes.string.isRequired,
-	link: PropTypes.string.isRequired,
-	tasks: PropTypes.number.isRequired,
-	id: PropTypes.number.isRequired,
+	project: PropTypes.object.isRequired,
 	handleEdit: PropTypes.func.isRequired,
 	handleDelete: PropTypes.func.isRequired
 };
