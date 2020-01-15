@@ -13,4 +13,7 @@ export const INITIAL_TASKS = 'INITIAL_TASKS';
 export const ADD_TASK = 'ADD_TASK';
 export const EDIT_TASK = 'EDIT_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+export const UPDATE_PROJECTS = 'UPDATE_PROJECTS';
+export const UPDATE_USERS = 'UPDATE_USERS';
+
 

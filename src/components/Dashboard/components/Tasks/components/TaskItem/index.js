@@ -21,34 +21,35 @@ const TaskItem = (props) => {
 		<TableRow>
 			<TableCell>{id}</TableCell>
 			<TableCell>
-				<Link to={``}>
-					<Avatar>{project && project.projectAv}</Avatar>
+				<Link to={`/dashboard/project/${project.id}`}>
+					<Avatar>{project.projectAv}</Avatar>
 				</Link>
 			</TableCell>
 			<TableCell>{title}</TableCell>
 			<TableCell>{user ? user.firstName + ' ' + user.lastName : '-'}</TableCell>
 			<TableCell><StatusLabel status={status} /></TableCell>
-			{isAdmin &&
+
 				<TableCell className="actions">
 					<div className="actions">
 						<Link to={`/dashboard/tasks/task/${id}`}>
-							<IconButton
-								onClick={() => {
-								}}>
+							<IconButton>
 								<VisibilityIcon size="small"/>
 							</IconButton>
 						</Link>
-						<IconButton
-							onClick={handleEdit}>
-							<EditOutlinedIcon size="small"/>
-						</IconButton>
-						<IconButton
-							onClick={handleDelete}>
-							<DeleteOutlinedIcon size="small"/>
-						</IconButton>
+						{isAdmin &&
+							<>
+								<IconButton
+									onClick={handleEdit}>
+									<EditOutlinedIcon size="small"/>
+								</IconButton>
+								< IconButton
+									onClick={handleDelete}>
+									<DeleteOutlinedIcon size="small"/>
+									</IconButton>
+							</>
+						}
 					</div>
 				</TableCell>
-			}
 		</TableRow>
 	)
 };

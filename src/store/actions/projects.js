@@ -2,7 +2,8 @@ import {
 	INITIAL_PROJECT,
 	ADD_PROJECT,
 	EDIT_PROJECT,
-	DELETE_PROJECT
+	DELETE_PROJECT,
+	UPDATE_PROJECTS
 } from '../constants'
 
 
@@ -31,5 +32,12 @@ export const deleteProject = (project) => {
 	return {
 		type: DELETE_PROJECT,
 		payload: project
+	}
+};
+
+export const updateProjects = (projects) => {
+	return {
+		type: UPDATE_PROJECTS,
+		payload: projects
 	}
 };

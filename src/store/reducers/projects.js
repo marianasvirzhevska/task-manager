@@ -2,7 +2,8 @@ import {
 	INITIAL_PROJECT,
 	ADD_PROJECT,
 	EDIT_PROJECT,
-	DELETE_PROJECT
+	DELETE_PROJECT,
+	UPDATE_PROJECTS
 } from '../constants'
 
 
@@ -54,6 +55,13 @@ const projectsReducer = ( state = ProjectsState, action) => {
 			return {
 				...state,
 				projects: newProjects,
+				error: null
+			};
+
+		case UPDATE_PROJECTS:
+			return {
+				...state,
+				projects: action.payload,
 				error: null
 			};
 

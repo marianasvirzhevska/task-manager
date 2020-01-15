@@ -72,7 +72,7 @@ const Tasks = () => {
 									<TableCell>Title</TableCell>
 									<TableCell>Assign</TableCell>
 									<TableCell>Status</TableCell>
-									{isAdmin && <TableCell>Actions</TableCell>}
+									<TableCell>Actions</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>

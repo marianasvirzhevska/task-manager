@@ -2,7 +2,8 @@ import {
 	INITIAL_USER,
 	ADD_USER,
 	EDIT_USER,
-	DELETE_USER
+	DELETE_USER,
+	UPDATE_USERS
 } from '../constants'
 
 
@@ -54,6 +55,13 @@ const usersReducer = ( state = UsersState, action) => {
 			return {
 				...state,
 				users: newUsers,
+				error: null
+			};
+
+		case UPDATE_USERS:
+			return {
+				...state,
+				users: action.payload,
 				error: null
 			};
 

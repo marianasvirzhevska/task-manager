@@ -5,8 +5,7 @@ import { connect, useSelector, useDispatch } from 'react-redux'
 
 import Input from '../../../../../common/Input'
 import SelectField from '../../../../../common/SelectField'
-import { editTask } from "../../../../../../store/actions";
-// import removeItem from '../../../../../../utils/removeItem'
+import { editTask, updateProjects, updateUsers } from "../../../../../../store/actions"
 
 let Form = ({invalid, submitting, handleClose, task}) => {
 	const dispatch = useDispatch();
@@ -14,24 +13,50 @@ let Form = ({invalid, submitting, handleClose, task}) => {
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
 
-	const getTask = () => {
-		const task = { ...formValues };
-		task.project = {id: task.project};
-		task.user = task.user ? {id: task.user} : null;
+	const getProjects = (task) => {
+		const projectId = task.project.id;
 
-		return task;
+		const updated = projects.map(item => {
+			const index = item.tasks.findIndex(el => el.id === task.id);
+
+			if (index !== -1){
+				item.tasks.splice(index, 1);
+			}
+
+			return item;
+		});
+
+		return updated.map(item => {
+			if(item.id !== projectId) {
+				return item;
+			}
+
+			item.tasks.push({id:task.id});
+			return { ...item }
+		});
 	};
 
+	const getUsers = (task) => {
+		const userId = task.user.id;
 
-	const updateProjects = (task) => {
-		const projectId = task.project.id;
-		const project = {...projects.find(item => item.id === projectId)};
+		const updated = users.map(item => {
+			const index = item.tasks.findIndex(el => el.id === task.id);
 
-		// removeItem(projectId, projects)
+			if (index !== -1){
+				item.tasks.splice(index, 1);
+			}
 
-		// project.tasks.push({id: task.id});
-		//
-		// return project;
+			return item;
+		});
+
+		return updated.map(item => {
+			if(item.id !== userId) {
+				return item;
+			}
+
+			item.tasks.push({id:task.id});
+			return { ...item }
+		});
 	};
 
 	const handleEdit = (e) => {
@@ -41,6 +66,8 @@ let Form = ({invalid, submitting, handleClose, task}) => {
 		_task.project = {id: _task.project};
 
 		dispatch(editTask(_task));
+		dispatch(updateProjects(getProjects(_task))); // update related project
+		dispatch(updateUsers(getUsers(_task))); // update assigned user
 		handleClose();
 	};
 
