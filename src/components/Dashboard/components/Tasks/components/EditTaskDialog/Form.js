@@ -6,12 +6,33 @@ import { connect, useSelector, useDispatch } from 'react-redux'
 import Input from '../../../../../common/Input'
 import SelectField from '../../../../../common/SelectField'
 import { editTask } from "../../../../../../store/actions";
+// import removeItem from '../../../../../../utils/removeItem'
 
 let Form = ({invalid, submitting, handleClose, task}) => {
 	const dispatch = useDispatch();
 	const formValues = useSelector(state => getFormValues('editTask')(state));
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
+
+	const getTask = () => {
+		const task = { ...formValues };
+		task.project = {id: task.project};
+		task.user = task.user ? {id: task.user} : null;
+
+		return task;
+	};
+
+
+	const updateProjects = (task) => {
+		const projectId = task.project.id;
+		const project = {...projects.find(item => item.id === projectId)};
+
+		// removeItem(projectId, projects)
+
+		// project.tasks.push({id: task.id});
+		//
+		// return project;
+	};
 
 	const handleEdit = (e) => {
 		e.preventDefault();

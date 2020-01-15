@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useSelector } from 'react-redux'
+
 import ProjectItem from './components/ProjectsItem'
 import {
 	AppBar,
@@ -24,6 +25,7 @@ const Projects = () => {
 	const [editDialog, setEdit] = useState(false);
 	const [projectId, setProjectId] = useState(0);
 	const projects = useSelector(state => state.projects.projects);
+	const isAdmin = useSelector(state => state.auth.user.admin);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -44,14 +46,16 @@ const Projects = () => {
 				<AppBarBefore>
 					<SearchField/>
 				</AppBarBefore>
-				<AppBarAfter>
-					<Button size='small'
-							variant='contained'
-							color='secondary'
-							onClick={handleCreate}>
-						Add Project
-					</Button>
-				</AppBarAfter>
+				{isAdmin &&
+					<AppBarAfter>
+						<Button size='small'
+								variant='contained'
+								color='secondary'
+								onClick={handleCreate}>
+							Add Project
+						</Button>
+					</AppBarAfter>
+				}
 			</AppBar>
 
 			<div className='paper-wrap'>
@@ -65,7 +69,7 @@ const Projects = () => {
 									<TableCell>
 										Tasks
 									</TableCell>
-									<TableCell>Actions</TableCell>
+									{isAdmin && <TableCell>Actions</TableCell>}
 								</TableRow>
 							</TableHead>
 							<TableBody>

@@ -5,7 +5,7 @@ import { connect, useSelector, useDispatch } from 'react-redux'
 
 import Input from '../../../../../common/Input'
 import SelectField from '../../../../../common/SelectField'
-import { addTask } from "../../../../../../store/actions";
+import { addTask, editProject, editUser } from "../../../../../../store/actions";
 
 let Form = ({invalid, submitting, pristine, handleClose}) => {
 	const dispatch = useDispatch();
@@ -15,15 +15,38 @@ let Form = ({invalid, submitting, pristine, handleClose}) => {
 	const projects = useSelector(state => state.projects.projects);
 	const tasks = useSelector(state => state.tasks.tasks);
 
-	const handleCreate = (e) => {
-		e.preventDefault();
-		let task = { ...formValues };
+	const getTask = () => {
+		const task = { ...formValues };
 		task.id = tasks.length + 2; // TODO add id generator
 		task.project = {id: task.project};
 		task.user = task.user ? {id: task.user} : null;
 		task.status = 'Pending';
+		return task;
+	};
+
+	const updateProject = (task) => {
+		const projectId = task.project.id;
+		const project = {...projects.find(item => item.id === projectId)};
+		project.tasks.push({id: task.id});
+
+		return project;
+	};
+
+	const updateUser = (task) => {
+		const userId = task.user.id;
+		const user = {...users.find(item => item.id === userId)};
+		user.tasks = [...user.tasks, task.id];
+
+		return user;
+	};
+
+	const handleCreate = (e) => {
+		e.preventDefault();
+		const task = getTask();
 
 		dispatch(addTask(task));
+		dispatch(editProject(updateProject(task)));
+		task.user && dispatch(editUser(updateUser(task)));
 		handleClose();
 	};
 

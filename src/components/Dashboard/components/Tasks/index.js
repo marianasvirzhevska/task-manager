@@ -28,6 +28,7 @@ const Tasks = () => {
 	const tasks = useSelector(state => state.tasks.tasks);
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
+	const isAdmin = useSelector(state => state.auth.user.admin);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -49,14 +50,16 @@ const Tasks = () => {
 					<Filters handleFilter={() => {}}/>
 					<SearchField/>
 				</AppBarBefore>
-				<AppBarAfter>
-					<Button size='small'
-							variant='contained'
-							color='secondary'
-							onClick={handleCreate}>
-						Create Task
-					</Button>
-				</AppBarAfter>
+				{isAdmin &&
+					<AppBarAfter>
+						<Button size='small'
+								variant='contained'
+								color='secondary'
+								onClick={handleCreate}>
+							Create Task
+						</Button>
+					</AppBarAfter>
+				}
 			</AppBar>
 			<div className='paper-wrap'>
 				<Paper elevation={1}>
@@ -69,7 +72,7 @@ const Tasks = () => {
 									<TableCell>Title</TableCell>
 									<TableCell>Assign</TableCell>
 									<TableCell>Status</TableCell>
-									<TableCell>Actions</TableCell>
+									{isAdmin && <TableCell>Actions</TableCell>}
 								</TableRow>
 							</TableHead>
 							<TableBody>

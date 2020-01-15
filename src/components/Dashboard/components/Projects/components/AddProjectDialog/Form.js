@@ -25,7 +25,7 @@ let Form = ({ invalid, submitting, pristine, handleClose, projects }) => {
 	return (
 		<form className="dialog-form" onSubmit={handleCreate}>
 			<div className="flexed-row title-row project-title">
-				<Avatar className="avatar-center">{formValues.projectAv ? formValues.projectAv : null}</Avatar>
+				<Avatar className="avatar-center">{formValues ? formValues.projectAv : null}</Avatar>
 				<span>Short view of Project title</span>
 			</div>
 			<div className="flexed-row">
@@ -88,7 +88,7 @@ function validate(_values, props) {
 }
 
 const isUrlValid = (userInput) => {
-	let res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+	let res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)/g);
 	if(res == null)
 		return (false );
 	else

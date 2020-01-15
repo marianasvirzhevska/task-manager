@@ -98,8 +98,12 @@ input:-webkit-autofill
         text-align: right
     th, td
       padding-left: 0
-    tr:last-child td
-      border-bottom: none
+    tr
+      td:last-child
+        text-align: right
+      &:last-child td
+        border-bottom: none
+
 
 .table-project-title // project title cell styles
   @include flex
@@ -198,3 +202,64 @@ input:-webkit-autofill
     .email
       margin: 0
       color: $greyFont
+
+.scroll-container
+  overflow: auto
+  .container
+    padding-top: 20px
+    margin-bottom: 40px
+
+.container
+  width: 100%
+  max-width: 804px
+  margin: 0 auto
+
+.forms-container
+  padding: 30px 40px 40px
+  .forms-title
+    font-size: 26px
+    font-weight: 500
+  .forms-subtitle
+    font-size: $subTitle
+    font-weight: 500
+    margin: 42px 0 20px
+    position: relative
+
+.back-btn
+  padding-left: 40px
+  a
+    @include flex
+    align-items: center
+    color: $greyFont
+    font-size: $menuFont
+    font-weight: 500
+    img
+      padding-right: 12px
+
+
+.task-title
+  &-info
+    h4
+      color: $greyFont
+      font-size: $mainFont
+      font-weight: 400
+      margin: 10px 0
+      span
+        color: $black
+        font-weight: 500
+
+  &-row
+    @include flex
+    justify-content: space-between
+    h2
+      flex: 0 0.8 80%
+      margin: 0 !important
+  &-menu
+    align-self: flex-end
+    flex: 0 0.16 16%
+    padding-left: 14px
+    border-left: 1px solid $borderColor
+
+
+.task-description
+  margin: 30px 0 0

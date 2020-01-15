@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './StatusLabel.module.sass'
-// import '../../../../styles/dashboard.sass'
 
 const StatusLabel = (props) => {
 	const { status } = props;

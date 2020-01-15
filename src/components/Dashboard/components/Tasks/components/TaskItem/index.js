@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import TableRow from '@material-ui/core/TableRow'
@@ -14,6 +15,7 @@ import StatusLabel from '../../../../../common/StatusLabel'
 const TaskItem = (props) => {
 	const { task, handleEdit, handleDelete, project, user } = props;
 	const { title, status, id } = task;
+	const isAdmin = useSelector(state => state.auth.user.admin);
 
 	return(
 		<TableRow>
@@ -26,22 +28,27 @@ const TaskItem = (props) => {
 			<TableCell>{title}</TableCell>
 			<TableCell>{user ? user.firstName + ' ' + user.lastName : '-'}</TableCell>
 			<TableCell><StatusLabel status={status} /></TableCell>
-			<TableCell className="actions">
-				<div className="actions">
-					<IconButton
-						onClick={() => {}}>
-						<VisibilityIcon size="small"/>
-					</IconButton>
-					<IconButton
-						onClick={handleEdit}>
-						<EditOutlinedIcon size="small"/>
-					</IconButton>
-					<IconButton
-						onClick={handleDelete}>
-						<DeleteOutlinedIcon size="small"/>
-					</IconButton>
-				</div>
-			</TableCell>
+			{isAdmin &&
+				<TableCell className="actions">
+					<div className="actions">
+						<Link to={`/dashboard/tasks/task/${id}`}>
+							<IconButton
+								onClick={() => {
+								}}>
+								<VisibilityIcon size="small"/>
+							</IconButton>
+						</Link>
+						<IconButton
+							onClick={handleEdit}>
+							<EditOutlinedIcon size="small"/>
+						</IconButton>
+						<IconButton
+							onClick={handleDelete}>
+							<DeleteOutlinedIcon size="small"/>
+						</IconButton>
+					</div>
+				</TableCell>
+			}
 		</TableRow>
 	)
 };
