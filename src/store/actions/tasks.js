@@ -2,7 +2,8 @@ import {
 	INITIAL_TASKS,
 	ADD_TASK,
 	EDIT_TASK,
-	DELETE_TASK
+	DELETE_TASK,
+	UPDATE_TASKS
 } from '../constants'
 
 
@@ -31,5 +32,12 @@ export const deleteTask = (task) => {
 	return {
 		type: DELETE_TASK,
 		payload: task
+	}
+};
+
+export const updateTask = (tasks) => {
+	return {
+		type: UPDATE_TASKS,
+		payload: tasks
 	}
 };

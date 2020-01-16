@@ -6,16 +6,30 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { AppDialog } from '../../../../../common/Dialog'
 import deleteIcon from '../../../../../../assets/icons/ico-trash.svg'
-import { deleteTask } from "../../../../../../store/actions";
+import { deleteTask, editProject, editUser } from "../../../../../../store/actions";
 
 const DeleteDialog = (props) => {
 	const { open, handleClose, task } = props;
 	const dispatch = useDispatch();
 	const projects = useSelector(state => state.projects.projects);
+	const users = useSelector(state => state.users.users);
 	const project = task && projects.find( el => el.id === task.project.id);
+
+	const getUpdate = (task, data) => data.map( item => {
+		const index = item.tasks
+			.findIndex(el => el.id === task.id);
+
+		if (index !== -1){
+			item.tasks.splice(index, 1);
+		}
+		return item;
+	});
 
 	const handleDelete = () => {
 		dispatch(deleteTask(task));
+		dispatch(editProject(getUpdate(task, users))); // remove task from assign user
+		dispatch(editUser(getUpdate(task, projects))); // remove task from related project
+
 		handleClose();
 	};
 

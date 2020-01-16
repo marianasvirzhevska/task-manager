@@ -2,7 +2,8 @@ import {
 	INITIAL_TASKS,
 	ADD_TASK,
 	EDIT_TASK,
-	DELETE_TASK
+	DELETE_TASK,
+	UPDATE_TASKS
 } from '../constants'
 
 
@@ -54,6 +55,13 @@ const tasksReducer = ( state = TasksState, action) => {
 			return {
 				...state,
 				tasks: newTasks,
+				error: null
+			};
+
+		case UPDATE_TASKS:
+			return {
+				...state,
+				tasks: action.payload,
 				error: null
 			};
 
