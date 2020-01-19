@@ -17,7 +17,11 @@ const UserItem = (props) => {
 			<TableCell>{user.firstName} {user.lastName}</TableCell>
 			<TableCell>{user.email}</TableCell>
 			<TableCell>
-				<Link to={`dashboard/tasks:user${user.id}`}>{user.tasks && user.tasks.length}</Link>
+				{ (user.tasks && (user.tasks.length > 0)) ?
+					<Link to={`dashboard/tasks/user-${user.id}`}>{user.tasks && user.tasks.length}</Link>
+					:
+					'-'
+				}
 			</TableCell>
 			<TableCell className="actions">
 				<div className="actions">

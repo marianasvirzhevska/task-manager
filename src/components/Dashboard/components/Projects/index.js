@@ -26,6 +26,8 @@ const Projects = () => {
 	const [projectId, setProjectId] = useState(0);
 	const projects = useSelector(state => state.projects.projects);
 	const isAdmin = useSelector(state => state.auth.user.admin);
+	const [_projects, setProjects] = useState(projects);
+
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -40,11 +42,23 @@ const Projects = () => {
 		setEdit(!editDialog)
 	};
 
+	const getSearch = (list, searchString) => {
+		return list.filter(item => {
+			return Object.values(item)
+				.some(value => `${value}`.toLowerCase()
+					.includes(searchString.toLowerCase()));
+		});
+	};
+
+	const handleSearch = ({target}) => {
+		setProjects(getSearch(projects, target.value));
+	};
+
 	return(
 		<div className='dashboard-content'>
 			<AppBar  title="Projects">
 				<AppBarBefore>
-					<SearchField/>
+					<SearchField onChange={handleSearch}/>
 				</AppBarBefore>
 				{isAdmin &&
 					<AppBarAfter>
@@ -73,7 +87,7 @@ const Projects = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{projects && projects.map( project => {
+								{_projects && _projects.map( project => {
 									return <ProjectItem
 												key={project.id}
 												project={project}
@@ -83,6 +97,9 @@ const Projects = () => {
 								})}
 							</TableBody>
 						</Table>
+						{
+							_projects.length === 0 && <p className='no-results'>Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
+						}
 					</div>
 				</Paper>
 			</div>

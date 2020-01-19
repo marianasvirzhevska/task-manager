@@ -17,6 +17,22 @@ const DeleteDialog = (props) => {
 	const getTasks = (project) =>
 		tasks.filter(item => item.project.id !== project.id);
 
+	/**
+	 * const newTasks => tasks.filter(item => item.project.id !== project.id);
+	 *
+	 * const projectTaskIds = tasks
+	 * 		.filter(task => task.project.id === projectId)
+	 * 		.map(task => task.id); // [1, 5, 6, 8]
+	 *
+	 * ======
+	 *
+	 * users.forEach(user => {
+	 * 		user.tasks = user.tasks.filter(taskId => !projectTaskIds.includes(taskId))
+	 * });
+	 *
+	 */
+
+
 
 	//TODO
 	const getUsers = (_tasks) => {

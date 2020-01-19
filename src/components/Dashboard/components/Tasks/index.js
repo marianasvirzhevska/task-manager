@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -25,14 +25,24 @@ const Tasks = () => {
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [taskId, setTaskId] = useState(0);
+
 	const tasks = useSelector(state => state.tasks.tasks);
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
 	const isAdmin = useSelector(state => state.auth.user.admin);
 
+	const [searchQuery, setSearchQuery] = useState('');
+	const [searchResult, setSearchResult] = useState([]);
+
+	useEffect(() => {
+		const result = tasks.filter(task => new RegExp(searchQuery, 'i').test(task.title));
+		setSearchResult(result);
+	}, [searchQuery, tasks]);
+
 	const handleCreate = () => {
 		setCreate(!createDialog);
 	};
+
 	const handleDelete = (id) => {
 		setTaskId(id);
 		setDelete(!deleteDialog)
@@ -43,12 +53,16 @@ const Tasks = () => {
 		setEdit(!editDialog)
 	};
 
+	const handleSearch = ({target}) => {
+		setSearchQuery(target.value);
+	};
+
 	return(
 		<div className='dashboard-content'>
 			<AppBar title="Tasks">
 				<AppBarBefore>
 					<Filters handleFilter={() => {}}/>
-					<SearchField/>
+					<SearchField onChange={handleSearch}/>
 				</AppBarBefore>
 				{isAdmin &&
 					<AppBarAfter>
@@ -76,18 +90,29 @@ const Tasks = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{tasks && tasks.map( task => {
-									return <TaskItem
-										key={task.id}
-										task={task}
-										project={projects && projects.find(item => item.id === task.project.id)}
-										user={users && users.find(item => item.id === (task.user ? task.user.id : 0))}
-										handleDelete={() => handleDelete(task.id)}
-										handleEdit={() => handleEdit(task.id)}
-									/>
-								})}
+								{
+									searchResult.map( task => {
+										return <TaskItem
+											key={task.id}
+											task={task}
+											project={projects && projects.find(item => item.id === task.project.id)}
+											user={users && users.find(item => item.id === (task.user ? task.user.id : 0))}
+											handleDelete={() => handleDelete(task.id)}
+											handleEdit={() => handleEdit(task.id)}
+										/>
+									})
+								}
 							</TableBody>
 						</Table>
+						{
+							searchResult.length
+								? null
+								: (
+									<p className='no-results'>
+										Sorry, but nothing matched your search terms. Please try again with some different keywords.
+									</p>
+								)
+						}
 					</div>
 				</Paper>
 			</div>

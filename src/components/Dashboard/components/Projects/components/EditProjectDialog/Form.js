@@ -38,8 +38,7 @@ let Form = ({ invalid, submitting, handleClose, project }) => {
 				<Field component={Input}
 				   type="text"
 				   name="projectAv"
-				   label="Enter Project short form
-					(1-2 letters)"
+				   label="Enter Project short form (1-2 letters)"
 				   placeholder="Please enter"
 				/>
 			</div>

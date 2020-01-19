@@ -79,7 +79,7 @@ Filters.propTypes = {
 	handleFilter: PropTypes.func.isRequired
 };
 
-export const SearchField = () => {
+export const SearchField = ({onChange}) => {
   const classes = useStyles();
 
   return (
@@ -90,6 +90,7 @@ export const SearchField = () => {
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
+		onChange={onChange}
         inputProps={{ 'aria-label': 'search' }}
       />
       <div className={classes.searchIcon}>
@@ -98,6 +99,11 @@ export const SearchField = () => {
     </div>
   )
 };
+
+SearchField.propTypes = {
+	onChange: PropTypes.func.isRequired
+};
+
 
 
 const useStyles = makeStyles(theme => ({

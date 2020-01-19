@@ -26,6 +26,8 @@ const Users = () => {
 	const [editDialog, setEdit] = useState(false);
 	const [userId, setUserId] = useState(0);
 	const users = useSelector(state => state.users.users);
+	const [_users, setUsers] = useState(users);
+
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -40,11 +42,23 @@ const Users = () => {
 		setEdit(!editDialog)
 	};
 
+	const getSearch = (list, searchString) => {
+		return list.filter(item => {
+			return Object.values(item)
+				.some(value => `${value}`.toLowerCase()
+					.includes(searchString.toLowerCase()));
+		});
+	};
+
+	const handleSearch = ({target}) => {
+		setUsers(getSearch(users, target.value));
+	};
+
 	return(
 		<div className='dashboard-content'>
 			<AppBar title="Users">
 				<AppBarBefore>
-					<SearchField/>
+					<SearchField onChange={handleSearch}/>
 				</AppBarBefore>
 				<AppBarAfter>
 					<Button size='small'
@@ -71,7 +85,7 @@ const Users = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{users && users.map( user => {
+								{_users && _users.map( user => {
 									return <UserItem
 										key={user.id}
 										user={user}
@@ -81,6 +95,9 @@ const Users = () => {
 								})}
 							</TableBody>
 						</Table>
+						{
+							_users.length === 0 && <p className='no-results'>Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
+						}
 					</div>
 				</Paper>
 			</div>
