@@ -13,22 +13,6 @@ let Form = (props) => {
 	const formValues = useSelector(state => getFormValues('addUser')(state));
 	const dispatch = useDispatch();
 
-	const getUniqueID = (users) => {
-		const getRandom = (min, max) =>{
-			return Math.ceil(Math.random() * (max - min) + min);
-		};
-
-		function generateId(){
-			let id = getRandom(0, users.length + 1);
-			if (users && users.find( user => user.id === id)){
-				id = generateId();
-			} else
-				return id;
-		}
-
-		return generateId();
-	};
-
 	const handleCreate = (e) => {
 		e.preventDefault();
 		let user = { ...formValues };

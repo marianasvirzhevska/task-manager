@@ -1,6 +1,6 @@
 export const users = [
 	{id: 1, firstName: 'Mark', lastName: 'Evans', email: 'mark.evans@mail.com', password: '111111', admin: false, companyName: 'Dionis', tasks: [{id:1}]},
-	{id: 2, firstName: 'Adam', lastName: 'Tailor', email: 'adam.tailor@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:2}]},
+	{id: 2, firstName: 'Adam', lastName: 'Tailor', email: 'adam.tailor@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:2}, {id:8}]},
 	{id: 3, firstName: 'Sarah', lastName: 'Rodgers', email: 'sarah.rodgers@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:3}]},
 	{id: 4, firstName: 'Oliver', lastName: 'Green', email: 'oliver.green@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: []},
 	{id: 5, firstName: 'Kate', lastName: 'Adams', email: 'kate.adams@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:4}]},
@@ -52,7 +52,7 @@ export const tasks = [
 	},
 	{
 		id: 6,
-		title: 'Create layout',
+		title: 'Filters on Dashboard',
 		description: 'Develop markup according to the customer design',
 		status: 'Pending',
 		project: {id: 4},
@@ -60,11 +60,19 @@ export const tasks = [
 	},
 	{
 		id:7,
-		title: 'Create layout',
+		title: 'Correct Forms',
 		description: 'Develop markup according to the customer design',
 		status: 'Pending',
 		project: {id: 4},
 		user: {id: 8}
+	},
+	{
+		id:8,
+		title: 'Improve page loading',
+		description: 'Develop markup according to the customer design',
+		status: 'Pending',
+		project: {id: 4},
+		user: {id: 2}
 	}
 ];
 
@@ -95,7 +103,7 @@ export const projects = [
 		projectTitle: 'Random Name',
 		projectAv: 'RN',
 		projectLink: 'https://react-redux.js.org/next/api/hooks',
-		tasks: [{id:6}, {id:7}]
+		tasks: [{id:6}, {id:7}, {id: 8}]
 	}
 ];
 

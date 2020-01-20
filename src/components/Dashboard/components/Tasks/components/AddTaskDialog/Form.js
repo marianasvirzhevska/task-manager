@@ -35,7 +35,7 @@ let Form = ({invalid, submitting, pristine, handleClose}) => {
 	const updateUser = (task) => {
 		const userId = task.user.id;
 		const user = {...users.find(item => item.id === userId)};
-		user.tasks = [...user.tasks, task.id];
+		user.tasks = [...user.tasks, { id: task.id }];
 
 		return user;
 	};

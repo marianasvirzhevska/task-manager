@@ -19,11 +19,13 @@ import UserItem from './components/UserItem'
 import AddUserDialog from './components/AddUserDialog'
 import EditUserDialog   from './components/EditUserDialog'
 import DeleteDialog from './components/DeleteDialog'
+import UserDetails from './components/UserDetails'
 
 const Users = () => {
 	const [createDialog, setCreate] = useState(false);
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
+	const [detailsDialog, setDetails] = useState(false);
 	const [userId, setUserId] = useState(0);
 
 	const users = useSelector(state => state.users.users);
@@ -59,6 +61,11 @@ const Users = () => {
 
 	const clearSearch = () => {
 		setSearchQuery('');
+	};
+
+	const viewDetails = (id) => {
+		setUserId(id);
+		setDetails(!detailsDialog);
 	};
 
 	return(
@@ -102,6 +109,7 @@ const Users = () => {
 										user={user}
 										handleDelete={() => handleDelete(user.id)}
 										handleEdit={() => handleEdit(user.id)}
+										handleView={() => viewDetails(user.id)}
 									/>
 								})}
 							</TableBody>
@@ -131,6 +139,11 @@ const Users = () => {
 			<DeleteDialog
 				open={deleteDialog}
 				handleClose={() => handleDelete(0)}
+				user={users && users.find( user => user.id === userId )}
+			/>
+			<UserDetails
+				open={detailsDialog}
+				handleClose={() => viewDetails(0)}
 				user={users && users.find( user => user.id === userId )}
 			/>
 		</div>

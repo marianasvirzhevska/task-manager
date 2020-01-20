@@ -169,6 +169,9 @@ input:-webkit-autofill
   padding: 20px 0
   border-bottom: 1px solid rgba(0, 0, 0, 0.1)
   border-top: 1px solid rgba(0, 0, 0, 0.1)
+  &.details
+    border-top: none
+
   .user-img
     width: 44px
     min-width: 44px
@@ -181,16 +184,18 @@ input:-webkit-autofill
     padding-left: 8px
     color: $black
     font-weight: 600
-    font-size: $tableFont
+    font-size: $mainFont
     span
       color: #666666
       font-weight: 400
   .task-details
     margin: 0
+    width: 100%
     padding-left: 8px
     color: $black
     font-weight: 400
-    font-size: $tableFont
+    font-size: $mainFont
+    position: relative
     h4
       margin: 10px 0
     p
@@ -202,6 +207,24 @@ input:-webkit-autofill
     .email
       margin: 0
       color: $greyFont
+    .role
+      top: 0
+      right: 0
+      margin: 0
+      position: absolute
+      color: $secondGreyFont
+      .admin
+        color: $blue
+        font-weight: 500
+
+.user-info-title
+  font-weight: 500
+  font-size: $menuFont
+
+.user-tasks
+  max-height: 240px
+  overflow-y: auto
+  margin-bottom: 30px
 
 .scroll-container
   overflow: auto
@@ -280,3 +303,21 @@ input:-webkit-autofill
     font-size: $menuFont
   &-action
     text-align: center
+
+
+.user-task
+  width: 100%
+  padding: 2px 0
+  border-bottom: 1px solid rgba(0,0,0,0.05)
+  a
+    width: 100%
+    @include flex
+    justify-content: space-between
+    text-decoration: none
+    color: $black
+    .main
+      @include flex
+      align-items: center
+      p
+        padding-left: 8px
+

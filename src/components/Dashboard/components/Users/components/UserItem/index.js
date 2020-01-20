@@ -10,7 +10,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 
 
 const UserItem = (props) => {
-	const { user, handleEdit, handleDelete } = props;
+	const { user, handleEdit, handleDelete, handleView } = props;
 
 	return(
 		<TableRow>
@@ -26,7 +26,7 @@ const UserItem = (props) => {
 			<TableCell className="actions">
 				<div className="actions">
 					<IconButton
-						onClick={() => {}}>
+						onClick={handleView}>
 						<VisibilityIcon size="small"/>
 					</IconButton>
 					<IconButton
@@ -46,7 +46,8 @@ const UserItem = (props) => {
 UserItem.propTypes = {
 	user: PropTypes.object.isRequired,
 	handleEdit: PropTypes.func.isRequired,
-	handleDelete: PropTypes.func.isRequired
+	handleDelete: PropTypes.func.isRequired,
+	handleView:  PropTypes.func.isRequired,
 };
 
 export default UserItem;
