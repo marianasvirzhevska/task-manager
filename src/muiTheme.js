@@ -12,6 +12,8 @@ export const colors = {
 	lightGreyFont: '#a4a6aa',
 	greyBg: '#f3f4f7',
 	red: '#ff7272',
+	borderColor: '#cfcfe1',
+	blueBtn: '#00adc7',
 };
 
 export const fontSizes = {

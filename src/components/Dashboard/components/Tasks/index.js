@@ -19,11 +19,13 @@ import TaskItem from './components/TaskItem'
 import AddTaskDialog from './components/AddTaskDialog'
 import EditTaskDialog from './components/EditTaskDialog'
 import DeleteDialog from './components/DeleteDialog'
+import FiltersDialog from './components/FiltersDialog'
 
 const Tasks = () => {
 	const [createDialog, setCreate] = useState(false);
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
+	const [filterDialog, setFilter] = useState(false);
 	const [taskId, setTaskId] = useState(0);
 
 	const tasks = useSelector(state => state.tasks.tasks);
@@ -33,11 +35,43 @@ const Tasks = () => {
 
 	const [searchQuery, setSearchQuery] = useState('');
 	const [searchResult, setSearchResult] = useState([]);
+	const [filterQuery, setFilterQuery] = useState({});
 
 	useEffect(() => {
-		const result = tasks.filter(task => new RegExp(searchQuery, 'i').test(task.title));
+		const filtersObj = (obj) => {
+			switch (obj.propKey){
+				case 'Projects':
+					return {
+						type: 'project',
+						value: obj.propValue
+					};
+				case 'Users':
+					return {
+						type: 'user',
+						value: obj.propValue
+					};
+				case 'Task status':
+					return {
+						type: 'status',
+						value: obj.propValue
+					};
+				default:
+					return null
+			}
+		};
+
+		const filteredList = tasks.filter(task => {
+			const filterObj = filtersObj(filterQuery) || {};
+
+			if (typeof (task[`${filterObj.type}`]) !== "object") {
+				return task[`${filterObj.type}`] === filterObj.value;
+			}
+			return task[`${filterObj.type}`].id === filterObj.value;
+		});
+
+		const result = filteredList.filter(task => new RegExp(searchQuery, 'i').test(task.title));
 		setSearchResult(result);
-	}, [searchQuery, tasks]);
+	}, [searchQuery, tasks, filterQuery]);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -53,16 +87,31 @@ const Tasks = () => {
 		setEdit(!editDialog)
 	};
 
+	const handleFilter = () =>
+		setFilter(!filterDialog);
+
+	const applyFilters = (value) => {
+		setFilterQuery(value);
+	};
+
 	const handleSearch = ({target}) => {
 		setSearchQuery(target.value);
+	};
+
+	const clearSearch = () => {
+		setSearchQuery('');
 	};
 
 	return(
 		<div className='dashboard-content'>
 			<AppBar title="Tasks">
 				<AppBarBefore>
-					<Filters handleFilter={() => {}}/>
-					<SearchField onChange={handleSearch}/>
+					<Filters handleFilter={handleFilter}/>
+					<SearchField
+						value={searchQuery}
+						onChange={handleSearch}
+						clearSearch={clearSearch}
+					/>
 				</AppBarBefore>
 				{isAdmin &&
 					<AppBarAfter>
@@ -129,6 +178,12 @@ const Tasks = () => {
 				open={deleteDialog}
 				handleClose={() => handleDelete(0)}
 				task={tasks && tasks.find( task => task.id === taskId )}
+			/>
+			<FiltersDialog
+				open={filterDialog}
+				filterQuery={filterQuery}
+				handleClose={handleFilter}
+				handleApply={applyFilters}
 			/>
 		</div>
 	)

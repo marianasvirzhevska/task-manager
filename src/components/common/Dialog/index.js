@@ -7,9 +7,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core'
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded'
-import ResetIcon from '@material-ui/icons/SettingsBackupRestoreRounded'
 import PropTypes from 'prop-types'
 import { colors, fontSizes } from '../../../muiTheme'
+import resetIcon from '../../../assets/icons/ico-reset.svg'
 
 const styles = () => ({
 	root: {
@@ -42,9 +42,11 @@ const styles = () => ({
 			padding: 6,
 			position: 'absolute',
 			border: 'none',
-			'& > span > svg':{
-				width: 15,
-				height: 15,
+			'& > span > span':{
+				fontSize: fontSizes.main,
+				color: colors.label,
+				fontWeight: 400,
+				paddingLeft: 8
 			},
 			'&:hover':{
 				background: 'transparent'
@@ -59,7 +61,7 @@ export const AppDialogTitle = withStyles(styles)(props => {
 		<MuiDialogTitle disableTypography className={classes.root} {...other}>
 			{handleReset ? (
 				<Button aria-label="reset" className={classes.resetButton} onClick={handleReset}>
-					<ResetIcon size="small"/>
+					<img src={resetIcon} alt="icon"/>
 					<span>Reset</span>
 				</Button>
 			) : null}

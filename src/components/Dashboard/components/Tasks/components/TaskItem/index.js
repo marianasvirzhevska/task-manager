@@ -21,9 +21,7 @@ const TaskItem = (props) => {
 		<TableRow>
 			<TableCell>{id}</TableCell>
 			<TableCell>
-				<Link to={`/dashboard/project/${project.id}`}>
-					<Avatar>{project.projectAv}</Avatar>
-				</Link>
+				<Avatar>{project.projectAv}</Avatar>
 			</TableCell>
 			<TableCell>{title}</TableCell>
 			<TableCell>{user ? user.firstName + ' ' + user.lastName : '-'}</TableCell>

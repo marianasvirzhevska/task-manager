@@ -3,6 +3,7 @@ import { IconButton, InputBase} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles/index'
 import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded'
 import PropTypes from 'prop-types'
 import { colors, fontSizes } from '../../../../muiTheme'
 
@@ -65,11 +66,10 @@ export const Filters = (props) => {
 
   return (
     <div className={classes.filters}>
-      {/* filters component will be developed after the main Dashboard layout */}
       <IconButton
         onClick={handleFilter}
         className={classes.filterIcon}>
-        <FilterListRoundedIcon fontSize="small"/>
+          <FilterListRoundedIcon fontSize="small"/>
       </IconButton>
     </div>
   )
@@ -79,7 +79,7 @@ Filters.propTypes = {
 	handleFilter: PropTypes.func.isRequired
 };
 
-export const SearchField = ({onChange}) => {
+export const SearchField = ({onChange, clearSearch, value}) => {
   const classes = useStyles();
 
   return (
@@ -90,18 +90,28 @@ export const SearchField = ({onChange}) => {
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
+        value={value}
 		onChange={onChange}
         inputProps={{ 'aria-label': 'search' }}
       />
-      <div className={classes.searchIcon}>
-        <SearchRoundedIcon fontSize="small"/>
-      </div>
+        {
+			!!value ?
+				<IconButton aria-label="close" className={classes.clearBtn} onClick={clearSearch}>
+					<CloseRoundedIcon size="small"/>
+				</IconButton>
+            :
+				<div className={classes.searchIcon}>
+					<SearchRoundedIcon fontSize="small"/>
+				</div>
+        }
     </div>
   )
 };
 
 SearchField.propTypes = {
-	onChange: PropTypes.func.isRequired
+	onChange: PropTypes.func.isRequired,
+	clearSearch: PropTypes.func.isRequired,
+	value: PropTypes.string
 };
 
 
@@ -191,6 +201,22 @@ const useStyles = makeStyles(theme => ({
       color: colors.label,
       display: 'block',
       marginTop: -3
+    },
+    clearBtn:{
+		right: 0,
+        zIndex: 1,
+		height: '100%',
+		position: 'absolute',
+        padding: '5px 8px',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		color: '#999999',
+        fontSize: 12,
+        '& > span > svg':{
+		    width: 18,
+            height: 18,
+        }
     }
   }
 ));

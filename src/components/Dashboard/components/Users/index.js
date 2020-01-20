@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -25,8 +25,19 @@ const Users = () => {
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [userId, setUserId] = useState(0);
+
 	const users = useSelector(state => state.users.users);
-	const [_users, setUsers] = useState(users);
+
+	const [searchQuery, setSearchQuery] = useState('');
+	const [searchResult, setSearchResult] = useState([]);
+
+	useEffect(() => {
+		const reg = new RegExp(searchQuery, 'i');
+		const result = users.filter(user => {
+			return reg.test(user.firstName) || reg.test(user.lastName) || reg.test(user.email)
+		});
+		setSearchResult(result);
+	}, [searchQuery, users]);
 
 
 	const handleCreate = () => {
@@ -42,23 +53,23 @@ const Users = () => {
 		setEdit(!editDialog)
 	};
 
-	const getSearch = (list, searchString) => {
-		return list.filter(item => {
-			return Object.values(item)
-				.some(value => `${value}`.toLowerCase()
-					.includes(searchString.toLowerCase()));
-		});
+	const handleSearch = ({target}) => {
+		setSearchQuery(target.value);
 	};
 
-	const handleSearch = ({target}) => {
-		setUsers(getSearch(users, target.value));
+	const clearSearch = () => {
+		setSearchQuery('');
 	};
 
 	return(
 		<div className='dashboard-content'>
 			<AppBar title="Users">
 				<AppBarBefore>
-					<SearchField onChange={handleSearch}/>
+					<SearchField
+						value={searchQuery}
+						onChange={handleSearch}
+						clearSearch={clearSearch}
+					/>
 				</AppBarBefore>
 				<AppBarAfter>
 					<Button size='small'
@@ -85,7 +96,7 @@ const Users = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{_users && _users.map( user => {
+								{searchResult.map( user => {
 									return <UserItem
 										key={user.id}
 										user={user}
@@ -96,7 +107,13 @@ const Users = () => {
 							</TableBody>
 						</Table>
 						{
-							_users.length === 0 && <p className='no-results'>Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
+							searchResult.length
+								? null
+								: (
+									<p className='no-results'>
+										Sorry, but nothing matched your search terms. Please try again with some different keywords.
+									</p>
+								)
 						}
 					</div>
 				</Paper>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -24,10 +24,17 @@ const Projects = () => {
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [projectId, setProjectId] = useState(0);
+
 	const projects = useSelector(state => state.projects.projects);
 	const isAdmin = useSelector(state => state.auth.user.admin);
-	const [_projects, setProjects] = useState(projects);
 
+	const [searchQuery, setSearchQuery] = useState('');
+	const [searchResult, setSearchResult] = useState([]);
+
+	useEffect(() => {
+		const result = projects.filter(project => new RegExp(searchQuery, 'i').test(project.projectTitle));
+		setSearchResult(result);
+	}, [searchQuery, projects]);
 
 	const handleCreate = () => {
 		setCreate(!createDialog);
@@ -42,23 +49,23 @@ const Projects = () => {
 		setEdit(!editDialog)
 	};
 
-	const getSearch = (list, searchString) => {
-		return list.filter(item => {
-			return Object.values(item)
-				.some(value => `${value}`.toLowerCase()
-					.includes(searchString.toLowerCase()));
-		});
+	const handleSearch = ({target}) => {
+		setSearchQuery(target.value);
 	};
 
-	const handleSearch = ({target}) => {
-		setProjects(getSearch(projects, target.value));
+	const clearSearch = () => {
+		setSearchQuery('');
 	};
+
 
 	return(
 		<div className='dashboard-content'>
 			<AppBar  title="Projects">
 				<AppBarBefore>
-					<SearchField onChange={handleSearch}/>
+					<SearchField
+						value={searchQuery}
+						onChange={handleSearch}
+						clearSearch={clearSearch}/>
 				</AppBarBefore>
 				{isAdmin &&
 					<AppBarAfter>
@@ -87,7 +94,8 @@ const Projects = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{_projects && _projects.map( project => {
+								{
+									searchResult.map( project => {
 									return <ProjectItem
 												key={project.id}
 												project={project}
@@ -98,7 +106,13 @@ const Projects = () => {
 							</TableBody>
 						</Table>
 						{
-							_projects.length === 0 && <p className='no-results'>Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
+							searchResult.length
+								? null
+								: (
+									<p className='no-results'>
+										Sorry, but nothing matched your search terms. Please try again with some different keywords.
+									</p>
+								)
 						}
 					</div>
 				</Paper>

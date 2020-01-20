@@ -17,6 +17,7 @@ let Form = ({ invalid, submitting, pristine, handleClose, projects }) => {
 		e.preventDefault();
 		let project = {...formValues};
 		project.id = projects.length + 2;
+		project.tasks = [];
 
 		dispatch(addProject(project));
 		handleClose();
