@@ -6,7 +6,8 @@ export const users = [
 	{id: 5, firstName: 'Kate', lastName: 'Adams', email: 'kate.adams@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:4}]},
 	{id: 6, firstName: 'Robin', lastName: 'Willson', email: 'robin.wilson@mail.com', password: 'qwerty', admin: false, companyName: 'Dionis', tasks: [{id:5}]},
 	{id: 7, firstName: 'Timoti', lastName: 'Brown', email: 'timoti.brown@mail.com', password: 'qwerty', admin: true, companyName: 'Dionis', tasks: [{id:6}]},
-	{id: 8, firstName: 'Jerom', lastName: 'Brown', email: 'admin@mail.com', password: 'admin1', admin: true, companyName: 'Dionis', tasks: [{id:7}]}
+	{id: 8, firstName: 'Jerom', lastName: 'Brown', email: 'admin@mail.com', password: 'admin1', admin: true, companyName: 'Dionis', tasks: [{id:7}]},
+	{id: 9, firstName: 'Robert', lastName: 'Nilson', email: 'user.user@mail.com', admin: false, companyName: 'Dionis'},
 ];
 
 export const tasks = [

@@ -10,7 +10,6 @@ const AuthState = {
 	// auth: false,
 	user: {id: 8, firstName: 'Jerom', lastName: 'Brown', email: 'admin@mail.com', password: 'admin1', admin: true, companyName: 'Dionis', tasks: [{id:13}]},
 	auth: true,
-
 	error: null
 };
 

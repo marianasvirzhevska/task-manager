@@ -1,49 +1,81 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { useDispatch } from "react-redux"
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, getFormValues } from 'redux-form'
+import { connect, useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { login } from '../../store/actions'
+import { login, editUser } from '../../store/actions'
 import trim from '../../utils/trim'
 import setUser from '../../utils/setUser'
 import Input from '../common/Input'
-import useLoginForm from "./useLogin"
 
 let LoginForm = (props) => {
 	const { invalid, submitting, pristine } = props;
 	const dispatch = useDispatch();
 	const history = useHistory();
+
 	const users = props.users.users;
+	const formValues = useSelector(state => getFormValues('login')(state));
 
-	const getAuthUser = (users, email) => {
-		return users && users.find( user => user.email === email);
-	};
-
-	const loginUser = (formData) => {
-		const user = getAuthUser(users, formData.email);
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const user = users && users.find( user => user.email === formValues.email);
 
 		setUser(user);
 		dispatch(login(user));
+
+		if(newUser){
+			user.password = formValues.password;
+			dispatch(editUser(user));
+		}
+
 		history.push("/dashboard");
 	};
 
-	const { inputs, handleInput, handleSubmit } = useLoginForm(loginUser);
+	const isNewUser = () => {
+		if(formValues) {
+			const user = users && users.find(user => user.email === formValues.email);
+			if (user && !user.password) {
+				return user;
+			}
+		}
+	};
+
+	const newUser = isNewUser();
 
 	return (
 		<div className="form-control">
+			{
+				newUser ?
+					<h3 className='form-subtitle'>
+						Hi, <span>{isNewUser().firstName}</span>, to get access to your account,<br/>
+						please create your password.</h3>
+					: null
+			}
 			<form className="auth-form loginForm" onSubmit={handleSubmit}>
-				<Field component={Input} name="email" type="email"
+				<Field component={Input}
+					   name="email"
+					   type="email"
 					   fullWidth
-					   onChange={handleInput} value={inputs.email}
+					   onChange={isNewUser}
 					   label='Enter your Email'
 				/>
-				<Field component={Input} name="password" type="password"
+				<Field component={Input}
+					   name="password"
+					   type="password"
 					   fullWidth
-					   label='Enter your password'
-					   onChange={handleInput} value={inputs.password}
-
+					   label='Enter password'
 				/>
+				{
+					newUser ?
+						<Field component={Input}
+							   name="passwordConfirm"
+							   type="password"
+							   fullWidth
+							   label='Repeat password'
+						/>
+						: null
+				}
 				<div className="form-btn">
 					<Button
 						disabled={invalid|| submitting || pristine}
@@ -73,6 +105,18 @@ const validate = (_values, props) => {
 		errors.password = 'Password field cannot be blank'
 	} else if (values.password.length < 6) {
 		errors.password = 'Password should contain at least 6 characters'
+	}
+
+	if (isNewUser(values,users)){
+		if (!values.passwordConfirm) {
+			errors.passwordConfirm = 'Confirm your password'
+		} else if (values.passwordConfirm.length < 6) {
+			errors.passwordConfirm = 'Confirm your password correctly'
+		}
+
+		if (values.passwordConfirm && values.password && values.passwordConfirm !== values.password) {
+			errors.passwordConfirm = 'Confirm your password correctly'
+		}
 	} else if(!checkPwd(values.password, values.email, users)) {
 		errors.password='Incorrect password';
 	}
@@ -95,10 +139,20 @@ const checkPwd = (pass, email, users) => {
 	return (false);
 };
 
+const isNewUser = (values, users) => {
+	if(values) {
+		const user = users && users.find(user => user.email === values.email);
+		if (user && !user.password) {
+			return true;
+		}
+	}
+};
 
 LoginForm = reduxForm({
 	form: 'login',
 	validate
 })(LoginForm);
 
-export default LoginForm;
+export default connect(state => ({
+	values: getFormValues("login")(state)
+}))(LoginForm);
