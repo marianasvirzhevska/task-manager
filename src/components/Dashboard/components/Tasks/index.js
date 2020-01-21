@@ -7,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button'
 import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 
 import {
 	AppBar,
@@ -33,9 +34,22 @@ const Tasks = () => {
 	const projects = useSelector(state => state.projects.projects);
 	const isAdmin = useSelector(state => state.auth.user.admin);
 
+	const useQuery = () =>
+		new URLSearchParams(useLocation().search);
+	const query = useQuery();
+
+	const getURLQuery = () => {
+		if(!query.get('type')){
+			return {};
+		} else return {
+			propKey: query.get('type'),
+			propValue: parseInt(query.get('id'))
+		}
+	};
+
 	const [searchQuery, setSearchQuery] = useState('');
 	const [searchResult, setSearchResult] = useState([]);
-	const [filterQuery, setFilterQuery] = useState({});
+	const [filterQuery, setFilterQuery] = useState(getURLQuery());
 
 	useEffect(() => {
 		const filtersObj = (obj) => {
@@ -73,9 +87,7 @@ const Tasks = () => {
 		setSearchResult(result);
 	}, [searchQuery, tasks, filterQuery]);
 
-	const handleCreate = () => {
-		setCreate(!createDialog);
-	};
+	const handleCreate = () => setCreate(!createDialog);
 
 	const handleDelete = (id) => {
 		setTaskId(id);
@@ -87,8 +99,7 @@ const Tasks = () => {
 		setEdit(!editDialog)
 	};
 
-	const handleFilter = () =>
-		setFilter(!filterDialog);
+	const handleFilter = () => setFilter(!filterDialog);
 
 	const applyFilters = (value) => {
 		setFilterQuery(value);
@@ -98,9 +109,7 @@ const Tasks = () => {
 		setSearchQuery(target.value);
 	};
 
-	const clearSearch = () => {
-		setSearchQuery('');
-	};
+	const clearSearch = () => setSearchQuery('');
 
 	return(
 		<div className='dashboard-content'>

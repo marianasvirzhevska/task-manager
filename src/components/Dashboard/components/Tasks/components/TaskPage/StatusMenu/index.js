@@ -5,6 +5,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import PropTypes from 'prop-types'
+
 import StatusLabel from '../../../../../../common/StatusLabel'
 import {colors} from "../../../../../../../muiTheme";
 
@@ -51,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 
 const options = ['InProgress', 'Pending', 'Done'];
 
-const StatusMenu = ({status}) => {
+const StatusMenu = ({status, updateStatus}) => {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const current = options.findIndex(el => el === status);
@@ -62,7 +64,11 @@ const StatusMenu = ({status}) => {
 	};
 
 	const handleMenuItemClick = (event, index) => {
+		const status = options[index];
+
 		setSelectedIndex(index);
+		updateStatus(status);
+
 		setAnchorEl(null);
 	};
 
@@ -115,6 +121,11 @@ const StatusMenu = ({status}) => {
 			</Menu>
 		</div>
 	)
+};
+
+StatusMenu.propTypes = {
+	status: PropTypes.string.isRequired,
+	updateStatus: PropTypes.func
 };
 
 export default StatusMenu;

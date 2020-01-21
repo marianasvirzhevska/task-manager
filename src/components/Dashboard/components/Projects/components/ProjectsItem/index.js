@@ -24,7 +24,7 @@ const ProjectItem = (props) => {
 			</TableCell>
 			<TableCell>{projectLink}</TableCell>
 			<TableCell>
-				<Link to={`/dashboard/tasks:${id}`}>{tasks.length}</Link>
+				<Link to={`/dashboard/tasks?type=Projects&id=${id}`}>{tasks.length}</Link>
 			</TableCell>
 			{isAdmin &&
 				<TableCell className="actions">

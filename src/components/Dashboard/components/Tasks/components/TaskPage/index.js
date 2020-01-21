@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useRouteMatch } from 'react-router'
 import Paper from '@material-ui/core/Paper'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
+import { editTask } from "../../../../../../store/actions"
 import back from '../../../../../../assets/icons/ico-back.svg'
 import StatusMenu from './StatusMenu'
 import {
@@ -13,6 +14,7 @@ import {
 
 const TaskPage = () => {
 	const { params } = useRouteMatch();
+	const dispatch = useDispatch();
 	const tasks = useSelector(state => state.tasks.tasks);
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
@@ -21,6 +23,13 @@ const TaskPage = () => {
 	const task = tasks.find(task => task.id === id);
 	const user = users.find(user => user.id === task.user.id);
 	const project = projects.find(project => project.id === task.project.id);
+
+	const updateStatus = (status) => {
+		const _task = {...task};
+		_task.status = status;
+
+		dispatch(editTask(_task));
+	};
 
 	return (
 		<div className='dashboard-content'>
@@ -42,7 +51,10 @@ const TaskPage = () => {
 								<div className='task-title-row'>
 									<h2 className='forms-subtitle'>{id} {task.title}</h2>
 									<div className='task-title-menu'>
-										<StatusMenu status={task.status}/>
+										<StatusMenu
+											status={task.status}
+											updateStatus={updateStatus}
+										/>
 									</div>
 								</div>
 								<div className='task-title-info'>

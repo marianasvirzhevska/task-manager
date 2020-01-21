@@ -18,7 +18,7 @@ const UserItem = (props) => {
 			<TableCell>{user.email}</TableCell>
 			<TableCell>
 				{ (user.tasks && (user.tasks.length > 0)) ?
-					<Link to={`dashboard/tasks/user-${user.id}`}>{user.tasks && user.tasks.length}</Link>
+					<Link to={`/dashboard/tasks?type=Users&id=${user.id}`}>{user.tasks && user.tasks.length}</Link>
 					:
 					'-'
 				}

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
+import { useRouteMatch } from 'react-router'
 
 import {
 	AppDialog,
@@ -19,6 +21,9 @@ let FiltersDialog = (props) => {
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
 
+	const history = useHistory();
+	const { path } = useRouteMatch();
+
 	const handleSubmit = () => {
 		const query = {
 			propKey: filterType,
@@ -26,7 +31,13 @@ let FiltersDialog = (props) => {
 		};
 
 		handleApply(query);
-		handleClose()
+		handleClose();
+
+		if(query.propValue){
+			history.push(`${path}?type=${query.propKey}&id=${query.propValue}`);
+		} else {
+			history.push('/dashboard/tasks');
+		}
 	};
 
 	const handleFilterType = (value) => {

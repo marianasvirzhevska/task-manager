@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f18e7b0c-0181-4e2d-a6e0-eae173159656" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserDetails/TaskItem/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserDetails/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/logo-email.svg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/AddTaskDialog/Form.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/AddTaskDialog/Form.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/AddUserDialog/Form.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/AddUserDialog/Form.js" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="$PROJECT_DIR$/public/favicon.ico" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" afterPath="$PROJECT_DIR$/public/logo192.png" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" afterPath="$PROJECT_DIR$/public/logo512.png" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" afterPath="$PROJECT_DIR$/public/manifest.json" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/components/Users/index.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/components/Users/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/styles/main.sass" afterPath="$PROJECT_DIR$/src/styles/main.sass" />
-      <change beforePath="$PROJECT_DIR$/src/utils/getStore.js" afterPath="$PROJECT_DIR$/src/utils/getStore.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,75 +28,109 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Form.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/AddTaskDialog/Form.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="699">
-              <caret line="55" column="60" lean-forward="true" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-                <element signature="e#1411#1607#0" expanded="false" />
-                <marker date="1579551892682" expanded="true" signature="1943:2952" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="1975:2118" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2005:2108" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2150:2536" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2184:2341" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2197:2330" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2375:2526" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2568:2750" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2598:2740" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2785:2942" ph="..." />
-                <marker date="1579551892682" expanded="true" signature="2798:2852" ph="..." />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Users/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-                <element signature="e#1643#1687#0" expanded="false" />
-                <element signature="e#1726#1762#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Form.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/EditTaskDialog/Form.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
-                <element signature="e#716#1095#0" expanded="false" />
-                <element signature="e#1914#2006#0" expanded="false" />
-                <element signature="e#2059#2138#0" expanded="false" />
-                <element signature="e#2154#3215#0" expanded="false" />
-                <element signature="n#!!block;n#validate#0" expanded="false" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="525">
+              <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#1835#2175#0" expanded="false" />
+                <element signature="e#2222#2461#0" expanded="false" />
+                <element signature="e#2711#2759#0" expanded="false" />
+                <element signature="e#2790#2834#0" expanded="false" />
+                <element signature="e#2993#3029#0" expanded="false" />
+                <marker date="1579604577691" expanded="true" signature="3125:5264" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3151:3570" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3170:3348" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3214:3333" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3233:3328" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3383:3551" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3411:3531" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3602:4742" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3628:4732" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3663:4719" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3677:4474" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3696:3985" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="3715:3965" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="4004:4459" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="4079:4447" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="4572:4689" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="4761:4821" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="4841:4882" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="4985:5028" ph="..." />
+                <marker date="1579604577691" expanded="true" signature="5134:5255" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.sass" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/main.sass">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="221" column="22" lean-forward="true" selection-start-line="221" selection-start-column="22" selection-end-line="221" selection-end-column="22" />
+            <state relative-caret-position="510">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#1154#1182#0" expanded="false" />
+                <element signature="e#1221#1410#0" expanded="false" />
+                <element signature="e#1442#1472#0" expanded="false" />
+                <element signature="e#1707#1789#0" expanded="false" />
+                <element signature="e#1841#1910#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Register/RegisterForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,6 +176,7 @@
       <find>CloseRoundedIcon</find>
       <find>999999</find>
       <find>searchIcon</find>
+      <find>handleReset</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -151,8 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/EditProjectDialog/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Register/RegisterForm.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/AddUserDialog/index.js" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/components/Terms/Terms.module.sass" />
@@ -162,14 +199,11 @@
         <option value="$PROJECT_DIR$/src/components/Terms/index.js" />
         <option value="$PROJECT_DIR$/src/components/Login/index.js" />
         <option value="$PROJECT_DIR$/src/components/Register/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/auth.js" />
         <option value="$PROJECT_DIR$/src/utils/removeItem.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.ts" />
         <option value="$PROJECT_DIR$/src/components/common/StatusLabel/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js" />
         <option value="$PROJECT_DIR$/src/store/actions/projects.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/projects.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/users.js" />
@@ -185,15 +219,12 @@
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/FiltersDialog.module.sass" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/Select.js" />
         <option value="$PROJECT_DIR$/src/components/common/Dialog/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/FilterSelect.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js" />
         <option value="$PROJECT_DIR$/src/muiTheme.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/AppBar/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskItem/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Projects/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserDetails/indes.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/index.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserDetails/TaskItem/TaskItem.module.sass" />
         <option value="$PROJECT_DIR$/src/utils/getStore.js" />
@@ -202,6 +233,14 @@
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/AddTaskDialog/Form.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/AddUserDialog/Form.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserDetails/index.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/manifest.json" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js" />
       </list>
     </option>
   </component>
@@ -259,21 +298,6 @@
               <item name="task-manager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="Input" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -291,7 +315,7 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="Projects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
@@ -300,8 +324,19 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="Projects" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Projects" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjectsItem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
@@ -311,8 +346,16 @@
               <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Tasks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="AddTaskDialog" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
@@ -353,42 +396,14 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="AddUserDialog" type="462c0819:PsiDirectoryNode" />
+              <item name="UserItem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="task-manager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Users" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="UserDetails" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Users" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="UserDetails" type="462c0819:PsiDirectoryNode" />
-              <item name="TaskItem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="task-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="task-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="Register" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -412,11 +427,11 @@
       <recent name="$PROJECT_DIR$/src/components/Dashboard/components" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/assets/icons" />
       <recent name="$PROJECT_DIR$/src/components/Terms/TermsContent" />
       <recent name="$PROJECT_DIR$/src/components/Terms" />
       <recent name="$PROJECT_DIR$/src/store/reducers" />
-      <recent name="$PROJECT_DIR$/src/store/actions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -447,15 +462,16 @@
       <workItem from="1577291002415" duration="971000" />
       <workItem from="1577366457133" duration="12353000" />
       <workItem from="1577702474795" duration="133792000" />
-      <workItem from="1579080445238" duration="66541000" />
+      <workItem from="1579080445238" duration="73765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213657000" />
+    <option name="totallyTimeSpent" value="220881000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17540687" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -466,7 +482,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45138177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45138177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -491,114 +507,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="49" lean-forward="true" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/projects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#96#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/projects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#111#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/constants/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/EditProjectDialog/Form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="48" column="46" lean-forward="true" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/DeleteDialog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/DeleteDialog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/AddProjectDialog/Form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!block;n#validate#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/AddProjectDialog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/Loader/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -679,16 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Register/RegisterForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-124">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/SelectField/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -701,14 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="61" column="20" lean-forward="true" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="27" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -728,20 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding>
-            <element signature="e#847#875#0" expanded="false" />
-            <element signature="e#914#1103#0" expanded="false" />
-            <element signature="e#1135#1165#0" expanded="false" />
-            <element signature="e#1400#1482#0" expanded="false" />
-            <element signature="e#1534#1603#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/Dialog/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -755,16 +631,6 @@
         <state relative-caret-position="198">
           <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/AppBar/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2053">
-          <caret line="209" column="23" lean-forward="false" selection-start-line="209" selection-start-column="23" selection-end-line="209" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -800,14 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="49" column="14" lean-forward="false" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -848,20 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="171" column="21" lean-forward="true" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <element signature="e#1516#1856#0" expanded="false" />
-            <element signature="e#2335#2367#0" expanded="false" />
-            <element signature="e#2400#2448#0" expanded="false" />
-            <element signature="e#2479#2523#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/EditTaskDialog/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -875,28 +719,6 @@
         <state relative-caret-position="589">
           <caret line="95" column="36" lean-forward="true" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/main.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="221" column="22" lean-forward="true" selection-start-line="221" selection-start-column="22" selection-end-line="221" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/EditTaskDialog/Form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#716#1095#0" expanded="false" />
-            <element signature="e#1914#2006#0" expanded="false" />
-            <element signature="e#2059#2138#0" expanded="false" />
-            <element signature="e#2154#3215#0" expanded="false" />
-            <element signature="n#!!block;n#validate#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,11 +793,225 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/main.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="221" column="22" lean-forward="true" selection-start-line="221" selection-start-column="22" selection-end-line="221" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/logo192.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/logo512.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#781#1002#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/SideMenu/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="32" column="39" lean-forward="false" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/SideMenu/components/MenuItem/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="25" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/StatusMenu/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/EditTaskDialog/Form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#716#1095#0" expanded="false" />
+            <element signature="e#1126#1493#0" expanded="false" />
+            <element signature="e#1914#2006#0" expanded="false" />
+            <element signature="e#2059#2138#0" expanded="false" />
+            <element signature="e#2154#3215#0" expanded="false" />
+            <element signature="n#!!block;n#validate#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Projects/components/ProjectsItem/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Users/components/UserItem/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/TaskPage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Register/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Register/RegisterForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/AppBar/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/components/FiltersDialog/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#1154#1182#0" expanded="false" />
+            <element signature="e#1221#1410#0" expanded="false" />
+            <element signature="e#1442#1472#0" expanded="false" />
+            <element signature="e#1707#1789#0" expanded="false" />
+            <element signature="e#1841#1910#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/components/Tasks/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#1835#2175#0" expanded="false" />
+            <element signature="e#2222#2461#0" expanded="false" />
+            <element signature="e#2711#2759#0" expanded="false" />
+            <element signature="e#2790#2834#0" expanded="false" />
+            <element signature="e#2993#3029#0" expanded="false" />
+            <marker date="1579604577691" expanded="true" signature="3125:5264" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3151:3570" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3170:3348" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3214:3333" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3233:3328" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3383:3551" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3411:3531" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3602:4742" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3628:4732" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3663:4719" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3677:4474" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3696:3985" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="3715:3965" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="4004:4459" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="4079:4447" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="4572:4689" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="4761:4821" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="4841:4882" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="4985:5028" ph="..." />
+            <marker date="1579604577691" expanded="true" signature="5134:5255" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
