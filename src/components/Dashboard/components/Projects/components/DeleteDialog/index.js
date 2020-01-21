@@ -17,55 +17,33 @@ const DeleteDialog = (props) => {
 	const getTasks = (project) =>
 		tasks.filter(item => item.project.id !== project.id);
 
-	/**
-	 * const newTasks => tasks.filter(item => item.project.id !== project.id);
-	 *
-	 * const projectTaskIds = tasks
-	 * 		.filter(task => task.project.id === projectId)
-	 * 		.map(task => task.id); // [1, 5, 6, 8]
-	 *
-	 * ======
-	 *
-	 * users.forEach(user => {
-	 * 		user.tasks = user.tasks.filter(taskId => !projectTaskIds.includes(taskId))
-	 * });
-	 *
-	 */
+	const getUsers = (users, project) => {
+		const tasks = project.tasks;
+		let _users = [...users];
 
+		const removeTask = (id) => {
+			_users.forEach(user => {
+				const removed = user.tasks.findIndex(item => item.id === id);
 
+				if (removed !== -1) {
+					user.tasks.splice(removed, 1);
+				}
+			});
+		};
 
-	//TODO
-	const getUsers = (_tasks) => {
-		return [ ...users.map((user, i) => {
+		for (let i = 0; i < tasks.length; i++){
+			removeTask(tasks[i].id);
+		}
 
-			if (user.tasks.length){
-				let _uTasks = [...user.tasks];
-
-				_uTasks.filter(item => {
-					// console.log('item', item);
-					return _tasks.find(({id}) => {
-						console.log(`${item.id === id} and`, item.id, id);
-						 return item === id
-					})
-				});
-
-				user.tasks = [..._uTasks];
-
-				console.log('_uTasks', i, _uTasks, 'user.tasks', user.tasks);
-
-			}
-
-			return user;
-		})];
+		return _users;
 	};
 
 	const handleDelete = () => {
 		const _tasks = getTasks(project);
 
-		console.log(getUsers(_tasks));
-
 		dispatch(deleteProject(project));
 		dispatch(updateTask(_tasks));
+		dispatch(updateUsers(getUsers(users, project)));
 		handleClose();
 	};
 
