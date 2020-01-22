@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import Button from '@material-ui/core/Button'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -6,7 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useSelector } from 'react-redux'
 
 import {
 	AppBar,
@@ -14,6 +14,7 @@ import {
 	AppBarAfter,
 	SearchField
 } from '../AppBar'
+import Pagination from '../../../common/Pagination'
 
 import UserItem from './components/UserItem'
 import AddUserDialog from './components/AddUserDialog'
@@ -27,6 +28,9 @@ const Users = () => {
 	const [editDialog, setEdit] = useState(false);
 	const [detailsDialog, setDetails] = useState(false);
 	const [userId, setUserId] = useState(0);
+
+	const [page, setPage] = useState(0);
+	const [rowsPerPage, setRowsPerPage] = useState(8);
 
 	const users = useSelector(state => state.users.users);
 
@@ -68,6 +72,15 @@ const Users = () => {
 		setDetails(!detailsDialog);
 	};
 
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage);
+	};
+
+	const handleChangeRowsPerPage = ({target}) => {
+		setRowsPerPage(parseInt(target.value, 10));
+		setPage(0);
+	};
+
 	return(
 		<div className='dashboard-content'>
 			<AppBar title="Users">
@@ -103,15 +116,19 @@ const Users = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{searchResult.map( user => {
-									return <UserItem
-										key={user.id}
-										user={user}
-										handleDelete={() => handleDelete(user.id)}
-										handleEdit={() => handleEdit(user.id)}
-										handleView={() => viewDetails(user.id)}
-									/>
-								})}
+								{
+									searchResult
+										.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+										.map( user => {
+										return <UserItem
+											key={user.id}
+											user={user}
+											handleDelete={() => handleDelete(user.id)}
+											handleEdit={() => handleEdit(user.id)}
+											handleView={() => viewDetails(user.id)}
+										/>
+									})
+								}
 							</TableBody>
 						</Table>
 						{
@@ -124,6 +141,13 @@ const Users = () => {
 								)
 						}
 					</div>
+					<Pagination
+						count={searchResult.length}
+						rowsPerPage={rowsPerPage}
+						page={page}
+						onChangePage={handleChangePage}
+						onChangeRowsPerPage={handleChangeRowsPerPage}
+					/>
 				</Paper>
 			</div>
 			<AddUserDialog

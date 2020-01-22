@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -6,8 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button'
-import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router'
 
 import {
 	AppBar,
@@ -16,11 +16,14 @@ import {
 	SearchField,
 	Filters
 } from '../AppBar'
+import Pagination from '../../../common/Pagination'
+
 import TaskItem from './components/TaskItem'
 import AddTaskDialog from './components/AddTaskDialog'
 import EditTaskDialog from './components/EditTaskDialog'
 import DeleteDialog from './components/DeleteDialog'
 import FiltersDialog from './components/FiltersDialog'
+
 
 const Tasks = () => {
 	const [createDialog, setCreate] = useState(false);
@@ -33,6 +36,9 @@ const Tasks = () => {
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
 	const isAdmin = useSelector(state => state.auth.user.admin);
+
+	const [page, setPage] = useState(0);
+	const [rowsPerPage, setRowsPerPage] = useState(8);
 
 	const useQuery = () =>
 		new URLSearchParams(useLocation().search);
@@ -85,6 +91,8 @@ const Tasks = () => {
 
 		const result = filteredList.filter(task => new RegExp(searchQuery, 'i').test(task.title));
 		setSearchResult(result);
+
+
 	}, [searchQuery, tasks, filterQuery]);
 
 	const handleCreate = () => setCreate(!createDialog);
@@ -110,6 +118,15 @@ const Tasks = () => {
 	};
 
 	const clearSearch = () => setSearchQuery('');
+
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage);
+	};
+
+	const handleChangeRowsPerPage = ({target}) => {
+		setRowsPerPage(parseInt(target.value, 10));
+		setPage(0);
+	};
 
 	return(
 		<div className='dashboard-content'>
@@ -149,7 +166,9 @@ const Tasks = () => {
 							</TableHead>
 							<TableBody>
 								{
-									searchResult.map( task => {
+									searchResult
+										.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+										.map(task => {
 										return <TaskItem
 											key={task.id}
 											task={task}
@@ -172,6 +191,13 @@ const Tasks = () => {
 								)
 						}
 					</div>
+					<Pagination
+						count={searchResult.length}
+						rowsPerPage={rowsPerPage}
+						page={page}
+						onChangePage={handleChangePage}
+						onChangeRowsPerPage={handleChangeRowsPerPage}
+					/>
 				</Paper>
 			</div>
 			<AddTaskDialog

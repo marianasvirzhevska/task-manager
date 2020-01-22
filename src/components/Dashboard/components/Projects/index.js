@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import Button from '@material-ui/core/Button'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -6,24 +7,28 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useSelector } from 'react-redux'
 
-import ProjectItem from './components/ProjectsItem'
 import {
 	AppBar,
 	AppBarBefore,
 	AppBarAfter,
 	SearchField
 } from '../AppBar'
+import Pagination from '../../../common/Pagination'
+
 import AddProjectDialog from './components/AddProjectDialog'
 import EditProjectDialog from './components/EditProjectDialog'
 import DeleteDialog from './components/DeleteDialog'
+import ProjectItem from './components/ProjectsItem'
 
 const Projects = () => {
 	const [createDialog, setCreate] = useState(false);
 	const [deleteDialog, setDelete] = useState(false);
 	const [editDialog, setEdit] = useState(false);
 	const [projectId, setProjectId] = useState(0);
+
+	const [page, setPage] = useState(0);
+	const [rowsPerPage, setRowsPerPage] = useState(8);
 
 	const projects = useSelector(state => state.projects.projects);
 	const isAdmin = useSelector(state => state.auth.user.admin);
@@ -55,6 +60,15 @@ const Projects = () => {
 
 	const clearSearch = () => {
 		setSearchQuery('');
+	};
+
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage);
+	};
+
+	const handleChangeRowsPerPage = ({target}) => {
+		setRowsPerPage(parseInt(target.value, 10));
+		setPage(0);
 	};
 
 
@@ -95,7 +109,9 @@ const Projects = () => {
 							</TableHead>
 							<TableBody>
 								{
-									searchResult.map( project => {
+									searchResult
+										.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+										.map( project => {
 									return <ProjectItem
 												key={project.id}
 												project={project}
@@ -115,6 +131,13 @@ const Projects = () => {
 								)
 						}
 					</div>
+					<Pagination
+						count={searchResult.length}
+						rowsPerPage={rowsPerPage}
+						page={page}
+						onChangePage={handleChangePage}
+						onChangeRowsPerPage={handleChangeRowsPerPage}
+					/>
 				</Paper>
 			</div>
 			<AddProjectDialog
