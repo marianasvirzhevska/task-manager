@@ -16,13 +16,19 @@ const styles = () => ({
 			margin: 0,
 			padding: 26,
 			zIndex: 1,
-			boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)'
+			boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)',
+			'@media(max-width: 600px)': {
+				padding: 16,
+			}
 		},
 		title:{
 			margin: 0,
 			fontWeight: 500,
 			textAlign: 'center',
 			fontSize: fontSizes.subTitle,
+			'@media(max-width: 600px)': {
+				fontSize: fontSizes.button,
+			}
 		},
 		closeButton: {
 			right: 26,
@@ -34,6 +40,10 @@ const styles = () => ({
 			'& > span > svg':{
 				width: 15,
 				height: 15,
+			},
+			'@media(max-width: 600px)': {
+				right: 16,
+				top: 9,
 			}
 		},
 		resetButton:{
@@ -50,6 +60,10 @@ const styles = () => ({
 			},
 			'&:hover':{
 				background: 'transparent'
+			},
+			'@media(max-width: 600px)': {
+				left: 14,
+				top: 7,
 			}
 		}
 	});
@@ -81,10 +95,16 @@ AppDialogTitle.propTypes = {
 	handleReset: PropTypes.func
 };
 
-export const AppDialogContent = withStyles(() => ({
+export const AppDialogContent = withStyles((theme) => ({
 	root:{
-		minWidth: 520,
-		backgroundColor: colors.lightGreyBg
+		display: 'flex',
+		minWidth: 'auto',
+		padding: '8px 14px',
+		backgroundColor: colors.lightGreyBg,
+		[theme.breakpoints.up('sm')]: {
+			minWidth: 520,
+			padding: '8px 24px'
+		}
 	}
 }))(MuiDialogContent);
 

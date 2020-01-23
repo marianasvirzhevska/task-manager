@@ -94,6 +94,10 @@ const theme = createMuiTheme({
 					backgroundColor: colors.green,
 					color: colors.white,
 					opacity: 0.8
+				},
+				'@media(max-width: 600px)':{
+					padding: '10px 26px',
+					fontSize: fontSizes.main,
 				}
 			},
 			contained: {
@@ -222,6 +226,29 @@ const theme = createMuiTheme({
 			colorDefault: {
 				color: colors.white,
 				backgroundColor: colors.blueBg
+			}
+		},
+		MuiDialog:{
+			paperWidthSm:{
+				'@media(max-width: 600px)': {
+					margin: 18,
+					width: '100%'
+				},
+				'@media(max-width: 320px)': {
+					margin: 0,
+					width: '100%'
+				}
+			},
+			paperScrollPaper:{
+				'@media(max-width: 320px)': {
+					maxHeight: '100%',
+					minHeight: '100%'
+				}
+			},
+			container:{
+				'@media(max-width: 320px)': {
+					backgroundColor: colors.white
+				}
 			}
 		}
 	}

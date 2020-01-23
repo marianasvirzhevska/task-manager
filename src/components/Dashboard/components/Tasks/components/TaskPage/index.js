@@ -38,12 +38,12 @@ const TaskPage = () => {
 					<div className="back-btn">
 						<Link to='/dashboard/tasks'>
 							<img src={back} alt='icon'/>
-							Back
+							<span>Back</span>
 						</Link>
 					</div>
 				</AppBarBefore>
 			</AppBar>
-			<div className='scroll-container paper-wrap'>
+			<div className='scroll-container paper-wrap task-page'>
 				<div className='table-cover'>
 					<Paper elevation={1}>
 						<div className='forms-container'>

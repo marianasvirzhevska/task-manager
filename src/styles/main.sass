@@ -32,6 +32,8 @@ input:-webkit-autofill
 .dialog-form //styles for form on dialog component
   margin: 30px auto 0
   width: 100%
+  @media(max-width: 600px)
+    margin-top: 10px
 
 .dialog-action // dialog bottom actions styles
   width: 100%
@@ -39,6 +41,8 @@ input:-webkit-autofill
   align-items: center
   justify-content: center
   margin: 30px 0
+  @media(max-width: 600px)
+    margin: 15px 0
 
 .flexed-row
   @include flex
@@ -150,6 +154,8 @@ input:-webkit-autofill
   flex-direction: column
   align-items: center
   justify-content: center
+  @media(max-width: 600px)
+    min-width: auto
   .delete-title
     font-size: $subTitle
     font-weight: 500
@@ -274,6 +280,10 @@ input:-webkit-autofill
 
 .back-btn
   padding-left: 40px
+  @media(max-width: 600px)
+    padding-left: 0
+    span
+      display: none
   a
     @include flex
     align-items: center
@@ -301,11 +311,21 @@ input:-webkit-autofill
     h2
       flex: 0 0.8 80%
       margin: 0 !important
+    @media(max-width: 600px)
+      flex-direction: column
+      h2
+        flex: 0 0 auto
   &-menu
     align-self: flex-end
     flex: 0 0.16 16%
     padding-left: 14px
     border-left: 1px solid $borderColor
+    @media(max-width: 600px)
+      align-self: flex-start
+      flex: 0 0 auto
+      padding-left: 0
+      border-left: none
+      margin-top: 12px
 
 
 .task-description
@@ -318,6 +338,7 @@ input:-webkit-autofill
 
 // Styles for Filters Dialog
 .filter-dialog
+  width: 100%
   min-height: 150px
   padding: 18px 36px
   &-title
@@ -327,6 +348,9 @@ input:-webkit-autofill
     font-size: $menuFont
   &-action
     text-align: center
+  @media(max-width: 600px)
+    padding: 18px 12px
+    width: 100%
 
 
 .user-task
@@ -344,4 +368,17 @@ input:-webkit-autofill
       align-items: center
       p
         padding-left: 8px
+
+.task-page
+  @media (max-width: 600px)
+    .table-cover
+      padding: 0
+    .forms-container
+      padding: 18px
+
+.user-info-dialog
+  width: 100%
+
+
+
 

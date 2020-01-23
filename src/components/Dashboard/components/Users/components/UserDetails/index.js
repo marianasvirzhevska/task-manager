@@ -22,32 +22,34 @@ const UserDetails = (props) => {
 				handleClose={handleClose}
 				title='User Details'/>
 			<AppDialogContent>
-				<div className='user-info details'>
-					<div className='task-details'>
-						<p className='name'>{user && user.firstName} {user && user.lastName}</p>
-						<p className='email'>{user && user.email}</p>
-						<p className='role'>{
-							user && (user.admin ?
-								<span className='admin'>Admin</span>
-								:
-								<span>Employee</span>
-							)}</p>
+				<div className='user-info-dialog'>
+					<div className='user-info details'>
+						<div className='task-details'>
+							<p className='name'>{user && user.firstName} {user && user.lastName}</p>
+							<p className='email'>{user && user.email}</p>
+							<p className='role'>{
+								user && (user.admin ?
+									<span className='admin'>Admin</span>
+									:
+									<span>Employee</span>
+								)}</p>
+						</div>
 					</div>
-				</div>
-				<p className='user-info-title'>Assigned tasks: {(user && user.tasks.length) || '0'}</p>
-				<div className='user-tasks'>
-					{
-						user && user.tasks.length ?
-							user.tasks.map(task => {
-								return (
-									<TaskItem
-										key={task.id}
-										task={tasks && tasks.find(item => item.id === task.id)}
-									/>
-								)
-							})
-						: <p>No Task assigned</p>
-					}
+					<p className='user-info-title'>Assigned tasks: {(user && user.tasks.length) || '0'}</p>
+					<div className='user-tasks'>
+						{
+							user && user.tasks.length ?
+								user.tasks.map(task => {
+									return (
+										<TaskItem
+											key={task.id}
+											task={tasks && tasks.find(item => item.id === task.id)}
+										/>
+									)
+								})
+							: <p>No Task assigned</p>
+						}
+					</div>
 				</div>
 			</AppDialogContent>
 		</AppDialog>
