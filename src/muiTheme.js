@@ -14,6 +14,7 @@ export const colors = {
 	red: '#ff7272',
 	borderColor: '#cfcfe1',
 	blueBtn: '#00adc7',
+	green: '#00c853',
 };
 
 export const fontSizes = {
@@ -90,16 +91,16 @@ const theme = createMuiTheme({
 				textTransform: 'none',
 				padding: '12px 30px',
 				'&$disabled': {
-					backgroundColor: '#00c853',
-					color: '#fff',
+					backgroundColor: colors.green,
+					color: colors.white,
 					opacity: 0.8
 				}
 			},
 			contained: {
 				boxShadow: 'none !important',
 				'&$disabled': {
-					backgroundColor: '#00c853',
-					color: '#fff'
+					backgroundColor: colors.green,
+					color: colors.white
 				}
 			},
 			sizeSmall:{
@@ -110,15 +111,26 @@ const theme = createMuiTheme({
 		MuiTableCell:{
 			root:{
 				fontSize: fontSizes.table,
+				'& > a':{
+					fontWeight: 500,
+					color: colors.green,
+					padding: '10px 14px'
+				}
 			},
 			head:{
 				fontWeight: 500,
 				padding: '8px 10px 8px',
 				color: colors.lightGreyFont,
+				'@media(max-width: 600px)': {
+					padding: '5px 10px 5px',
+				}
 			},
 			body:{
 				padding: '20px 10px 18px',
-				borderBottom: '1px solid rgba(0, 0, 0, 0.14)'
+				borderBottom: '1px solid rgba(0, 0, 0, 0.14)',
+				'@media(max-width: 600px)': {
+					padding: '10px 10px 8px',
+				}
 			}
 		},
 		MuiIconButton:{
@@ -184,7 +196,6 @@ const theme = createMuiTheme({
 					marginBottom: 10,
 					position: 'absolute',
 					bottom: -25,
-					//left: 23
 				}
 			}
 		},

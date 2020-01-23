@@ -74,7 +74,7 @@ const Projects = () => {
 
 	return(
 		<div className='dashboard-content'>
-			<AppBar  title="Projects">
+			<AppBar title="Projects">
 				<AppBarBefore>
 					<SearchField
 						value={searchQuery}
@@ -100,7 +100,7 @@ const Projects = () => {
 							<TableHead>
 								<TableRow>
 									<TableCell>Title</TableCell>
-									<TableCell>Link</TableCell>
+									<TableCell className='cell-mobile'>Link</TableCell>
 									<TableCell>
 										Tasks
 									</TableCell>

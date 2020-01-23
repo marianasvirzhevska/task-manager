@@ -20,6 +20,7 @@ const Pagination = (props) => {
 				toolbar: classes.toolbar,
 				select: classes.select,
 				selectIcon: classes.selectIcon,
+				caption: classes.caption,
 
 
 			}}
@@ -27,7 +28,7 @@ const Pagination = (props) => {
 	)
 };
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
 	createStyles({
 		toolbar:{
 			paddingRight: 14,
@@ -41,6 +42,12 @@ const useStyles = makeStyles(() =>
 		selectIcon:{
 			right: 0,
 			top: 4,
+		},
+		caption:{
+			display: 'none',
+				[theme.breakpoints.up('sm')]: {
+				display: 'inline'
+			}
 		}
 	}));
 

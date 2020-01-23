@@ -9,45 +9,68 @@ import IconButton from '@material-ui/core/IconButton'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 import VisibilityIcon from '@material-ui/icons/Visibility';
+
 import StatusLabel from '../../../../../common/StatusLabel'
+import ActionsMenu from '../../../../../common/ActionsMenu'
 
 
 const TaskItem = (props) => {
 	const { task, handleEdit, handleDelete, project, user } = props;
 	const { title, status, id } = task;
 	const isAdmin = useSelector(state => state.auth.user.admin);
+	const getActions = (isAdmin) => {
+		let actions = [];
+
+		actions.push({
+			label: 'View',
+			handle: `/dashboard/tasks/task/${id}`
+		});
+
+		if(isAdmin){
+			actions.push({
+				label: 'Edit',
+				handle: handleEdit
+			});
+			actions.push({
+				label: 'Delete',
+				handle: handleDelete
+			})
+		}
+
+		return  actions;
+	};
 
 	return(
 		<TableRow>
-			<TableCell>{id}</TableCell>
+			<TableCell className='cell-mobile'>{id}</TableCell>
 			<TableCell>
-				<Avatar>{project.projectAv}</Avatar>
+				<Avatar className="avatar">{project.projectAv}</Avatar>
 			</TableCell>
 			<TableCell>{title}</TableCell>
-			<TableCell>{user ? user.firstName + ' ' + user.lastName : '-'}</TableCell>
-			<TableCell><StatusLabel status={status} /></TableCell>
-
-				<TableCell className="actions">
-					<div className="actions">
-						<Link to={`/dashboard/tasks/task/${id}`}>
-							<IconButton>
-								<VisibilityIcon size="small"/>
+			<TableCell className='cell-mobile'>{user ? user.firstName + ' ' + user.lastName : '-'}</TableCell>
+			<TableCell className='cell-mobile'><StatusLabel status={status} /></TableCell>
+			<TableCell className="actions">
+				<ActionsMenu actions={getActions(isAdmin)}/>
+				<div className="actions actions-mobile">
+					<Link to={`/dashboard/tasks/task/${id}`}>
+						<IconButton>
+							<VisibilityIcon size="small"/>
+						</IconButton>
+					</Link>
+					{isAdmin &&
+						<>
+							<IconButton
+								onClick={handleEdit}>
+								<EditOutlinedIcon size="small"/>
 							</IconButton>
-						</Link>
-						{isAdmin &&
-							<>
-								<IconButton
-									onClick={handleEdit}>
-									<EditOutlinedIcon size="small"/>
+							< IconButton
+								onClick={handleDelete}>
+								<DeleteOutlinedIcon size="small"/>
 								</IconButton>
-								< IconButton
-									onClick={handleDelete}>
-									<DeleteOutlinedIcon size="small"/>
-									</IconButton>
-							</>
-						}
-					</div>
-				</TableCell>
+						</>
+					}
+				</div>
+			</TableCell>
 		</TableRow>
 	)
 };

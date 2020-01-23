@@ -8,6 +8,8 @@
   justify-content: space-between
   .menu
     padding: 20px
+    @media(max-width: 600px)
+      padding: 20px 10px
     .menuList
       margin: 0
       padding: 20px 0
@@ -61,8 +63,11 @@
       height: 48px
       min-width: unset
 
+
 .hidebtn button
   padding:  19px 34px  15px
   background-color: rgba(0, 0, 0, 0.08)
+  @media (max-width: 600px)
+    min-width: 60px !important
   &:hover
     background-color: rgba(0, 0, 0, 0.12)

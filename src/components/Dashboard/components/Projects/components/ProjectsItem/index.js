@@ -9,10 +9,16 @@ import IconButton from '@material-ui/core/IconButton'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
+import ActionsMenu from '../../../../../common/ActionsMenu'
+
 const ProjectItem = (props) => {
 	const { project, handleEdit, handleDelete } = props;
 	const { projectTitle, projectAv, projectLink, tasks, id } = project;
 	const isAdmin = useSelector(state => state.auth.user.admin);
+	const actions = [
+		{handle: handleEdit, label: 'Edit'},
+		{handle: handleDelete, label: 'Delete'}
+		];
 
 	return(
 		<TableRow>
@@ -22,13 +28,15 @@ const ProjectItem = (props) => {
 					<p>{projectTitle}</p>
 				</div>
 			</TableCell>
-			<TableCell>{projectLink}</TableCell>
+			<TableCell className='cell-mobile'>{projectLink}</TableCell>
 			<TableCell>
 				<Link to={`/dashboard/tasks?type=Projects&id=${id}`}>{tasks.length}</Link>
 			</TableCell>
-			{isAdmin &&
+			{
+				isAdmin &&
 				<TableCell className="actions">
-					<div className="actions">
+					<ActionsMenu actions={actions}/>
+					<div className="actions actions-mobile">
 						<IconButton
 							onClick={handleEdit}>
 							<EditOutlinedIcon size="small"/>

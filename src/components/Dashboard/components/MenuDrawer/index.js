@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles/index'
+import HideIcon from '@material-ui/icons/SkipPreviousRounded'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
+
 import { colors, fontSizes } from '../../../../muiTheme'
-import HideIcon from '@material-ui/icons/SkipPreviousRounded'
+
 import { SideMenu } from '../SideMenu'
+import { useWindowSize } from './useWindowSize'
 
 const drawerWidth = 240;
 
@@ -27,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 			duration: theme.transitions.duration.leavingScreen,
 		}),
 		overflowX: 'hidden',
-		width: 80,
+		width: 60,
 		[theme.breakpoints.up('sm')]: {
 			width: 80,
 		},
@@ -62,19 +65,30 @@ const useStyles = makeStyles(theme => ({
 		}
 	},
 	hideBtnSmall: {
-		padding: '19px 28px 15px',
+		minWidth: 60,
+		padding: '19px 18px 15px',
 		'& > span > span': {
 			display: 'none'
 		},
 		'& span > svg': {
 			transform: 'rotate(180deg)'
-		}
+		},
+		[theme.breakpoints.up('sm')]: {
+			minWidth: 64,
+			padding: '19px 28px 15px',
+		},
 	}
 }));
 
 const MenuDrawer = () => {
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
+  const size = useWindowSize();
+  const isMobile = Boolean(size.width > 768 ? 1 :0);
+  const [open, setOpen] = useState(isMobile);
+
+  useEffect(() => {
+	  setOpen(isMobile);
+  }, [isMobile]);
 
   const handleDrawerToggle = () => {
     setOpen(!open);

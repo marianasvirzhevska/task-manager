@@ -108,8 +108,8 @@ const Users = () => {
 							<TableHead>
 								<TableRow>
 									<TableCell>User</TableCell>
-									<TableCell>Email</TableCell>
-									<TableCell>
+									<TableCell className='cell-mobile'>Email</TableCell>
+									<TableCell className='cell-mobile'>
 										Tasks
 									</TableCell>
 									<TableCell>Actions</TableCell>

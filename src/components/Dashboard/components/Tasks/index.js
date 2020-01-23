@@ -156,11 +156,11 @@ const Tasks = () => {
 						<Table>
 							<TableHead>
 								<TableRow>
-									<TableCell>#</TableCell>
+									<TableCell className='cell-mobile'>#</TableCell>
 									<TableCell>Project</TableCell>
 									<TableCell>Title</TableCell>
-									<TableCell>Assign</TableCell>
-									<TableCell>Status</TableCell>
+									<TableCell className='cell-mobile'>Assign</TableCell>
+									<TableCell className='cell-mobile'>Status</TableCell>
 									<TableCell>Actions</TableCell>
 								</TableRow>
 							</TableHead>

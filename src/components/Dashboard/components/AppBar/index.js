@@ -117,84 +117,137 @@ SearchField.propTypes = {
 
 
 const useStyles = makeStyles(theme => ({
-    filters:{},
-    filterIcon:{
-      width: 36,
-      height: 36,
-      padding: '8px 9px',
-      borderRadius: 4,
-      marginLeft: 12,
-      marginRight: 12,
-      background: colors.white,
-      border: 'solid 1px rgba(0, 0, 0, 0.09)',
-      boxShadow: '0 0 3px 0 rgba(0, 0, 0, 0.08)',
-    },
-    search: {
-      marginLeft: 0,
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: '#f0f1f4',
-      '&:hover': {
-        backgroundColor: '#f0f1f4',
-      },
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: 0,
-        width: 'auto',
-      },
-    },
-    searchIcon: {
-      right: 10,
-      width: 16,
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: colors.lightGreyFont
-    },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      fontSize: fontSizes.table,
-      padding: '8px 30px 8px 15px',
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: 200,
-      }
-    },
-    appBar: {
-      minHeight: 36,
-      padding: '12px 0',
-      display: 'flex',
-      alignItems: 'center',
-      flexDirection: 'row',
-      background: colors.white,
-      position: 'relative',
-      zIndex: 1,
-      boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)',
-    },
-    leftActions: {
-      left: 12,
-      position: 'absolute',
-      display: 'flex',
-    },
-    rightActions: {
-      right: 12,
-      position: 'absolute',
-      display: 'flex',
-    },
+	filters: {},
+	filterIcon: {
+		width: 36,
+		height: 36,
+		padding: '8px 9px',
+		borderRadius: 4,
+		marginLeft: 0,
+		marginRight: 12,
+		background: colors.white,
+		border: 'solid 1px rgba(0, 0, 0, 0.09)',
+		boxShadow: '0 0 3px 0 rgba(0, 0, 0, 0.08)',
+	},
+	search: {
+		marginLeft: 0,
+		position: 'relative',
+		display: 'flex',
+		alignItems: 'center',
+		borderRadius: theme.shape.borderRadius,
+		backgroundColor: '#f0f1f4',
+		'&:hover': {
+			backgroundColor: '#f0f1f4',
+		},
+		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			marginLeft: 0,
+			width: 'auto',
+		},
+	},
+	searchIcon: {
+		right: 10,
+		width: 16,
+		height: '100%',
+		position: 'absolute',
+		pointerEvents: 'none',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		color: colors.lightGreyFont
+	},
+	inputRoot: {
+		color: 'inherit',
+	},
+	inputInput: {
+		fontSize: fontSizes.table,
+		padding: '8px 20px 8px 15px',
+		transition: theme.transitions.create('width'),
+		width: 0,
+		[theme.breakpoints.up('sm')]: {
+			width: 200,
+			padding: '8px 30px 8px 15px',
+		},
+		'&:focus': {
+			width: 180,
+			padding: '8px 30px 8px 15px',
+		}
+	},
+	appBar: {
+		minHeight: 36,
+		padding: '10px 0',
+		display: 'flex',
+		alignItems: 'center',
+		flexDirection: 'row',
+		background: colors.white,
+		position: 'relative',
+		zIndex: 1,
+		boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)',
+		[theme.breakpoints.up('sm')]: {
+			padding: '12px 0',
+		}
+	},
+	leftActions: {
+		left: 10,
+		position: 'absolute',
+		display: 'flex',
+		[theme.breakpoints.up('sm')]: {
+			left: 20,
+		}
+	},
+	rightActions: {
+		right: 10,
+		position: 'absolute',
+		display: 'flex',
+        '@media(max-width:600px)':{
+			'& > button': {
+				minWidth: 35,
+				padding: '11px 4px',
+				'& > span': {
+					'&:first-child': {
+						display: 'none'
+					},
+					'&:last-child': {
+						right: 0,
+						height: 14,
+						width: 14,
+						zIndex: 1,
+						padding: 0,
+						position: 'relative',
+						'&:before, &:after': {
+							left: 0,
+							width: 14,
+							content: '" "',
+							height: 3,
+							backfaceVisibility: 'hidden',
+							background: colors.white,
+						},
+						'&:before': {
+							position: 'absolute',
+							top: 6,
+						},
+						'&:after': {
+							position: 'absolute',
+							transform: 'rotate(270deg)',
+							top: 6
+						}
+					}
+				}
+			},
+        },
+		[theme.breakpoints.up('sm')]: {
+			right: 20,
+		}
+	},
     title: {
       width: '100%',
       margin: 0,
       textAlign: 'center',
-      fontSize: fontSizes.title,
-      fontWeight: 500
+      fontSize: fontSizes.button,
+      fontWeight: 500,
+      [theme.breakpoints.up('sm')]: {
+		  fontSize: fontSizes.title,
+	  }
     },
     subtitle:{
       fontSize: fontSizes.main,
