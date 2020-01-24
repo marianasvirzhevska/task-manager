@@ -49,7 +49,7 @@ const Tasks = () => {
 			return {};
 		} else return {
 			propKey: query.get('type'),
-			propValue: parseInt(query.get('id'))
+			propValue: query.get('id')
 		}
 	};
 
@@ -156,7 +156,6 @@ const Tasks = () => {
 						<Table>
 							<TableHead>
 								<TableRow>
-									<TableCell className='cell-mobile'>#</TableCell>
 									<TableCell>Project</TableCell>
 									<TableCell>Title</TableCell>
 									<TableCell className='cell-mobile'>Assign</TableCell>

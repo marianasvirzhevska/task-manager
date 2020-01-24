@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import { Field, reduxForm, getFormValues } from 'redux-form'
 import { connect, useSelector, useDispatch } from 'react-redux'
 
+import { getUniqueId } from "../../../../../../utils/getUniqueID"
 import Input from '../../../../../common/Input'
 import SelectField from '../../../../../common/SelectField'
 import { addTask, editProject, editUser } from "../../../../../../store/actions";
@@ -13,11 +14,10 @@ let Form = ({invalid, submitting, pristine, handleClose}) => {
 
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
-	const tasks = useSelector(state => state.tasks.tasks);
 
 	const getTask = () => {
 		const task = { ...formValues };
-		task.id = tasks.length + 2; // TODO add id generator
+		task.id = getUniqueId();
 		task.project = {id: task.project};
 		task.user = task.user ? {id: task.user} : null;
 		task.status = 'Pending';

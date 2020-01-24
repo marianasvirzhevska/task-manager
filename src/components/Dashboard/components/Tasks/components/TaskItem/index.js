@@ -42,7 +42,6 @@ const TaskItem = (props) => {
 
 	return(
 		<TableRow>
-			<TableCell className='cell-mobile'>{id}</TableCell>
 			<TableCell>
 				<Avatar className="avatar">{project.projectAv}</Avatar>
 			</TableCell>

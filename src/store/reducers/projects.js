@@ -9,6 +9,7 @@ import {
 
 const ProjectsState = {
 	projects: [],
+	loaded: false,
 	error: null
 };
 
@@ -18,6 +19,7 @@ const projectsReducer = ( state = ProjectsState, action) => {
 			return {
 				...state,
 				projects: action.payload,
+				loaded: true,
 				error: null
 			};
 

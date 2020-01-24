@@ -9,6 +9,7 @@ import {
 
 const TasksState = {
 	tasks: [],
+	loaded: false,
 	error: null
 };
 
@@ -18,6 +19,7 @@ const tasksReducer = ( state = TasksState, action) => {
 			return {
 				...state,
 				tasks: action.payload,
+				loaded: true,
 				error: null
 			};
 

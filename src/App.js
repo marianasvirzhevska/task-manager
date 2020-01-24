@@ -15,29 +15,40 @@ import NotFound from './components/NotFound'
 import Terms from './components/Terms'
 
 const App = () => {
-	const auth = useSelector(state => state.auth);
 	const dispatch = useDispatch();
 
+	const auth = useSelector(state => state.auth);
+	const checkUsers = useSelector(state => state.users.loaded);
+	const checkTasks = useSelector(state => state.tasks.loaded);
+	const checkProjects = useSelector(state => state.projects.loaded);
+
 	const init = () => {
-		dispatch(
-			{
-				type: INITIAL_USER,
-				payload: users
-			}
-		);
-		dispatch(
-			{
-				type: INITIAL_PROJECT,
-				payload: projects
-			}
-		);
-		dispatch(
-			{
-				type: INITIAL_TASKS,
-				payload: tasks
-			}
-		);
+		if(!checkUsers) {
+			dispatch(
+				{
+					type: INITIAL_USER,
+					payload: users
+				}
+			);
+		}
+		if(!checkTasks) {
+			dispatch(
+				{
+					type: INITIAL_PROJECT,
+					payload: projects
+				}
+			);
+		}
+		if(!checkProjects) {
+			dispatch(
+				{
+					type: INITIAL_TASKS,
+					payload: tasks
+				}
+			);
+		}
 	};
+
 	init();
 
 	return (
@@ -47,8 +58,8 @@ const App = () => {
 			  <Route path='/register' component={Register}/>
 			  <Route path='/dashboard' component={Dashboard}/>
 			  <Route path='/terms' component={Terms}/>
-			  <Redirect exact path="/*" to={auth ? '/dashboard' : '/login'}/>
-			  <Route component={NotFound}/>
+			  <Redirect exact path="/" to={auth ? '/dashboard' : '/login'}/>
+			  <Route path="*" component={NotFound}/>
 		  </Switch>
 	  </Router>
 	)

@@ -4,19 +4,22 @@ import { Field, reduxForm, getFormValues } from 'redux-form'
 import { useDispatch, connect, useSelector } from "react-redux"
 
 import trim from "../../../../../../utils/trim"
+import { getUniqueId } from "../../../../../../utils/getUniqueID"
 import { addUser } from "../../../../../../store/actions";
 import Input from '../../../../../common/Input'
 import CustomCheckbox from "../../../../../common/Checkbox"
 
 let Form = (props) => {
-	const { invalid, submitting, pristine, handleClose, users } = props;
+	const { invalid, submitting, pristine, handleClose } = props;
 	const formValues = useSelector(state => getFormValues('addUser')(state));
 	const dispatch = useDispatch();
 
 	const handleCreate = (e) => {
 		e.preventDefault();
 		let user = { ...formValues };
-		user.id = users.length + 2; // TODO add id generator
+		user.id = getUniqueId();
+		user.tasks = [];
+		user.companyName = 'Dionis';
 
 		dispatch(addUser(user));
 		handleClose();

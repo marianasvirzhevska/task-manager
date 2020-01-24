@@ -5,18 +5,19 @@ import Button from '@material-ui/core/Button'
 import { Field, reduxForm, getFormValues } from 'redux-form'
 import { connect, useSelector, useDispatch } from 'react-redux'
 
+import { getUniqueId } from "../../../../../../utils/getUniqueID"
 import { addProject } from '../../../../../../store/actions'
 import trim from "../../../../../../utils/trim"
 import Input from '../../../../../common/Input'
 
-let Form = ({ invalid, submitting, pristine, handleClose, projects }) => {
+let Form = ({ invalid, submitting, pristine, handleClose }) => {
 	const dispatch = useDispatch();
 	const formValues = useSelector(state => getFormValues('addProject')(state));
 
 	const handleCreate = (e) => {
 		e.preventDefault();
 		let project = {...formValues};
-		project.id = projects.length + 2;
+		project.id = getUniqueId();
 		project.tasks = [];
 
 		dispatch(addProject(project));

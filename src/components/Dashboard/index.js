@@ -5,6 +5,7 @@ import Tasks from './components/Tasks'
 import TaskPage from './components/Tasks/components/TaskPage'
 import Users from './components/Users'
 import EditProfile from './components/EditProfile'
+import NotFound from '../../components/NotFound'
 import MenuDrawer from './components/MenuDrawer'
 
 const Dashboard = () => {
@@ -20,6 +21,7 @@ const Dashboard = () => {
 				<Route exact path={`${path}/users`} component={Users}/>
 				<Route exact path={`${path}/profile`} component={EditProfile}/>
 				<Redirect exact path={`${path}`} to={`${path}/tasks`}/>
+				<Route path={`${path}/*`} component={NotFound}/>
 			</Switch>
 		</div>
 	)

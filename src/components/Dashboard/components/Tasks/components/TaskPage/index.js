@@ -18,7 +18,7 @@ const TaskPage = () => {
 	const tasks = useSelector(state => state.tasks.tasks);
 	const users = useSelector(state => state.users.users);
 	const projects = useSelector(state => state.projects.projects);
-	const id = +params.id;
+	const id = params.id;
 
 	const task = tasks.find(task => task.id === id);
 	const user = users.find(user => user.id === task.user.id);

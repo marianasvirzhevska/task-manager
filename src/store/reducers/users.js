@@ -9,6 +9,7 @@ import {
 
 const UsersState = {
 	users: [],
+	loaded: false,
 	error: null
 };
 
@@ -18,6 +19,7 @@ const usersReducer = ( state = UsersState, action) => {
 			return {
 				...state,
 				users: action.payload,
+				loaded: true,
 				error: null
 			};
 
