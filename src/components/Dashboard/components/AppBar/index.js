@@ -169,7 +169,7 @@ const useStyles = makeStyles(theme => ({
 			padding: '8px 30px 8px 15px',
 		},
 		'&:focus': {
-			width: 180,
+			width: 150,
 			padding: '8px 30px 8px 15px',
 		}
 	},
@@ -191,6 +191,7 @@ const useStyles = makeStyles(theme => ({
 		left: 10,
 		position: 'absolute',
 		display: 'flex',
+		zIndex: 2,
 		[theme.breakpoints.up('sm')]: {
 			left: 20,
 		}

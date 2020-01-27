@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d164a5bd.chunk.css",
+    "main.js": "/static/js/main.d3d56a2f.chunk.js",
+    "main.js.map": "/static/js/main.d3d56a2f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1653f339.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1653f339.js.map",
+    "static/js/2.e54d0c9b.chunk.js": "/static/js/2.e54d0c9b.chunk.js",
+    "static/js/2.e54d0c9b.chunk.js.map": "/static/js/2.e54d0c9b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.49d7fd3cdadaa561d566e3db370b4433.js": "/precache-manifest.49d7fd3cdadaa561d566e3db370b4433.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.d164a5bd.chunk.css.map": "/static/css/main.d164a5bd.chunk.css.map",
+    "static/js/2.e54d0c9b.chunk.js.LICENSE": "/static/js/2.e54d0c9b.chunk.js.LICENSE",
+    "static/media/index.sass": "/static/media/bg@2x.2a03c37d.jpg",
+    "static/media/ico-back.svg": "/static/media/ico-back.f95c9c9f.svg",
+    "static/media/ico-logout.svg": "/static/media/ico-logout.be01bf45.svg",
+    "static/media/ico-reset.svg": "/static/media/ico-reset.a7a695a0.svg",
+    "static/media/ico-trash.svg": "/static/media/ico-trash.00abd7eb.svg",
+    "static/media/logo.svg": "/static/media/logo.6cdbf6fb.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1653f339.js",
+    "static/js/2.e54d0c9b.chunk.js",
+    "static/css/main.d164a5bd.chunk.css",
+    "static/js/main.d3d56a2f.chunk.js"
+  ]
+}
