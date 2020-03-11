@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/taskmanager/static/css/main.89bc8b2f.chunk.css",
+    "main.js": "/taskmanager/static/js/main.c89ded63.chunk.js",
+    "main.js.map": "/taskmanager/static/js/main.c89ded63.chunk.js.map",
+    "runtime-main.js": "/taskmanager/static/js/runtime-main.1c867d2e.js",
+    "runtime-main.js.map": "/taskmanager/static/js/runtime-main.1c867d2e.js.map",
+    "static/js/2.7f85bcd4.chunk.js": "/taskmanager/static/js/2.7f85bcd4.chunk.js",
+    "static/js/2.7f85bcd4.chunk.js.map": "/taskmanager/static/js/2.7f85bcd4.chunk.js.map",
+    "index.html": "/taskmanager/index.html",
+    "precache-manifest.08c7f32a0db6a64dabc7bbbc046e5ffa.js": "/taskmanager/precache-manifest.08c7f32a0db6a64dabc7bbbc046e5ffa.js",
+    "service-worker.js": "/taskmanager/service-worker.js",
+    "static/css/main.89bc8b2f.chunk.css.map": "/taskmanager/static/css/main.89bc8b2f.chunk.css.map",
+    "static/js/2.7f85bcd4.chunk.js.LICENSE": "/taskmanager/static/js/2.7f85bcd4.chunk.js.LICENSE",
+    "static/media/index.sass": "/taskmanager/static/media/bg@2x.2a03c37d.jpg",
+    "static/media/ico-back.svg": "/taskmanager/static/media/ico-back.f95c9c9f.svg",
+    "static/media/ico-logout.svg": "/taskmanager/static/media/ico-logout.be01bf45.svg",
+    "static/media/ico-reset.svg": "/taskmanager/static/media/ico-reset.a7a695a0.svg",
+    "static/media/ico-trash.svg": "/taskmanager/static/media/ico-trash.00abd7eb.svg",
+    "static/media/logo.svg": "/taskmanager/static/media/logo.6cdbf6fb.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1c867d2e.js",
+    "static/js/2.7f85bcd4.chunk.js",
+    "static/css/main.89bc8b2f.chunk.css",
+    "static/js/main.c89ded63.chunk.js"
+  ]
+}
